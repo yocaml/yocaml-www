@@ -1,0 +1,6 @@
+(library
+ (name lib)
+ (public_name yocaml-www.lib)
+ (libraries yocaml))
+
+(include_subdirs qualified)
