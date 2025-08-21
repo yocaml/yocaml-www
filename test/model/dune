@@ -1,0 +1,7 @@
+(library
+ (name model_test)
+ (package yocaml-www)
+ (inline_tests)
+ (libraries yocaml-www.lib)
+ (preprocess
+  (pps ppx_expect)))
