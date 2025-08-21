@@ -36,6 +36,9 @@
   (cmdliner (>= 1.3.0))
   (cmarkit (>= 0.3.0))
   (hilite (>= 0.5.0))
+
+  ;; Test setup
+  (ppx_expect :with-test)
    
   ;; dev setup
   (utop :with-dev-setup)
