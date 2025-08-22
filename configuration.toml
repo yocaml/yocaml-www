@@ -1,0 +1,13 @@
+title = "YOCaml"
+subtitle = "A static site generator"
+main_url = "https://yocaml.github.io"
+site_repository = "github/yocaml/yocaml-www"
+yocaml_repository = "github/xhtmlboi/yocaml"
+
+[content_license]
+title = "CC BY-SA"
+url = "https://creativecommons.org/licenses/by-sa/4.0/"
+
+[software_license]
+title = "GPL-3.0-or-later"
+url = "www.gnu.org/licenses/gpl-3.0.html"

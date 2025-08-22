@@ -1,0 +1,4 @@
+(executable
+ (name site)
+ (public_name yocaml-www)
+ (libraries yocaml-www.lib yocaml_unix))
