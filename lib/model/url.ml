@@ -48,6 +48,15 @@ let scheme_to_string = function
   | Other x -> x
 ;;
 
+let as_name ?(with_scheme = false) ?(with_path = true) { host; path; scheme; _ }
+  =
+  let scheme = if with_scheme then scheme_to_string scheme ^ "://" else ""
+  and path =
+    if with_path then path |> Yocaml.Path.to_string |> Field.remove_dot else ""
+  in
+  scheme ^ host ^ path
+;;
+
 let scheme_of_string = function
   | None -> Https
   | Some scheme ->

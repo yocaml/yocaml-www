@@ -11,6 +11,9 @@ val uri : t -> Uri.t
 (** Return the host of the URL. *)
 val host : t -> string
 
+(** Return an URL as string that suit for name.*)
+val as_name : ?with_scheme:bool -> ?with_path:bool -> t -> string
+
 (** Apply a function on the path. *)
 val on_path : (Yocaml.Path.t -> Yocaml.Path.t) -> t -> t
 
