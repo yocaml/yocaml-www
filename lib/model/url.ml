@@ -14,8 +14,10 @@ type t =
   }
 
 let uri { uri; _ } = uri
+let host { host; _ } = host
+let to_string url = url |> uri |> Uri.to_string
 
-let resolve ?(on_query = `Remove) ({ path; uri; query; _ } as url) given_path =
+let resolve ?(on_query = `Remove) given_path ({ path; uri; query; _ } as url) =
   let p =
     match Yocaml.Path.to_pair given_path with
     | `Root, _ -> given_path
@@ -31,6 +33,12 @@ let resolve ?(on_query = `Remove) ({ path; uri; query; _ } as url) given_path =
     Uri.with_query (Uri.with_path uri (Yocaml.Path.to_string p)) query
   in
   { url with path = p; uri; query }
+;;
+
+let on_path f ({ uri; path; _ } as url) =
+  let path = f path in
+  let uri = Uri.with_path uri (Yocaml.Path.to_string path) in
+  { url with uri; path }
 ;;
 
 let scheme_to_string = function
@@ -63,7 +71,7 @@ let of_string url = url |> Uri.of_string |> of_uri
 
 let with_scheme ~scheme ?path rest =
   let url = scheme ^ "://" ^ rest |> of_string in
-  Option.fold ~none:url ~some:(fun path -> resolve url path) path
+  Option.fold ~none:url ~some:(fun path -> resolve path url) path
 ;;
 
 let http = with_scheme ~scheme:"http"

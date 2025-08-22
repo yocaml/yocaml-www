@@ -8,7 +8,7 @@ let%expect_test "validating url - 1" =
     let+ url = of_string "https://gr-im.github.io" in
     Url.normalize url
   in
-  validation Yocaml.Data.pp result;
+  validation result;
   [%expect
     {|
     [VALID] {"target": "https://gr-im.github.io", "scheme": "https", "host":
@@ -22,7 +22,7 @@ let%expect_test "validating url - 2" =
     let+ url = of_string "https://gr-im.github.io/foo/bar?a=b&foo=bar" in
     Url.normalize url
   in
-  validation Yocaml.Data.pp result;
+  validation result;
   [%expect
     {|
     [VALID] {"target": "https://gr-im.github.io/foo/bar?a=b&foo=bar", "scheme":
@@ -39,7 +39,7 @@ let%expect_test "validating url - 3" =
     let+ url = of_string "https://gr-im.github.io:8080/foo/bar?a=b&foo=bar" in
     Url.normalize url
   in
-  validation Yocaml.Data.pp result;
+  validation result;
   [%expect
     {|
     [VALID] {"target": "https://gr-im.github.io:8080/foo/bar?a=b&foo=bar",
@@ -54,9 +54,9 @@ let%expect_test "validating url - 3" =
 let%expect_test "Resolve url - 1" =
   let result =
     let+ url = of_string "https://gr-im.github.io" in
-    Url.normalize (Url.resolve url Yocaml.Path.(rel [ "foo"; "bar" ]))
+    url |> Url.resolve Yocaml.Path.(rel [ "foo"; "bar" ]) |> Url.normalize
   in
-  validation Yocaml.Data.pp result;
+  validation result;
   [%expect
     {|
     [VALID] {"target": "https://gr-im.github.io/foo/bar", "scheme": "https",
@@ -69,9 +69,9 @@ let%expect_test "Resolve url - 1" =
 let%expect_test "Resolve url - 2" =
   let result =
     let+ url = of_string "https://gr-im.github.io?foo=bar" in
-    Url.normalize (Url.resolve url Yocaml.Path.(rel [ "foo"; "bar" ]))
+    url |> Url.resolve Yocaml.Path.(rel [ "foo"; "bar" ]) |> Url.normalize
   in
-  validation Yocaml.Data.pp result;
+  validation result;
   [%expect
     {|
     [VALID] {"target": "https://gr-im.github.io/foo/bar", "scheme": "https",
@@ -84,10 +84,11 @@ let%expect_test "Resolve url - 2" =
 let%expect_test "Resolve url - 3" =
   let result =
     let+ url = of_string "https://gr-im.github.io?foo=bar" in
-    Url.normalize
-      (Url.resolve ~on_query:`Keep url Yocaml.Path.(rel [ "foo"; "bar" ]))
+    url
+    |> Url.resolve ~on_query:`Keep Yocaml.Path.(rel [ "foo"; "bar" ])
+    |> Url.normalize
   in
-  validation Yocaml.Data.pp result;
+  validation result;
   [%expect
     {|
     [VALID] {"target": "https://gr-im.github.io/foo/bar?foo=bar", "scheme":
@@ -100,13 +101,13 @@ let%expect_test "Resolve url - 3" =
 let%expect_test "Resolve url - 4" =
   let result =
     let+ url = of_string "https://gr-im.github.io?foo=bar" in
-    Url.normalize
-      (Url.resolve
+    url
+    |> Url.resolve
          ~on_query:(`Set [ "lang", [ "ocaml"; "rocq" ] ])
-         url
-         Yocaml.Path.(rel [ "foo"; "bar" ]))
+         Yocaml.Path.(rel [ "foo"; "bar" ])
+    |> Url.normalize
   in
-  validation Yocaml.Data.pp result;
+  validation result;
   [%expect
     {|
     [VALID] {"target": "https://gr-im.github.io/foo/bar?lang=ocaml,rocq",
@@ -120,9 +121,9 @@ let%expect_test "Resolve url - 4" =
 let%expect_test "Resolve url - 5" =
   let result =
     let+ url = of_string "https://gr-im.github.io/foo/bar" in
-    Url.normalize (Url.resolve url Yocaml.Path.(rel [ "baz" ]))
+    url |> Url.resolve Yocaml.Path.(rel [ "baz" ]) |> Url.normalize
   in
-  validation Yocaml.Data.pp result;
+  validation result;
   [%expect
     {|
     [VALID] {"target": "https://gr-im.github.io/foo/bar/baz", "scheme": "https",
@@ -135,9 +136,9 @@ let%expect_test "Resolve url - 5" =
 let%expect_test "Resolve url - 6" =
   let result =
     let+ url = of_string "https://gr-im.github.io/foo/bar" in
-    Url.normalize (Url.resolve url Yocaml.Path.(abs [ "baz" ]))
+    url |> Url.resolve Yocaml.Path.(abs [ "baz" ]) |> Url.normalize
   in
-  validation Yocaml.Data.pp result;
+  validation result;
   [%expect
     {|
     [VALID] {"target": "https://gr-im.github.io/baz", "scheme": "https", "host":
@@ -148,7 +149,7 @@ let%expect_test "Resolve url - 6" =
 
 let%expect_test "Direct url creation - 1" =
   let result = "github.com" |> Url.https |> Url.normalize in
-  validation Yocaml.Data.pp (Ok result);
+  validation (Ok result);
   [%expect
     {|
     [VALID] {"target": "https://github.com", "scheme": "https", "host":
@@ -159,7 +160,7 @@ let%expect_test "Direct url creation - 1" =
 
 let%expect_test "Direct url creation - 2" =
   let result = "github.com" |> Url.http |> Url.normalize in
-  validation Yocaml.Data.pp (Ok result);
+  validation (Ok result);
   [%expect
     {|
     [VALID] {"target": "http://github.com", "scheme": "http", "host":
@@ -174,7 +175,7 @@ let%expect_test "Direct url creation - 3" =
     |> Url.https ~path:Yocaml.Path.(abs [ "gr-im"; "site" ])
     |> Url.normalize
   in
-  validation Yocaml.Data.pp (Ok result);
+  validation (Ok result);
   [%expect
     {|
     [VALID] {"target": "https://github.com/gr-im/site", "scheme": "https",
@@ -190,7 +191,7 @@ let%expect_test "Direct url creation - 4" =
     |> Url.https ~path:Yocaml.Path.(rel [ "blob"; "index.md" ])
     |> Url.normalize
   in
-  validation Yocaml.Data.pp (Ok result);
+  validation (Ok result);
   [%expect
     {|
     [VALID] {"target": "https://github.com/gr-im/site/blob/index.md", "scheme":

@@ -8,13 +8,20 @@ type t
 (** Retreive the underlined computed URI. *)
 val uri : t -> Uri.t
 
+(** Return the host of the URL. *)
+val host : t -> string
+
+(** Apply a function on the path. *)
+val on_path : (Yocaml.Path.t -> Yocaml.Path.t) -> t -> t
+
 (** [resolve url path] change the path of an URL. *)
 val resolve
   :  ?on_query:[ `Remove | `Keep | `Set of (string * string list) list ]
-  -> t
   -> Yocaml.Path.t
   -> t
+  -> t
 
+val to_string : t -> string
 val of_string : string -> t
 val http : ?path:Yocaml.Path.t -> string -> t
 val https : ?path:Yocaml.Path.t -> string -> t
