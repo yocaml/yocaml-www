@@ -15,6 +15,11 @@ val resolve
   -> Yocaml.Path.t
   -> t
 
+val of_string : string -> t
+val http : ?path:Yocaml.Path.t -> string -> t
+val https : ?path:Yocaml.Path.t -> string -> t
+val file : ?path:Yocaml.Path.t -> string -> t
+
 (** {1 YOCaml related stuff} *)
 
 (** Validate an URL from a string representation. *)

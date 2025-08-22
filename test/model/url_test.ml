@@ -145,3 +145,57 @@ let%expect_test "Resolve url - 6" =
             "query_string": null, "has_port": false, "has_query_string": false}
     |}]
 ;;
+
+let%expect_test "Direct url creation - 1" =
+  let result = "github.com" |> Url.https |> Url.normalize in
+  validation Yocaml.Data.pp (Ok result);
+  [%expect
+    {|
+    [VALID] {"target": "https://github.com", "scheme": "https", "host":
+             "github.com", "path": "/", "port": null, "query": [],
+            "query_string": null, "has_port": false, "has_query_string": false}
+    |}]
+;;
+
+let%expect_test "Direct url creation - 2" =
+  let result = "github.com" |> Url.http |> Url.normalize in
+  validation Yocaml.Data.pp (Ok result);
+  [%expect
+    {|
+    [VALID] {"target": "http://github.com", "scheme": "http", "host":
+             "github.com", "path": "/", "port": null, "query": [],
+            "query_string": null, "has_port": false, "has_query_string": false}
+    |}]
+;;
+
+let%expect_test "Direct url creation - 3" =
+  let result =
+    "github.com"
+    |> Url.https ~path:Yocaml.Path.(abs [ "gr-im"; "site" ])
+    |> Url.normalize
+  in
+  validation Yocaml.Data.pp (Ok result);
+  [%expect
+    {|
+    [VALID] {"target": "https://github.com/gr-im/site", "scheme": "https",
+            "host": "github.com", "path": "/gr-im/site", "port": null, "query":
+             [], "query_string": null, "has_port": false, "has_query_string":
+             false}
+    |}]
+;;
+
+let%expect_test "Direct url creation - 4" =
+  let result =
+    "github.com/gr-im/site"
+    |> Url.https ~path:Yocaml.Path.(rel [ "blob"; "index.md" ])
+    |> Url.normalize
+  in
+  validation Yocaml.Data.pp (Ok result);
+  [%expect
+    {|
+    [VALID] {"target": "https://github.com/gr-im/site/blob/index.md", "scheme":
+             "https", "host": "github.com", "path": "/gr-im/site/blob/index.md",
+            "port": null, "query": [], "query_string": null, "has_port": false,
+            "has_query_string": false}
+    |}]
+;;

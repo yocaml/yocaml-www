@@ -59,6 +59,17 @@ let of_uri uri =
   { uri; host; path; port; query; scheme }
 ;;
 
+let of_string url = url |> Uri.of_string |> of_uri
+
+let with_scheme ~scheme ?path rest =
+  let url = scheme ^ "://" ^ rest |> of_string in
+  Option.fold ~none:url ~some:(fun path -> resolve url path) path
+;;
+
+let http = with_scheme ~scheme:"http"
+let https = with_scheme ~scheme:"https"
+let file = with_scheme ~scheme:"file"
+
 let validate =
   let open Yocaml.Data.Validation in
   string $ fun s -> s |> Uri.of_string |> of_uri
