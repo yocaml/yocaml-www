@@ -10,6 +10,8 @@ val to_string : t -> string
 (** Lexical comparison between emails. *)
 val compare : t -> t -> int
 
+val from_mailbox : string -> (string * t) Yocaml.Data.Validation.validated_value
+
 (** {1 YOCaml related stuff} *)
 
 val validate : Yocaml.Data.t -> t Yocaml.Data.Validation.validated_value

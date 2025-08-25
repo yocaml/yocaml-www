@@ -26,6 +26,32 @@ let from_string given =
     Yocaml.Data.Validation.fail_with ~given err
 ;;
 
+let phrase_to_string list =
+  list
+  |> List.fold_left
+       (fun (i, buf) -> function
+          | `Dot -> succ i, buf ^ "."
+          | `Word (`Atom s) | `Word (`String s) | `Encoded (s, _) ->
+            let sep = if Int.equal i 0 then "" else " " in
+            succ i, buf ^ sep ^ s)
+       (0, "")
+  |> snd
+;;
+
+let from_mailbox given =
+  given
+  |> Emile.of_string
+  |> function
+  | Ok Emile.{ name = Some name; local; domain } ->
+    Result.map
+      (fun email ->
+         let display_name = phrase_to_string name in
+         display_name, email)
+      (from_address (local, domain))
+  | Ok _ -> Yocaml.Data.Validation.fail_with ~given "Missing identity"
+  | Error _ -> Yocaml.Data.Validation.fail_with ~given "Invalid mailbox"
+;;
+
 let validate =
   let open Yocaml.Data.Validation in
   string & from_string
