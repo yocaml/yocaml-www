@@ -10,6 +10,9 @@ type t =
 
 let entity_name = "configuration"
 let neutral = Yocaml.Metadata.required entity_name
+let site_repository { site_repository; _ } = site_repository
+let title { title; _ } = title
+let subtitle { subtitle; _ } = subtitle
 
 let validate =
   let open Yocaml.Data.Validation in

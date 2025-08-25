@@ -2,6 +2,12 @@
 
 type t
 
+(** Retreive the source repository of the project. *)
+val site_repository : t -> Repository.t
+
+val title : t -> string
+val subtitle : t -> string
+
 (** {1 YOCaml related stuff} *)
 
 (** Since the goal is not to be injected as a full template, but as a

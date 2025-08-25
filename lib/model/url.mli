@@ -11,6 +11,9 @@ val uri : t -> Uri.t
 (** Return the host of the URL. *)
 val host : t -> string
 
+(** Return the computed URL (as a string). *)
+val target : t -> string
+
 (** Return an URL as string that suit for name.*)
 val as_name : ?with_scheme:bool -> ?with_path:bool -> t -> string
 

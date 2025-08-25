@@ -92,11 +92,13 @@ let validate =
   string $ fun s -> s |> Uri.of_string |> of_uri
 ;;
 
-let normalize { scheme; host; path = uri_path; port; query; uri } =
+let target u = u |> uri |> Uri.to_string
+
+let normalize ({ scheme; host; path = uri_path; port; query; uri } as u) =
   let open Yocaml.Data in
   let query_string = Uri.verbatim_query uri in
   record
-    [ "target", string @@ Uri.to_string uri
+    [ "target", string @@ target u
     ; "scheme", string @@ scheme_to_string scheme
     ; "host", string host
     ; "path", path uri_path
