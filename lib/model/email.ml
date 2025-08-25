@@ -31,10 +31,18 @@ let validate =
   string & from_string
 ;;
 
-let normalize { local; domain } =
+let make_domain { domain; _ } = String.concat "." domain
+let make_address domain { local; _ } = local ^ "@" ^ domain
+
+let to_string email =
+  let domain = make_domain email in
+  make_address domain email
+;;
+
+let normalize ({ local; domain } as e) =
   let open Yocaml.Data in
-  let cdomain = String.concat "." domain in
-  let address = local ^ "@" ^ cdomain in
+  let cdomain = make_domain e in
+  let address = make_address cdomain e in
   record
     [ "address", string address
     ; "local", string local
@@ -46,3 +54,20 @@ let normalize { local; domain } =
            @@ Digest.string Stdlib.String.(lowercase_ascii @@ trim address)) )
     ]
 ;;
+
+let compare a b =
+  let a = to_string a
+  and b = to_string b in
+  String.compare a b
+;;
+
+module C = struct
+  type nonrec t = t
+
+  let compare = compare
+  let normalize = normalize
+  let validate = validate
+end
+
+module Set = Make.Set (C)
+module Map = Make.Map (C)

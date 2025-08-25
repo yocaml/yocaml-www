@@ -25,3 +25,8 @@ val bug_tracker : t -> Url.t
 
 val validate : Yocaml.Data.t -> t Yocaml.Data.Validation.validated_value
 val normalize : t -> Yocaml.Data.t
+
+(** {1 Set and Map} *)
+
+module Set : Specs.SET with type elt = t
+module Map : Specs.MAP with type key = t

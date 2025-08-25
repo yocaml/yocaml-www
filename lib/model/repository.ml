@@ -241,3 +241,20 @@ let normalize repo =
           ] )
     ]
 ;;
+
+let compare a b =
+  let a = home a
+  and b = home b in
+  Url.compare a b
+;;
+
+module C = struct
+  type nonrec t = t
+
+  let compare = compare
+  let normalize = normalize
+  let validate = validate
+end
+
+module Set = Make.Set (C)
+module Map = Make.Map (C)

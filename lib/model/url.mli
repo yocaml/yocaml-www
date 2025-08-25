@@ -5,6 +5,9 @@
 (** The type describing a URL. *)
 type t
 
+(** Lexical comparison between URL. *)
+val compare : t -> t -> int
+
 (** Retreive the underlined computed URI. *)
 val uri : t -> Uri.t
 
@@ -35,8 +38,10 @@ val file : ?path:Yocaml.Path.t -> string -> t
 
 (** {1 YOCaml related stuff} *)
 
-(** Validate an URL from a string representation. *)
 val validate : Yocaml.Data.t -> t Yocaml.Data.Validation.validated_value
-
-(** Normalize an URL into the following. *)
 val normalize : t -> Yocaml.Data.t
+
+(** {1 Set and Map} *)
+
+module Set : Specs.SET with type elt = t
+module Map : Specs.MAP with type key = t

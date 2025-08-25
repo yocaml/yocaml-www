@@ -109,3 +109,16 @@ let normalize ({ scheme; host; path = uri_path; port; query; uri } as u) =
     ; "has_query_string", bool @@ Option.is_some query_string
     ]
 ;;
+
+let compare a b = Uri.compare (uri a) (uri b)
+
+module C = struct
+  type nonrec t = t
+
+  let compare = compare
+  let normalize = normalize
+  let validate = validate
+end
+
+module Set = Make.Set (C)
+module Map = Make.Map (C)
