@@ -120,5 +120,5 @@ module C = struct
   let validate = validate
 end
 
-module Set = Make.Set (C)
-module Map = Make.Map (C)
+module Set = Util.Set.Make (C)
+module Map = Util.Map.Make (C)

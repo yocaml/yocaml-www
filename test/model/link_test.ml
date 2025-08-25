@@ -1,5 +1,5 @@
 open Lib.Model
-open Util
+open Test_util
 
 let%expect_test "validation from a record - 1" =
   let result =

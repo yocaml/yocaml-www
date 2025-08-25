@@ -1,5 +1,5 @@
 open Lib.Model
-open Util
+open Test_util
 
 let of_string email =
   email |> Yocaml.Data.string |> Email.validate |> Result.map Email.normalize

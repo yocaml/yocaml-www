@@ -1,5 +1,5 @@
 open Lib.Model
-open Util
+open Test_util
 
 let of_string url = url |> Yocaml.Data.string |> Url.validate
 
