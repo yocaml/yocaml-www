@@ -38,6 +38,7 @@ val make
 module Source : sig
   (** All sources elements. *)
 
+  val configuration : t -> Yocaml.Path.t
   val assets : t -> Yocaml.Path.t
   val css : t -> Yocaml.Path.t
 end

@@ -25,12 +25,13 @@
   (ocaml (>= 5.3.0))
 
   ;; YOCaml dependencies
-  (yocaml (>= 2.4.0))
-  (yocaml_unix (>= 2.4.0))
-  (yocaml_syndication (>= 2.4.0))
-  (yocaml_yaml (>= 2.4.0))
-  (yocaml_otoml (>= 2.4.0))
-  (yocaml_jingoo (>= 2.4.0))
+  yocaml
+  yocaml_unix
+  yocaml_syndication
+  yocaml_yaml
+  yocaml_otoml
+  yocaml_jingoo
+  yocaml_cmarkit
 
   ;; Additional dependencies
    uri

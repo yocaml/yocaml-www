@@ -34,12 +34,13 @@ module Make (O : Specs.ORDERED_TYPE) = struct
     $ of_list
   ;;
 
-  let normalize on_value map =
+  let normalize ?(reverse = false) on_value map =
     let open Yocaml.Data in
     record
       [ ( "elements"
         , map
           |> to_list
+          |> (if reverse then List.rev else Fun.id)
           |> list_of (fun (k, v) ->
             record [ "key", O.normalize k; "value", on_value v ]) )
       ; "length", map |> cardinal |> int
@@ -50,3 +51,4 @@ end
 
 module String = Make (Ordered.String)
 module Path = Make (Ordered.Path)
+module Datetime = Make (Ordered.Datetime)

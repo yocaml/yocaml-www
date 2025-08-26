@@ -16,4 +16,4 @@ module Set : Specs.SET with type elt = t
 module Map : Specs.MAP with type key = t
 
 val of_list : string list -> Set.t
-val set_to_string : Set.t -> string
+val to_meta : Set.t -> Meta_tag.t

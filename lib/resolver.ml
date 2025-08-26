@@ -42,6 +42,7 @@ let trim ~prefix path =
 
 module Source = struct
   let source { source; _ } = source
+  let configuration r = Path.(source r / "configuration.toml")
   let assets r = Path.(source r / "assets")
   let css r = Path.(assets r / "css")
 end

@@ -13,10 +13,14 @@ module Make (O : Specs.ORDERED_TYPE) = struct
     $ of_list
   ;;
 
-  let normalize set =
+  let normalize ?(reverse = false) set =
     let open Yocaml.Data in
     record
-      [ "elements", set |> to_list |> list_of O.normalize
+      [ ( "elements"
+        , set
+          |> to_list
+          |> (if reverse then List.rev else Fun.id)
+          |> list_of O.normalize )
       ; "length", set |> cardinal |> int
       ; "has_elements", bool (not (is_empty set))
       ]

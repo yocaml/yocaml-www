@@ -26,3 +26,10 @@ module Map = Util.Map.Make (C)
 
 let of_list = List.fold_left (fun set tag -> Set.add (make tag) set) Set.empty
 let set_to_string set = set |> Set.to_list |> String.concat ", "
+
+let to_meta tags =
+  if Set.is_empty tags
+  then None
+  else
+    Meta_tag.from_value ~name:[ "keywords" ] (fun s -> s |> set_to_string) tags
+;;

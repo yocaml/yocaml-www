@@ -18,8 +18,9 @@ let read_configuration configuration_path =
       configuration_path
 ;;
 
-let handle ~configuration_path program input =
+let handle resolver program input =
   let config : Model.Configuration.t option ref = ref None in
+  let configuration_path = Resolver.Source.configuration resolver in
   let handler () =
     match program input with
     | x -> x
@@ -32,7 +33,8 @@ let handle ~configuration_path program input =
   handler ()
 ;;
 
-let configuration path =
+let configuration resolver =
+  let path = Resolver.Source.configuration resolver in
   Yocaml.Task.make
     ~has_dynamic_dependencies:false
     (Yocaml.Deps.singleton path)

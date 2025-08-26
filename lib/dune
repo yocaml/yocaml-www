@@ -1,7 +1,7 @@
 (library
  (name lib)
  (public_name yocaml-www.lib)
- (libraries uri emile yocaml yocaml_otoml)
+ (libraries uri emile yocaml yocaml_otoml yocaml_cmarkit)
  (modules_without_implementation specs))
 
 (include_subdirs qualified)

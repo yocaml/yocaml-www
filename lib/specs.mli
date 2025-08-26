@@ -10,7 +10,7 @@ module type SET = sig
   include Stdlib.Set.S
 
   val validate : Yocaml.Data.t -> t Yocaml.Data.Validation.validated_value
-  val normalize : t -> Yocaml.Data.t
+  val normalize : ?reverse:bool -> t -> Yocaml.Data.t
 end
 
 module type MAP = sig
@@ -21,5 +21,9 @@ module type MAP = sig
     -> Yocaml.Data.t
     -> 'a t Yocaml.Data.Validation.validated_value
 
-  val normalize : ('a -> Yocaml.Data.t) -> 'a t -> Yocaml.Data.t
+  val normalize
+    :  ?reverse:bool
+    -> ('a -> Yocaml.Data.t)
+    -> 'a t
+    -> Yocaml.Data.t
 end
