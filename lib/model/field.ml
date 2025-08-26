@@ -30,3 +30,4 @@ let remove_first_char_when pred string =
 
 let remove_arobase = remove_first_char_when (Char.equal '@')
 let remove_dot = remove_first_char_when (Char.equal '.')
+let remove_hash = remove_first_char_when (Char.equal '#')
