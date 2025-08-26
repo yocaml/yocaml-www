@@ -28,8 +28,8 @@ let%expect_test "validating profile - 2 (from mailbox)" =
   validation result;
   [%expect
     {|
-    [VALID] {"display_name": "Pierre Grim", "last_name": null, "first_name":
-             null, "avatar": null, "website": null, "email":
+    [VALID] {"display_name": "Pierre Grim", "slug": "pierre-grim", "last_name":
+             null, "first_name": null, "avatar": null, "website": null, "email":
              {"address": "grim@gmail.com", "local": "grim", "domain":
               "gmail.com", "domain_fragments": ["gmail", "com"], "address_md5":
               "3d4f51b20864461509ebca757e75e887"},
@@ -53,10 +53,10 @@ let%expect_test "validating profile - 3 (from string)" =
   validation result;
   [%expect
     {|
-    [VALID] {"display_name": "Pierre Grim", "last_name": null, "first_name":
-             null, "avatar": null, "website": null, "email": null, "x_account":
-             null, "mastodon_account": null, "bsky_account": null,
-            "more_accounts":
+    [VALID] {"display_name": "Pierre Grim", "slug": "pierre-grim", "last_name":
+             null, "first_name": null, "avatar": null, "website": null, "email":
+             null, "x_account": null, "mastodon_account": null, "bsky_account":
+             null, "more_accounts":
              {"elements": [], "length": 0, "has_elements": false}, "more_links":
              {"elements": [], "length": 0, "has_elements": false}, "more_emails":
              {"elements": [], "length": 0, "has_element": false}, "attributes":
@@ -84,8 +84,9 @@ let%expect_test "validating profile - 4 (from record with computed name)" =
   validation result;
   [%expect
     {|
-    [VALID] {"display_name": "Pierre Grim", "last_name": "Grim", "first_name":
-             "Pierre", "avatar": null, "website": null, "email":
+    [VALID] {"display_name": "Pierre Grim", "slug": "pierre-grim", "last_name":
+             "Grim", "first_name": "Pierre", "avatar": null, "website": null,
+            "email":
              {"address": "grim@gmail.com", "local": "grim", "domain":
               "gmail.com", "domain_fragments": ["gmail", "com"], "address_md5":
               "3d4f51b20864461509ebca757e75e887"},
@@ -125,8 +126,8 @@ let%expect_test "validating profile - 5 (from record)" =
   validation result;
   [%expect
     {|
-    [VALID] {"display_name": "grm", "last_name": "Grim", "first_name": "Pierre",
-            "avatar": null, "website": null, "email":
+    [VALID] {"display_name": "grm", "slug": "grm", "last_name": "Grim",
+            "first_name": "Pierre", "avatar": null, "website": null, "email":
              {"address": "grim@gmail.com", "local": "grim", "domain":
               "gmail.com", "domain_fragments": ["gmail", "com"], "address_md5":
               "3d4f51b20864461509ebca757e75e887"},
@@ -166,8 +167,8 @@ let%expect_test "validating profile - 5 (from record)" =
   validation result;
   [%expect
     {|
-    [VALID] {"display_name": "grm", "last_name": "Grim", "first_name": "Pierre",
-            "avatar": null, "website": null, "email":
+    [VALID] {"display_name": "grm", "slug": "grm", "last_name": "Grim",
+            "first_name": "Pierre", "avatar": null, "website": null, "email":
              {"address": "grim@gmail.com", "local": "grim", "domain":
               "gmail.com", "domain_fragments": ["gmail", "com"], "address_md5":
               "3d4f51b20864461509ebca757e75e887"},

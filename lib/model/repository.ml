@@ -233,6 +233,7 @@ let normalize repo =
     ; "ident", string ident
     ; "compononent", list_of string component
     ; "homepage", Url.normalize homepage
+    ; "slug", homepage |> Url.target |> Yocaml.Slug.from |> string
     ; "bug_tracker", Url.normalize bug_tracker
     ; ( "clone"
       , record

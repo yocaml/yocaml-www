@@ -28,7 +28,7 @@ let%expect_test "validation - 1" =
              "host": "github.com", "path": "/gr-im/site", "port": null, "query":
               [], "query_string": null, "has_port": false, "has_query_string":
               false},
-            "bug_tracker":
+            "slug": "https-github-com-gr-im-site", "bug_tracker":
              {"target": "https://github.com/gr-im/site/issues", "scheme":
               "https", "host": "github.com", "path": "/gr-im/site/issues",
              "port": null, "query": [], "query_string": null, "has_port": false,
@@ -62,7 +62,7 @@ let%expect_test "validation using a compact version - 1" =
              "host": "github.com", "path": "/gr-im/site", "port": null, "query":
               [], "query_string": null, "has_port": false, "has_query_string":
               false},
-            "bug_tracker":
+            "slug": "https-github-com-gr-im-site", "bug_tracker":
              {"target": "https://github.com/gr-im/site/issues", "scheme":
               "https", "host": "github.com", "path": "/gr-im/site/issues",
              "port": null, "query": [], "query_string": null, "has_port": false,

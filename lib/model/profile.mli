@@ -2,6 +2,10 @@
 
 type t
 
+val display_name : t -> string
+val last_name : t -> string option
+val first_name : t -> string option
+
 (** {1 YOCaml related stuff} *)
 
 val validate : Yocaml.Data.t -> t Yocaml.Data.Validation.validated_value

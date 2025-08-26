@@ -45,6 +45,9 @@ let make
   }
 ;;
 
+let display_name { display_name; _ } = display_name
+let first_name { first_name; _ } = first_name
+let last_name { last_name; _ } = last_name
 let make_from_mailboix (display_name, email) = make ~email display_name
 let trim = Yocaml.Data.Validation.(Field.not_blank $ String.trim)
 
@@ -159,6 +162,7 @@ let normalize
   let open Yocaml.Data in
   record
     [ "display_name", string display_name
+    ; "slug", display_name |> Yocaml.Slug.from |> string
     ; "last_name", option string last_name
     ; "first_name", option string first_name
     ; "avatar", option Url.normalize avatar
