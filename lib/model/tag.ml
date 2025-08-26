@@ -1,6 +1,7 @@
 type t = string
 
 let make s = String.trim s
+let to_string s = s
 
 let validate =
   let open Yocaml.Data.Validation in

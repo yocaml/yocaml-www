@@ -1,9 +1,6 @@
-(** Describes a tag/keyword. *)
+(** Deal with Cover (for Open Graph data). *)
 
 type t
-
-val make : string -> t
-val to_string : t -> string
 
 (** {1 YOCaml related stuff} *)
 
@@ -15,5 +12,6 @@ val normalize : t -> Yocaml.Data.t
 module Set : Specs.SET with type elt = t
 module Map : Specs.MAP with type key = t
 
-val of_list : string list -> Set.t
-val set_to_string : Set.t -> string
+(** {1 Opengraph related stuff} *)
+
+val to_open_graph : t -> Meta_tag.t list
