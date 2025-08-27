@@ -2,7 +2,7 @@
  (name site)
  (public_name yocaml-www)
  (modules site)
- (libraries yocaml-www.lib yocaml_unix))
+ (libraries cmdliner yocaml-www.lib yocaml_unix))
 
 (executable
  (name hl)
