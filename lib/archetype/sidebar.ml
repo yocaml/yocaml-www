@@ -159,9 +159,9 @@ let get_focus ~source:given_source side =
     | { title; links } :: xs ->
       let p, c, n = on_links title prev links in
       (match c, n with
-       | Some _, Some y -> prev, Some y
+       | Some _, Some y -> p, Some y
        | Some _, None ->
-         ( prev
+         ( p
          , Option.bind (hd_opt xs) (fun { title; links } ->
              links |> hd_opt |> Option.map (fun x -> title, x)) )
        | None, _ -> aux p xs)
