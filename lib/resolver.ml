@@ -70,6 +70,11 @@ end
 module Cache = struct
   let cache { cache; _ } = cache
   let global r = Path.(cache r / "yocaml")
+
+  module Sidebar = struct
+    let sidebar r = Path.(cache r / "sidebar")
+    let tutorial r = Path.(sidebar r / "tutorial")
+  end
 end
 
 module Server = struct

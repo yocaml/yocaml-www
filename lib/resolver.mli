@@ -58,6 +58,10 @@ module Cache : sig
 
   (** Returns the path where the cache dedicated to YOCaml is located. *)
   val global : t -> Yocaml.Path.t
+
+  module Sidebar : sig
+    val tutorial : t -> Yocaml.Path.t
+  end
 end
 
 (** {1 Target}

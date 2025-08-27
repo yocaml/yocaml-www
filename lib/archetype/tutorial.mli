@@ -4,11 +4,13 @@
 
 module Read : sig
   include Yocaml.Required.DATA_READABLE
+
+  val synthetize : t -> string * string
 end
 
 type t
 
-val make : Read.t -> string -> t * string
+val make : ?sidebar:Sidebar.t -> Read.t -> string -> t * string
 
 val to_document
   :  ?source:Yocaml.Path.t

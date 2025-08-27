@@ -11,6 +11,7 @@ module Read = struct
     ; updates : Model.Update_stream.t
     }
 
+  let synthetize tutorial = tutorial.title, tutorial.description
   let entity_name = "Tutorial"
   let neutral = Yocaml.Metadata.required entity_name
 
@@ -72,6 +73,7 @@ end
 
 type t =
   { tutorial : Read.t
+  ; sidebar : Sidebar.t
   ; table_of_content : string option
   }
 
@@ -96,14 +98,14 @@ let markup f ({ tutorial; _ } as archetype) =
   }
 ;;
 
-let make tutorial content =
+let make ?(sidebar = Sidebar.empty) tutorial content =
   let content = Util.Markdown.of_string content in
   let meta =
     if tutorial.Read.table_of_content
     then (
       let table_of_content = Util.Markdown.table_of_content content in
-      { tutorial; table_of_content })
-    else { tutorial; table_of_content = None }
+      { tutorial; table_of_content; sidebar })
+    else { tutorial; table_of_content = None; sidebar }
   in
   markup Util.Markdown.on_string meta, Util.Markdown.to_html content
 ;;
@@ -121,6 +123,7 @@ let normalize_content
           ; table_of_content = _
           }
       ; table_of_content
+      ; sidebar
       }
   =
   let open Yocaml.Data in
@@ -134,8 +137,10 @@ let normalize_content
       ; "authors", Model.Profile.Set.normalize authors
       ; "cover", option Model.Cover.normalize cover
       ; "updates", Model.Update_stream.normalize updates
+      ; "sidebar", Sidebar.normalize sidebar
       ; "table_of_content", option string table_of_content
       ; "has_table_of_content", bool @@ Option.is_some table_of_content
+      ; "has_sidebar", bool @@ not (Sidebar.is_empty sidebar)
       ] )
 ;;
 

@@ -1,1 +1,19 @@
+<ul>
+  {% for chapter in tutorial.sidebar -%}
+  <li>
+    <h2>{{ chapter.title}}</h2>
+    {% for section in chapter.sections %}
+  <li>
+    
+    <a href="{{ section.target }}" title="{{ section.description}}">
+      {{ section.name}}
+    </a>
+  </li>
+  {% endfor %}
+  </li>
+  
+  {% endfor %}
+</ul>
+
+
 {{safe (yocaml_body) }}

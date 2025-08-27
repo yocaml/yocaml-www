@@ -1,0 +1,8 @@
+- title: Introduction
+  sections:
+    - ./preface.md
+    - ./installation.md
+
+- title: Other introduction
+  sections:
+    - ./preface.md
