@@ -112,5 +112,6 @@ let normalize
         ; "has_cover", bool @@ Option.is_some cover
         ] )
   ; on_content content
+  ; "configuration", Model.Configuration.normalize configuration
   ]
 ;;

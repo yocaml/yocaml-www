@@ -1,0 +1,23 @@
+.yo--text-right {
+    text-align: right;
+}
+
+.yo--flex-full {
+    flex: 1;
+}
+
+.yo--grid-col-autofill {
+    display: grid;
+    grid-template-columns:
+        repeat(auto-fill, minmax(min(var(--col-width, 200px), 100%), 1fr));
+    gap: var(--col-gap, 1rem);
+}
+
+.yo--icon {
+    --yo-icon-color: #ffffff;
+    --yo-icon-size: 2rem;
+    fill: var(--icon-color, var(--yo-icon-color));
+    width: var(--icon-size-w, var(--icon-size, var(--yo-icon-size)));
+    height: var(--icon-size-h, var(--icon-size, var(--yo-icon-size)));
+    display: inline-block;
+}

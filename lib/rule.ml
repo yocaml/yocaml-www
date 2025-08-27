@@ -12,7 +12,7 @@ let css resolver =
     (track_binary
      >>> Pipeline.pipe_files
            ~separator:"\n"
-           ([ "fonts"; "reset"; "syntax"; "style" ]
+           ([ "fonts"; "reset"; "syntax"; "mixins"; "style" ]
             |> List.map (Resolver.Source.css_file resolver)))
 ;;
 
@@ -21,6 +21,12 @@ let fonts resolver =
     ~where:(Path.has_extension "woff2")
     (Resolver.Source.fonts resolver)
     (Action.copy_file ~into:(Resolver.Target.fonts resolver))
+;;
+
+let images resolver =
+  Batch.iter_files
+    (Resolver.Source.images resolver)
+    (Action.copy_file ~into:(Resolver.Target.images resolver))
 ;;
 
 let tutorial_sidebar resolver =
@@ -92,6 +98,7 @@ let run ~resolver () =
   let cache_file = Resolver.Cache.global resolver in
   Action.restore_cache cache_file
   >>= fonts resolver
+  >>= images resolver
   >>= css resolver
   >>= tutorial_sidebar resolver
   >>= tutorials resolver

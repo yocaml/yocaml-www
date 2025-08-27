@@ -53,6 +53,7 @@ module Source = struct
   let tutorial r = Path.(content r / "tutorial")
   let templates r = Path.(assets r / "templates")
   let template r p = Path.(templates r / p) |> Path.change_extension "html"
+  let images r = Path.(assets r / "images")
 end
 
 module Target = struct
@@ -67,6 +68,8 @@ module Target = struct
     |> Path.move ~into:Path.(target r / "tutorial")
     |> Path.change_extension "html"
   ;;
+
+  let images r = Path.(assets r / "images")
 end
 
 module Cache = struct
