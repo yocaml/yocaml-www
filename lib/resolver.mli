@@ -31,6 +31,8 @@ val make
   -> unit
   -> t
 
+val binary : Yocaml.Path.t
+
 (** {1 Source}
 
     Resolver dedicated to resolving source element (raw content). *)
@@ -41,6 +43,8 @@ module Source : sig
   val configuration : t -> Yocaml.Path.t
   val assets : t -> Yocaml.Path.t
   val css : t -> Yocaml.Path.t
+  val css_file : t -> string -> Yocaml.Path.t
+  val tutorial : t -> Yocaml.Path.t
 end
 
 (** {1 Cache}
@@ -64,7 +68,7 @@ module Target : sig
       created. *)
 
   val assets : t -> Yocaml.Path.t
-  val css : t -> Yocaml.Path.t
+  val css_file : t -> Yocaml.Path.t
 end
 
 (** {1 Server}
@@ -80,7 +84,4 @@ module Server : sig
       server. For example: [_www/foo/index.html] becomes
       [/foo/index.html]. *)
   val from_target : t -> Yocaml.Path.t -> Yocaml.Path.t
-
-  val assets : t -> Yocaml.Path.t
-  val css : t -> Yocaml.Path.t
 end

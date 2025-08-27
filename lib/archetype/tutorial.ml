@@ -144,4 +144,8 @@ let to_document ?source resolver applicative_task =
   , content )
 ;;
 
-let normalize = Html.Document.normalize normalize_content
+module Html = struct
+  type nonrec t = t Html.Document.t
+
+  let normalize = Html.Document.normalize normalize_content
+end

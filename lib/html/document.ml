@@ -34,19 +34,18 @@ let normalize
   in
   let main_title = Model.Configuration.title configuration in
   let full_title = main_title ^ " - " ^ title in
-  record
-    [ ( "document"
-      , record
-          [ "title", string title
-          ; "full_title", string full_title
-          ; "description", string description
-          ; "tags", Model.Tag.Set.normalize tags
-          ; "source", option Model.Url.normalize source_url
-          ; "cover", option Model.Cover.normalize cover
-          ; "meta", normalize_meta description tags
-          ; "has_source", bool @@ Option.is_some source
-          ; "has_cover", bool @@ Option.is_some cover
-          ] )
-    ; on_content content
-    ]
+  [ ( "document"
+    , record
+        [ "title", string title
+        ; "full_title", string full_title
+        ; "description", string description
+        ; "tags", Model.Tag.Set.normalize tags
+        ; "source", option Model.Url.normalize source_url
+        ; "cover", option Model.Cover.normalize cover
+        ; "meta", normalize_meta description tags
+        ; "has_source", bool @@ Option.is_some source
+        ; "has_cover", bool @@ Option.is_some cover
+        ] )
+  ; on_content content
+  ]
 ;;

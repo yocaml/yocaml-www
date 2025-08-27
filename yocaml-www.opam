@@ -28,6 +28,7 @@ depends: [
   "yocaml_otoml"
   "yocaml_jingoo"
   "yocaml_cmarkit"
+  "yojson"
   "uri"
   "emile"
   "cmdliner" {>= "1.3.0"}

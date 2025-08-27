@@ -1,4 +1,11 @@
 (executable
  (name site)
  (public_name yocaml-www)
+ (modules site)
  (libraries yocaml-www.lib yocaml_unix))
+
+(executable
+ (name hl)
+ (public_name yocaml-www.hl)
+ (modules hl)
+ (libraries yojson yocaml yocaml_unix))

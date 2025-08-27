@@ -40,17 +40,23 @@ let trim ~prefix path =
     path
 ;;
 
+let binary = Path.from_string Sys.argv.(0)
+
 module Source = struct
   let source { source; _ } = source
   let configuration r = Path.(source r / "configuration.toml")
   let assets r = Path.(source r / "assets")
   let css r = Path.(assets r / "css")
+  let css_file r p = Path.(css r / p) |> Path.change_extension "css"
+  let content r = Path.(source r / "content")
+  let tutorial r = Path.(content r / "tutorial")
 end
 
 module Target = struct
   let target { target; server_root; _ } = Path.relocate ~into:target server_root
   let assets r = Path.(target r / "assets")
   let css r = Path.(assets r / "css")
+  let css_file r = Path.(css r / "yocaml.css")
 end
 
 module Cache = struct
@@ -64,7 +70,4 @@ module Server = struct
   let from_target r p =
     p |> trim ~prefix:(Target.target r) |> Path.relocate ~into:(server r)
   ;;
-
-  let assets r = from_target r (Target.assets r)
-  let css r = from_target r (Target.css r)
 end

@@ -25,31 +25,17 @@ let%expect_test "resolve assets on target" =
 
 let%expect_test "resolve css on target" =
   let r = Resolver.make () in
-  let x = Resolver.Target.css r in
+  let x = Resolver.Target.css_file r in
   path x;
-  [%expect {| ./_www/assets/css |}]
+  [%expect {| ./_www/assets/css/yocaml.css |}]
 ;;
 
 let%expect_test "resolve css on target with a server root" =
   let server_root = Yocaml.Path.abs [ "blog"; "yocaml"; "grm" ] in
   let r = Resolver.make ~server_root () in
-  let x = Resolver.Target.css r in
+  let x = Resolver.Target.css_file r in
   path x;
-  [%expect {| ./_www/blog/yocaml/grm/assets/css |}]
-;;
-
-let%expect_test "resolve assets on server" =
-  let r = Resolver.make () in
-  let x = Resolver.Server.assets r in
-  path x;
-  [%expect {| /assets |}]
-;;
-
-let%expect_test "resolve css on server" =
-  let r = Resolver.make () in
-  let x = Resolver.Server.css r in
-  path x;
-  [%expect {| /assets/css |}]
+  [%expect {| ./_www/blog/yocaml/grm/assets/css/yocaml.css |}]
 ;;
 
 let%expect_test "test on resolving from target to server in simple case" =

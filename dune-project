@@ -34,6 +34,7 @@
   yocaml_cmarkit
 
   ;; Additional dependencies
+  yojson
    uri
    emile
   (cmdliner (>= 1.3.0))

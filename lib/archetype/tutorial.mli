@@ -10,3 +10,15 @@ type t
 
 val make : ('a -> string option) -> Read.t -> 'a -> t * 'a
 val markup : (string -> string) -> t -> t
+
+val to_document
+  :  ?source:Yocaml.Path.t
+  -> Resolver.t
+  -> (unit, t * 'a) Yocaml.Task.t
+  -> (unit, t Html.Document.t * 'a) Yocaml.Task.t
+
+module Html : sig
+  type nonrec t = t Html.Document.t
+
+  val normalize : t -> (string * Yocaml.Data.t) list
+end
