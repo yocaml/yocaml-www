@@ -10,7 +10,12 @@ end
 
 type t
 
-val make : ?sidebar:Sidebar.t -> Read.t -> string -> t * string
+val make
+  :  ?sidebar:Sidebar.t
+  -> ?source:Yocaml.Path.t
+  -> Read.t
+  -> string
+  -> t * string
 
 val to_document
   :  ?source:Yocaml.Path.t

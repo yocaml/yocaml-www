@@ -75,6 +75,8 @@ type t =
   { tutorial : Read.t
   ; sidebar : Sidebar.t
   ; table_of_content : string option
+  ; previous : Sidebar.Reference.t option
+  ; next : Sidebar.Reference.t option
   }
 
 let to_document_kind { tutorial = { publication_date; tags; updates; _ }; _ } =
@@ -98,14 +100,20 @@ let markup f ({ tutorial; _ } as archetype) =
   }
 ;;
 
-let make ?(sidebar = Sidebar.empty) tutorial content =
+let make ?(sidebar = Sidebar.empty) ?source tutorial content =
   let content = Util.Markdown.of_string content in
+  let previous, next =
+    match source with
+    | None -> None, None
+    | Some source -> Sidebar.get_focus ~source sidebar
+  in
+  let result = { tutorial; table_of_content = None; sidebar; next; previous } in
   let meta =
     if tutorial.Read.table_of_content
     then (
       let table_of_content = Util.Markdown.table_of_content content in
-      { tutorial; table_of_content; sidebar })
-    else { tutorial; table_of_content = None; sidebar }
+      { result with table_of_content })
+    else result
   in
   markup Util.Markdown.on_string meta, Util.Markdown.to_html content
 ;;
@@ -124,8 +132,12 @@ let normalize_content
           }
       ; table_of_content
       ; sidebar
+      ; previous
+      ; next
       }
   =
+  let has_previous = Option.is_some previous
+  and has_next = Option.is_some next in
   let open Yocaml.Data in
   ( "tutorial"
   , record
@@ -138,9 +150,14 @@ let normalize_content
       ; "cover", option Model.Cover.normalize cover
       ; "updates", Model.Update_stream.normalize updates
       ; "sidebar", Sidebar.normalize sidebar
+      ; "previous", option Sidebar.Reference.normalize previous
+      ; "next", option Sidebar.Reference.normalize next
       ; "table_of_content", option string table_of_content
       ; "has_table_of_content", bool @@ Option.is_some table_of_content
       ; "has_sidebar", bool @@ not (Sidebar.is_empty sidebar)
+      ; "has_previous", bool has_previous
+      ; "has_next", bool has_next
+      ; "has_references", bool (has_previous || has_next)
       ] )
 ;;
 

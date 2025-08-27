@@ -17,3 +17,23 @@
 
 
 {{safe (yocaml_body) }}
+
+{%- if tutorial.has_previous -%}
+<div>
+  <h2>{{ tutorial.previous.title}} > {{ tutorial.previous.name}}</h2>
+  <p>
+    {{ tutorial.previous.desc}}
+  </p>
+  {{ tutorial.previous.target }}
+</div>
+{%- endif -%}
+
+{%- if tutorial.has_next -%}
+<div>
+  <h2>{{ tutorial.next.title}} > {{ tutorial.next.name}}</h2>
+  <p>
+    {{ tutorial.next.desc}}
+  </p>
+  {{ tutorial.next.target }}
+</div>
+{%- endif -%}

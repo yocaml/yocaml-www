@@ -61,7 +61,7 @@ let tutorial resolver source =
     and+ meta, content =
       Yocaml_yaml.Pipeline.read_file_with_metadata (module Tutorial.Read) source
     in
-    Tutorial.make ~sidebar meta content
+    Tutorial.make ~sidebar ~source meta content
   in
   Action.Static.write_file_with_metadata
     file_target
