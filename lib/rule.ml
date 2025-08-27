@@ -16,7 +16,8 @@ let css resolver =
 ;;
 
 let tutorial resolver source =
-  let target = Resolver.Target.tutorial resolver ~source in
+  let file_target = Resolver.Target.tutorial resolver ~source in
+  let target = Resolver.Server.from_target resolver file_target in
   let open Task in
   let prepare =
     let+ () = track_binary
@@ -26,13 +27,13 @@ let tutorial resolver source =
     Tutorial.make meta content
   in
   Action.Static.write_file_with_metadata
-    target
+    file_target
     (prepare
-     |> Tutorial.to_document ~source resolver
+     |> Tutorial.to_document ~source ~target resolver
      >>> Util.Template.chain
            (module Tutorial.Html)
            resolver
-           [ "tutorial-content"; "tutorial-layout" ])
+           [ "tutorial-content"; "tutorial-layout"; "layout" ])
 ;;
 
 let tutorials resolver =

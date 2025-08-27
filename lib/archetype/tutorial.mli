@@ -12,6 +12,7 @@ val make : Read.t -> string -> t * string
 
 val to_document
   :  ?source:Yocaml.Path.t
+  -> target:Yocaml.Path.t
   -> Resolver.t
   -> (unit, t * 'a) Yocaml.Task.t
   -> (unit, t Html.Document.t * 'a) Yocaml.Task.t

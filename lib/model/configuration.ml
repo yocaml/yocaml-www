@@ -13,6 +13,7 @@ let neutral = Yocaml.Metadata.required entity_name
 let site_repository { site_repository; _ } = site_repository
 let title { title; _ } = title
 let subtitle { subtitle; _ } = subtitle
+let main_url { main_url; _ } = main_url
 
 let validate =
   let open Yocaml.Data.Validation in

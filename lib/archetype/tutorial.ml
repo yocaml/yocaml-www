@@ -75,6 +75,16 @@ type t =
   ; table_of_content : string option
   }
 
+let to_document_kind { tutorial = { publication_date; tags; updates; _ }; _ } =
+  let updated_time = Model.Update_stream.max_date updates in
+  Model.Document_kind.article
+    ~published_time:publication_date
+    ?updated_time
+    ~section:"Tutorial"
+    ~tags
+    ()
+;;
+
 let markup f ({ tutorial; _ } as archetype) =
   { archetype with
     tutorial =
@@ -129,18 +139,21 @@ let normalize_content
       ] )
 ;;
 
-let to_document ?source resolver applicative_task =
+let to_document ?source ~target resolver applicative_task =
   let open Yocaml.Task in
   Env.configuration resolver
   &&& applicative_task
   >>| fun (configuration, (({ tutorial; _ } as archetype), content)) ->
   ( Html.Document.make
       ~configuration
+      ~kind:(to_document_kind archetype)
       ~title:tutorial.title
       ~description:tutorial.description
       ~tags:tutorial.tags
       ~cover:tutorial.cover
+      ~authors:tutorial.authors
       ~source
+      ~target
       archetype
   , content )
 ;;

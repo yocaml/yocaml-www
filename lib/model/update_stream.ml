@@ -39,3 +39,7 @@ let on_description f map =
     (fun event -> { event with description = f event.description })
     map
 ;;
+
+let max_date stream =
+  stream |> Util.Map.Datetime.max_binding_opt |> Option.map fst
+;;

@@ -7,6 +7,7 @@ val site_repository : t -> Repository.t
 
 val title : t -> string
 val subtitle : t -> string
+val main_url : t -> Url.t
 
 (** {1 YOCaml related stuff} *)
 
