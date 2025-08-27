@@ -73,7 +73,7 @@ module Cache = struct
 
   module Sidebar = struct
     let sidebar r = Path.(cache r / "sidebar")
-    let tutorial r = Path.(sidebar r / "tutorial")
+    let tutorial r = Path.(sidebar r / "tutorial.sexp")
   end
 end
 

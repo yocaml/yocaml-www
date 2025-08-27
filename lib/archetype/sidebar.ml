@@ -27,10 +27,15 @@ end
 type entry =
   { name : string
   ; target : Yocaml.Path.t
+  ; source : Yocaml.Path.t
   ; description : string
   }
 
 type t = entry raw
+
+let entry ~name ~target ~source ~description =
+  { name; target; source; description }
+;;
 
 let resolve
       (type a)
@@ -46,16 +51,16 @@ let resolve
          let+ links =
            List.traverse
              (fun path ->
-                let path = compute_source path in
+                let source = compute_source path in
                 let+ meta, _ =
                   Yocaml_yaml.Eff.read_file_with_metadata
                     ~on:`Source
                     (module S)
-                    path
+                    source
                 in
                 let target = compute_target path
                 and name, description = synthetize meta in
-                { name; description; target })
+                { name; description; target; source })
              links
          in
          { title; links })
@@ -70,11 +75,12 @@ let normalize =
       ; "is_empty", bool @@ List.is_empty links
       ; ( "sections"
         , list_of
-            (fun { name; target; description } ->
+            (fun { name; target; description; source } ->
                record
                  [ "name", string name
                  ; "target", path target
                  ; "description", string description
+                 ; "source", path source
                  ])
             links )
       ])
@@ -101,13 +107,67 @@ let validate =
                 (record (fun k ->
                    let+ name = required k "name" Model.Field.not_blank
                    and+ target = required k "target" path
+                   and+ source = required k "source" path
                    and+ description =
                      required k "description" Model.Field.not_blank
                    in
-                   { name; target; description })))
+                   { name; target; description; source })))
          in
          make ?links title))
 ;;
 
 let empty = []
 let is_empty = List.is_empty
+
+module Reference = struct
+  type t =
+    { title : string
+    ; name : string
+    ; description : string
+    ; target : Yocaml.Path.t
+    }
+
+  let normalize { title; name; description; target } =
+    let open Yocaml.Data in
+    record
+      [ "title", string title
+      ; "name", string name
+      ; "description", string description
+      ; "target", path target
+      ]
+  ;;
+end
+
+let hd_opt = function
+  | x :: _ -> Some x
+  | _ -> None
+;;
+
+let from_focus (title, { name; description; target; _ }) =
+  Reference.{ title; name; description; target }
+;;
+
+let get_focus ~source:given_source side =
+  let rec on_links section prev = function
+    | { source; _ } :: xs when Yocaml.Path.equal source given_source ->
+      prev, Some source, xs |> hd_opt |> Option.map (fun x -> section, x)
+    | x :: xs -> on_links section (Some (section, x)) xs
+    | [] -> prev, None, None
+  in
+  let rec aux prev = function
+    | [] -> prev, None
+    | { title; links } :: xs ->
+      let p, c, n = on_links title prev links in
+      (match c, n with
+       | Some _, Some y -> prev, Some y
+       | Some _, None ->
+         ( prev
+         , Option.bind (hd_opt xs) (fun { title; links } ->
+             links |> hd_opt |> Option.map (fun x -> title, x)) )
+       | None, _ -> aux p xs)
+  in
+  let prev, next = aux None side in
+  prev |> Option.map from_focus, next |> Option.map from_focus
+;;
+
+let of_list l = List.map (fun (title, links) -> { title; links }) l

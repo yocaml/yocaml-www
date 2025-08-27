@@ -25,7 +25,7 @@ let tutorial_sidebar resolver =
     Resolver.Target.tutorial resolver ~source
     |> Resolver.Server.from_target resolver
   in
-  let target = Path.(Resolver.Cache.Sidebar.tutorial resolver / "list.sexp") in
+  let target = Resolver.Cache.Sidebar.tutorial resolver in
   let prepare =
     let source = Path.(Resolver.Source.tutorial resolver / "sidebar.yml") in
     let+ () = track_binary
@@ -57,7 +57,7 @@ let tutorial resolver source =
         (module Yocaml.Sexp.Provider)
         (module Sidebar)
         ~snapshot:true
-        Path.(Resolver.Cache.Sidebar.tutorial resolver / "list.sexp")
+        (Resolver.Cache.Sidebar.tutorial resolver)
     and+ meta, content =
       Yocaml_yaml.Pipeline.read_file_with_metadata (module Tutorial.Read) source
     in

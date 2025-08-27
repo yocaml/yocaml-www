@@ -1,7 +1,9 @@
 (library
- (name common_test)
+ (name yocaml_www_test)
  (package yocaml-www)
  (inline_tests)
  (libraries yocaml-www.lib)
  (preprocess
   (pps ppx_expect)))
+
+(include_subdirs unqualified)
