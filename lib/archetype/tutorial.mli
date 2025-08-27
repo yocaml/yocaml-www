@@ -8,8 +8,7 @@ end
 
 type t
 
-val make : ('a -> string option) -> Read.t -> 'a -> t * 'a
-val markup : (string -> string) -> t -> t
+val make : Read.t -> string -> t * string
 
 val to_document
   :  ?source:Yocaml.Path.t

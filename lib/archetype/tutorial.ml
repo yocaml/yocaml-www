@@ -86,15 +86,16 @@ let markup f ({ tutorial; _ } as archetype) =
   }
 ;;
 
-let make extract_toc tutorial content =
+let make tutorial content =
+  let content = Util.Markdown.of_string content in
   let meta =
     if tutorial.Read.table_of_content
     then (
-      let table_of_content = extract_toc content in
+      let table_of_content = Util.Markdown.table_of_content content in
       { tutorial; table_of_content })
     else { tutorial; table_of_content = None }
   in
-  meta, content
+  markup Util.Markdown.on_string meta, Util.Markdown.to_html content
 ;;
 
 let normalize_content

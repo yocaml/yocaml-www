@@ -44,6 +44,7 @@ module Source : sig
   val assets : t -> Yocaml.Path.t
   val css : t -> Yocaml.Path.t
   val css_file : t -> string -> Yocaml.Path.t
+  val template : t -> string -> Yocaml.Path.t
   val tutorial : t -> Yocaml.Path.t
 end
 
@@ -69,6 +70,7 @@ module Target : sig
 
   val assets : t -> Yocaml.Path.t
   val css_file : t -> Yocaml.Path.t
+  val tutorial : t -> source:Yocaml.Path.t -> Yocaml.Path.t
 end
 
 (** {1 Server}
