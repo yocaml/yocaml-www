@@ -47,6 +47,7 @@ module Source = struct
   let configuration r = Path.(source r / "configuration.toml")
   let assets r = Path.(source r / "assets")
   let css r = Path.(assets r / "css")
+  let fonts r = Path.(assets r / "fonts")
   let css_file r p = Path.(css r / p) |> Path.change_extension "css"
   let content r = Path.(source r / "content")
   let tutorial r = Path.(content r / "tutorial")
@@ -59,6 +60,7 @@ module Target = struct
   let assets r = Path.(target r / "assets")
   let css r = Path.(assets r / "css")
   let css_file r = Path.(css r / "yocaml.css")
+  let fonts r = Path.(assets r / "fonts")
 
   let tutorial r ~source:path =
     path
