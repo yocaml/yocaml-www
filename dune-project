@@ -24,22 +24,27 @@
  (depends
   (ocaml (>= 5.3.0))
 
-  ;; YOCaml dependencies
-  yocaml
-  yocaml_unix
-  yocaml_syndication
-  yocaml_yaml
-  yocaml_otoml
-  yocaml_jingoo
-  yocaml_cmarkit
+   ;; YOCaml dependencies
+   yocaml
+   yocaml_runtime
+   
+   yocaml_unix
+   yocaml_syndication
+   yocaml_yaml
+   yocaml_otoml
+   yocaml_jingoo
+   yocaml_cmarkit
 
-  ;; Additional dependencies
-  yojson
+   ;; Additional dependencies
+   yojson
    uri
    emile
   (cmdliner (>= 1.3.0))
   (cmarkit (>= 0.3.0))
   (hilite (>= 0.5.0))
+
+   ;; Js of OCaml
+   js_of_ocaml-compiler
 
   ;; Test setup
   (ppx_expect :with-test)
