@@ -1,0 +1,62 @@
+.yo--text-right {
+    text-align: right;
+}
+
+.yo--flex {
+    display: flex;
+    flex-direction: row;
+    gap: var(--flex-gap, 1rem)
+}
+
+.yo--flex-full {
+    flex: 1;
+}
+
+.yo--grid-col-autofill {
+    display: grid;
+    grid-template-columns:
+        repeat(auto-fill, minmax(min(var(--col-width, 200px), 100%), 1fr));
+    gap: var(--col-gap, 1rem);
+}
+
+.yo--icon {
+    --yo-icon-color: #ffffff;
+    --yo-icon-size: 2rem;
+    fill: var(--icon-color, var(--yo-icon-color));
+    width: var(--icon-size-w, var(--icon-size, var(--yo-icon-size)));
+    height: var(--icon-size-h, var(--icon-size, var(--yo-icon-size)));
+    display: inline-block;
+}
+
+.yo--navigation {
+    & nav {
+        & h4 {
+            margin-bottom: 1rem;
+            font-family: var(--font-mono);
+            text-transform: uppercase;
+        }
+        & span,
+        & a {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        ul {
+            padding-left: 0.8rem;
+            margin-bottom: 1rem;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        & > ul {
+            padding: 0;
+        }
+
+        & li {
+            list-style: none;
+        }
+
+    }
+}

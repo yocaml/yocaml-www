@@ -1,0 +1,52 @@
+<div class="article-with-side-bar">
+  {% if tutorial.has_sidebar %}
+  <aside class="sidebar yo--navigation">
+    {% for chapter in tutorial.sidebar %}
+    <nav>
+      <h4>{{ chapter.title }}</h4>
+      {% for section in chapter.sections %}
+      {% if section.slug == document.slug %}
+      <span>{{ section.name }}</span>
+      {% else %}
+      <a href="{{ section.target }}" title="{{ section.description}}">
+        {{ section.name }}
+      </a>
+      {% endif %}
+      {%- endfor -%}
+    </nav>
+    {% endfor %}
+  </aside>
+  {% endif %}
+  <section>
+    {{safe (yocaml_body) }}
+    {% if tutorial.has_references %}
+    <div class="prev-next">
+      {% if tutorial.has_previous %}
+      <a href="{{ tutorial.previous.target }}" class="previous">
+        <h4>Previous</h4>
+        <span>{{ tutorial.previous.name }}</span>
+      </a>
+      {% else %}
+      <a href="#"></a>
+      {% endif %}
+      {% if tutorial.has_next %}
+      <a href="{{ tutorial.next.target }}" class="next">
+        <h4>Next</h4>
+        <span>{{ tutorial.next.name }}</span>
+      </a>
+      {% else %}
+      <a href="#"></a>
+      {% endif %}
+    </div>
+    {% endif %}
+  </section>
+  {% if tutorial.has_table_of_content %}
+  <aside class="toc yo--navigation">
+    <nav>
+      <h4>Table of content</h4>
+      {{ safe(tutorial.table_of_content) }}
+    </nav>
+  </aside>
+  {% endif %}
+</div>
+

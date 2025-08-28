@@ -1,0 +1,73 @@
+pre {
+    max-width: 100%;
+    display: block;
+    overflow-x: auto;
+    padding: 1rem;
+    background-color: #181818;
+    margin: 2rem 0;
+    line-height: 1.7rem;
+}
+
+span[class*="storage-modifier"],
+span[class*="name-tag"],
+span[class*="stanza"],
+span[class*="keyword"] {
+    color: #eee;
+    font-weight: 600;
+}
+
+span[class*="constant"] {
+    color: #eee;
+    font-weight: 600;
+}
+
+span[class*="name-function"],
+span[class*="function-binding"] {
+  color: #eee;
+}
+
+span[class*="storage-type"],
+span[class*="variable"] {
+  color: #eee;
+  font-style: italic;
+}
+
+span[class*="inherited-class"],
+span[class*="atom"],
+span[class*="source"],
+span[class*="support"] {
+    color: #b2b2b2;
+    font-weight: 400;
+}
+
+span[class*="comment"] {
+  color: #ddd;
+  font-style: italic;
+  font-weight: 200;
+}
+
+span[class*="string"] {
+    color: #eee;
+}
+
+span[class*="literal"],
+span[class*="numeric"] {
+    color: #eee;
+    font-weight: 300;
+}
+
+.diff-punctuation-definition-deleted {
+    color: #FF4858;
+}
+
+.diff-punctuation-definition-inserted {
+    color: #88BF36;
+}
+
+.diff-markup-deleted {
+    color: #FF4858;
+}
+
+.diff-markup-inserted {
+    color: #88BF36;
+}

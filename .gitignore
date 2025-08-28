@@ -27,3 +27,9 @@ setup.log
 
 # Local OPAM switch
 _opam/
+
+# Site artifacts
+
+assets/grammars/lib/
+_www/
+_cache/
