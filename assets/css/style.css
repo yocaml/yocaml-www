@@ -103,6 +103,10 @@ footer {
             position: sticky;
             top: 2.5rem;
             border-left: 1px solid var(--color-interlude-dark);
+
+            & a.toc-entry-active {
+                color: var(--color-main-text);
+            }
         }
 
     }

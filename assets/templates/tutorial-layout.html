@@ -42,7 +42,7 @@
   </section>
   {% if tutorial.has_table_of_content %}
   <aside class="toc yo--navigation">
-    <nav>
+    <nav id="active-toc">
       <h4>Table of content</h4>
       {{ safe(tutorial.table_of_content) }}
     </nav>

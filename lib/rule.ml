@@ -29,6 +29,13 @@ let images resolver =
     (Action.copy_file ~into:(Resolver.Target.images resolver))
 ;;
 
+let javascript resolver =
+  Batch.iter_files
+    ~where:(Path.has_extension "js")
+    (Resolver.Source.javascript resolver)
+    (Action.copy_file ~into:(Resolver.Target.javascript resolver))
+;;
+
 let tutorial_sidebar resolver =
   let open Task in
   let compute_source =
@@ -100,6 +107,7 @@ let run ~resolver () =
   >>= fonts resolver
   >>= images resolver
   >>= css resolver
+  >>= javascript resolver
   >>= tutorial_sidebar resolver
   >>= tutorials resolver
   >>= Action.store_cache cache_file

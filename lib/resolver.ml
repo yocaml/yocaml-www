@@ -54,6 +54,7 @@ module Source = struct
   let templates r = Path.(assets r / "templates")
   let template r p = Path.(templates r / p) |> Path.change_extension "html"
   let images r = Path.(assets r / "images")
+  let javascript r = Path.(assets r / "js")
 end
 
 module Target = struct
@@ -62,14 +63,14 @@ module Target = struct
   let css r = Path.(assets r / "css")
   let css_file r = Path.(css r / "yocaml.css")
   let fonts r = Path.(assets r / "fonts")
+  let images r = Path.(assets r / "images")
+  let javascript r = Path.(assets r / "js")
 
   let tutorial r ~source:path =
     path
     |> Path.move ~into:Path.(target r / "tutorial")
     |> Path.change_extension "html"
   ;;
-
-  let images r = Path.(assets r / "images")
 end
 
 module Cache = struct

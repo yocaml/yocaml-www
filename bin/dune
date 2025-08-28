@@ -20,5 +20,5 @@
   (flags :standard))
  (promote
   (until-clean)
-  (into "../js")
+  (into "../assets/js")
   (only frontend.bc.js)))
