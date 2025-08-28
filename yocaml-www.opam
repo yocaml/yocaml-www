@@ -36,6 +36,7 @@ depends: [
   "cmarkit" {>= "0.3.0"}
   "hilite" {>= "0.5.0"}
   "js_of_ocaml-compiler"
+  "js_of_ocaml-ppx"
   "ppx_expect" {with-test}
   "utop" {with-dev-setup}
   "ocamlformat" {with-dev-setup}

@@ -45,6 +45,7 @@
 
    ;; Js of OCaml
    js_of_ocaml-compiler
+   js_of_ocaml-ppx
 
   ;; Test setup
   (ppx_expect :with-test)
