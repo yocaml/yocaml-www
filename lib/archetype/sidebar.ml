@@ -76,11 +76,13 @@ let normalize =
       ; ( "sections"
         , list_of
             (fun { name; target; description; source } ->
+               let slug = source |> Yocaml.Path.to_string |> Yocaml.Slug.from in
                record
                  [ "name", string name
                  ; "target", path target
                  ; "description", string description
                  ; "source", path source
+                 ; "slug", string slug
                  ])
             links )
       ])

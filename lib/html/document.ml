@@ -89,6 +89,11 @@ let normalize
       (fun source -> Model.Repository.blob source site_repository)
       source
   in
+  let slug =
+    Option.map
+      (fun source -> source |> Yocaml.Path.to_string |> Yocaml.Slug.from)
+      source
+  in
   let target_url =
     Model.Url.resolve target (Model.Configuration.main_url configuration)
   in
@@ -102,6 +107,7 @@ let normalize
         ; "tags", Model.Tag.Set.normalize tags
         ; "source_url", option Model.Url.normalize source_url
         ; "source", option path source
+        ; "slug", option string slug
         ; "target", path target
         ; "cover", option Model.Cover.normalize cover
         ; "canonical", Model.Url.normalize target_url
@@ -110,6 +116,7 @@ let normalize
         ; "authors", Model.Profile.Set.normalize authors
         ; "has_source", bool @@ Option.is_some source
         ; "has_cover", bool @@ Option.is_some cover
+        ; "has_slug", bool @@ Option.is_some slug
         ] )
   ; on_content content
   ; "configuration", Model.Configuration.normalize configuration

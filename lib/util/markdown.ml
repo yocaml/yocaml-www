@@ -15,7 +15,7 @@ let tm =
 ;;
 
 let of_string ?(strict = false) content =
-  content |> Cmarkit.Doc.of_string ~strict
+  content |> Cmarkit.Doc.of_string ~heading_auto_ids:true ~strict
 ;;
 
 let to_html ?(safe = false) content =

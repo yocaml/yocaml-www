@@ -1,1 +1,9 @@
+<h1>{{ tutorial.title }}</h1>
+
+<section class="prose">
+  {{safe (tutorial.synopsis) }}
+</section>
+
+<article class="prose">
 {{safe (yocaml_body) }}
+</article>

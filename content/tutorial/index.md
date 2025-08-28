@@ -2,7 +2,5 @@
 title: Index
 description: A tutorial
 synopsis: A synopsis
-date: 2025-08-17
+date: 2025-08-27
 ---
-
-Here is a text

@@ -2,6 +2,12 @@
     text-align: right;
 }
 
+.yo--flex {
+    display: flex;
+    flex-direction: row;
+    gap: var(--flex-gap, 1rem)
+}
+
 .yo--flex-full {
     flex: 1;
 }
@@ -20,4 +26,32 @@
     width: var(--icon-size-w, var(--icon-size, var(--yo-icon-size)));
     height: var(--icon-size-h, var(--icon-size, var(--yo-icon-size)));
     display: inline-block;
+}
+
+.yo--navigation {
+    & nav {
+        & h4 {
+            margin-bottom: 1rem;
+            font-family: var(--font-mono);
+            text-transform: uppercase;
+        }
+        & span,
+        & a {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        ul {
+            padding-left: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        & > ul {
+            padding: 0;
+        }
+
+        & li {
+            list-style: none;
+        }
+    }
 }
