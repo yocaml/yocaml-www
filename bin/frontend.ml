@@ -1,19 +1,19 @@
 open Js_of_ocaml
 
-let trace s = Console.console##log (Js.string s)
+module Util = struct
+  let query_selector container selector =
+    Js.Opt.bind
+      (container##querySelector (Js.string selector))
+      Dom_html.CoerceTo.element
+  ;;
 
-let query_selector container selector =
-  Js.Opt.bind
-    (container##querySelector (Js.string selector))
-    Dom_html.CoerceTo.element
-;;
-
-let query_selector_all container selector =
-  container##querySelectorAll (Js.string selector)
-  |> Dom.list_of_nodeList
-  |> List.filter_map (fun x ->
-    x |> Dom_html.CoerceTo.element |> Js.Opt.to_option)
-;;
+  let query_selector_all container selector =
+    container##querySelectorAll (Js.string selector)
+    |> Dom.list_of_nodeList
+    |> List.filter_map (fun x ->
+      x |> Dom_html.CoerceTo.element |> Js.Opt.to_option)
+  ;;
+end
 
 module Active_toc = struct
   let ( let* ) = Js.Opt.bind
@@ -34,7 +34,7 @@ module Active_toc = struct
           let selector =
             "nav#active-toc li a[href='#" ^ Js.to_string id ^ "']"
           in
-          let+ target = query_selector Dom_html.document selector in
+          let+ target = Util.query_selector Dom_html.document selector in
           Float.compare ratio 0.0 > 0, target, klass
         in
         Js.Opt.iter result (fun (flag, target, klass) ->
@@ -52,7 +52,7 @@ module Active_toc = struct
       [ "h1"; "h2"; "h3"; "h4"; "h5"; "h6" ]
       |> List.map (fun x -> "article.prose " ^ x ^ "[id]")
       |> String.concat ", "
-      |> query_selector_all Dom_html.document
+      |> Util.query_selector_all Dom_html.document
       |> List.iter (fun element -> observer##observe element)
     | None -> ()
   ;;
