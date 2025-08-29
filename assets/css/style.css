@@ -166,8 +166,8 @@ footer {
     & h6 {
         font-size: var(--sz);
         line-height: var(--sz);
-        margin-top: calc(var(--sz) * 1.8);
-        margin-bottom: calc(var(--sz) * 0.7);
+        margin-top: calc(var(--sz) * 1.9);
+        margin-bottom: calc(var(--sz) * 1.2);
         font-weight: 900;
     }
 
@@ -184,6 +184,6 @@ footer {
     }
 
     & strong {
-        font-weight: 900;
+        font-weight: 500;
     }
 }
