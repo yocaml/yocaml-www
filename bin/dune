@@ -9,3 +9,16 @@
  (public_name yocaml-www.hl)
  (modules hl)
  (libraries yojson yocaml yocaml_unix))
+
+(executable
+ (name frontend)
+ (modes js)
+ (modules frontend)
+ (preprocess
+  (pps js_of_ocaml-ppx))
+ (js_of_ocaml
+  (flags :standard))
+ (promote
+  (until-clean)
+  (into "../assets/js")
+  (only frontend.bc.js)))
