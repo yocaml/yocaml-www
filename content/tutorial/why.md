@@ -21,9 +21,9 @@ updates:
 In this _guide_, we will explore why you should use **YOCaml**. It is
 organized around three main axes:
 
-- the (subjective) _strengths_ of YOCaml  
-- educational reasons  
-- an ideological perspective  
+- the (subjective) _strengths_ of YOCaml
+- educational reasons
+- an ideological perspective
 
 Of course, the first obvious reason to use YOCaml would be that you
 **already know OCaml (and love the language)**, want to create a

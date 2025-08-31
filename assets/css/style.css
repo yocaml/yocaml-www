@@ -37,6 +37,9 @@ code {
     font-family: var(--font-mono);    
 }
 
+p > code {
+    font-weight: 200;
+}
 
 header, main, footer {
     & > div {
@@ -177,10 +180,21 @@ footer {
     & h4 { --sz: 1.5rem; }
     & h4 { --sz: 1.3rem; }
 
-    & p {
-        margin: 1.25rem 0;
+    & p,
+    & li {
         font-weight: 300;
         line-height: 2rem;
+    }
+
+    & p {
+        margin: 1.25rem 0;
+    }
+
+
+    & blockquote {
+        margin: 2.6rem 0;
+        margin-left: 2rem;
+
     }
 
     & strong {

@@ -16,7 +16,16 @@ span[class*="keyword"] {
     font-weight: 600;
 }
 
-span[class*="constant"] {
+span[class*="inherited-class"],
+span[class*="atom"],
+span[class*="source"],
+span[class*="support"] {
+    color: #b2b2b2;
+    font-weight: 400;
+}
+
+span[class*="constant"],
+span[class*="function-builtin"] {
     color: #eee;
     font-weight: 600;
 }
@@ -30,14 +39,6 @@ span[class*="storage-type"],
 span[class*="variable"] {
   color: #eee;
   font-style: italic;
-}
-
-span[class*="inherited-class"],
-span[class*="atom"],
-span[class*="source"],
-span[class*="support"] {
-    color: #b2b2b2;
-    font-weight: 400;
 }
 
 span[class*="comment"] {

@@ -7,6 +7,7 @@ let tm =
     ; Hilite.Grammars.opam
     ; Hilite.Grammars.diff
     ; Yocaml_grammars.Html.value
+    ; Yocaml_grammars.Shell.value
     ]
     |> List.iter (fun g ->
       g |> TmLanguage.of_yojson_exn |> TmLanguage.add_grammar t)
