@@ -33,7 +33,7 @@
    yocaml_yaml
    yocaml_otoml
    yocaml_jingoo
-   yocaml_cmarkit
+   yocaml_markdown
 
    ;; Additional dependencies
    yojson
