@@ -112,13 +112,10 @@ let make ?(sidebar = Sidebar.empty) ?source tutorial content =
   let result = { tutorial; table_of_content = None; sidebar; next; previous } in
   let meta =
     if tutorial.Read.table_of_content
-    then (
-      let table_of_content =
-        content
-        |> Yocaml_markdown.Doc.table_of_contents
-        |> Yocaml.Markup.Toc.to_html Fun.id
-      in
-      { result with table_of_content })
+    then
+      { result with
+        table_of_content = Yocaml_markdown.Doc.table_of_contents content
+      }
     else result
   in
   ( markup Yocaml_markdown.from_string_to_html meta
