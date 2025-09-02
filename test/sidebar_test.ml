@@ -130,3 +130,27 @@ let%expect_test "There is both successor and pred in different section" =
      <- ./c.md ->
     |}]
 ;;
+
+let%expect_test
+    "There is both successor and pred in different section with an empty \
+     section"
+  =
+  let source = rel [ "b.md" ] in
+  let sidebar =
+    of_list
+      [ "first-section", [ e @@ rel [ "a.md" ] ]
+      ; "second-section", [ e @@ rel [ "b.md" ] ]
+      ; "phantom-section", []
+      ; "third-section", [ e @@ rel [ "c.md" ] ]
+      ]
+  in
+  print_focus ~source sidebar;
+  [%expect
+    {|
+    {"title": "first-section", "name": "Entry ./a.md", "description":
+     "Description of ./a.md", "target": "/www/a.md"}
+     <- ./b.md ->
+     {"title": "third-section", "name": "Entry ./c.md", "description":
+      "Description of ./c.md", "target": "/www/c.md"}
+    |}]
+;;

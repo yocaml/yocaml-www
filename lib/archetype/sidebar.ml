@@ -145,6 +145,12 @@ let hd_opt = function
   | _ -> None
 ;;
 
+let rec first_not_empty = function
+  | { links = []; _ } :: xs -> first_not_empty xs
+  | x :: _ -> Some x
+  | [] -> None
+;;
+
 let from_focus (title, { name; description; target; _ }) =
   Reference.{ title; name; description; target }
 ;;
@@ -164,9 +170,9 @@ let get_focus ~source:given_source side =
        | Some _, Some y -> p, Some y
        | Some _, None ->
          ( p
-         , Option.bind (hd_opt xs) (fun { title; links } ->
+         , Option.bind (first_not_empty xs) (fun { title; links } ->
              links |> hd_opt |> Option.map (fun x -> title, x)) )
-       | None, _ -> aux p xs)
+       | None, None | None, Some _ -> aux p xs)
   in
   let prev, next = aux None side in
   prev |> Option.map from_focus, next |> Option.map from_focus
