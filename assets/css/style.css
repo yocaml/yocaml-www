@@ -8,6 +8,7 @@
     --color-main-text: #ffffff;
     --color-interlude-dark: #333333;
     --color-interlude-clear: #999999;
+    --color-svg-filter: 1;
 }
 
 body {
@@ -21,7 +22,7 @@ body {
 a {
     color: var(--color-interlude-clear);
     text-decoration: none;
-    transition: color 0.5s ease-out;
+    transition: color 0.25s ease-out;
 
     &:hover {
         color: var(--color-main-text);
@@ -37,8 +38,13 @@ code {
     font-family: var(--font-mono);    
 }
 
+li > code,
 p > code {
-    font-weight: 200;
+    font-weight: 400;
+    display: inline-block;
+    margin: 0 0.3rem;
+    color: var(--color-interlude-clear);
+
 }
 
 header, main, footer {
@@ -95,7 +101,11 @@ footer {
     margin-bottom: 3rem;
 
     & > aside:first-child {
-        flex: 3;
+        flex: 2.7;
+
+        & > nav {
+            margin-bottom: 3rem;
+        }
     }
 
     & > aside.toc {
@@ -183,7 +193,7 @@ footer {
     & p,
     & li {
         font-weight: 300;
-        line-height: 2rem;
+        line-height: 2.2rem;
     }
 
     & p {
@@ -200,4 +210,15 @@ footer {
     & strong {
         font-weight: 500;
     }
+
+    & img {
+        display: block;
+        filter: invert(var(--color-svg-filter));
+        margin: 8rem auto;
+        max-width: 100%;
+    }
+}
+
+.hidden-toplevel {
+    display: none;
 }

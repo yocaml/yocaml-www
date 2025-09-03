@@ -38,6 +38,7 @@ depends: [
   "js_of_ocaml-compiler"
   "js_of_ocaml-ppx"
   "ppx_expect" {with-test}
+  "mdx" {with-test}
   "utop" {with-dev-setup}
   "ocamlformat" {with-dev-setup}
   "ocp-indent" {with-dev-setup}

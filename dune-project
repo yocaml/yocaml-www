@@ -3,6 +3,7 @@
 (version dev)
 (generate_opam_files)
 (executables_implicit_empty_intf)
+(using mdx 0.4)
 
 (source (github yocaml/yocaml-www))
 (license GPL-3.0-or-later)
@@ -49,6 +50,7 @@
 
   ;; Test setup
   (ppx_expect :with-test)
+  (mdx :with-test)
    
   ;; dev setup
   (utop :with-dev-setup)
