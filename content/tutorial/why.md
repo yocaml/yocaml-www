@@ -47,6 +47,10 @@ speed. Moreover, the YOCaml engine **aims for minimality** — meaning
 it only rebuilds pages that need to be updated from one modification
 to the next.
 
+In addition, OCaml compiles **extremely quickly** and is very stable,
+making it possible to build a generator that remains reliable over
+time!
+
 
 ### Flexibility and diversity without "hacks"
 
@@ -127,3 +131,30 @@ templates is therefore not on the agenda (or at least not in the form
 of an official YOCaml package).
 
 
+## Why Not Use YOCaml
+
+There are several perfectly valid reasons why you might **choose not
+to use YOCaml**. To save you time, here’s a list:
+
+- **You don’t like OCaml**: that’s unfortunate! But since YOCaml is an
+  OCaml DSL, disliking OCaml makes using YOCaml pretty much
+  unthinkable.
+
+- **You want something pre-bundled**: YOCaml’s goal is not to restrict
+  users’ creativity but to encourage them to build their own site,
+  following the architecture and model of their choice. It is
+  therefore not packaged with a generator that enforces a file
+  structure or imposes templates.
+  
+- **You want to build a dynamic application**: this, of course,
+  applies to all static site generators. If you need heavy interaction
+  between users and a server and are not inclined to use
+  [JamStack](https://sdtimes.com/webdev/jamstack-brings-front-end-development-back-into-focus/),
+  we suggest looking into
+  [Ocsigen](https://ocsigen.org/home/intro.html), [Vif &
+  Hurl](https://github.com/robur-coop/vif),
+  [Dream](https://aantron.github.io/dream/), or
+  [Mirage](https://mirage.io/) (all OCaml frameworks).
+
+If none of these reasons apply to you, you’re ready to start using
+YOCaml!

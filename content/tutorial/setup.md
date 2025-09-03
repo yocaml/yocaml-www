@@ -114,7 +114,7 @@ file:
 
 ```dune
 (lang dune 3.20)
-(name my-first-blog)
+(name blog)
 (version dev)
 (generate_opam_files)
 (executables_implicit_empty_intf)
@@ -377,7 +377,7 @@ let program () =
   Yocaml.Eff.log ~level:`Info "Hello World, from YOCaml"
   
 let () = 
-  Yocaml_unix.run program
+  Yocaml_unix.run ~level:`Debug program
 ```
 
 Run the program using the following command:

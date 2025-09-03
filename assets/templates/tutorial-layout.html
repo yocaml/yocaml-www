@@ -22,16 +22,22 @@
     {% if tutorial.has_references %}
     <div class="prev-next">
       {% if tutorial.has_previous %}
-      <a href="{{ tutorial.previous.target }}" class="previous">
+      <a href="{{ tutorial.previous.target }}"
+         title="{{ tutorial.previous.description }}"
+         class="previous">
         <h4>Previous</h4>
+        <span class="section-title">{{ tutorial.previous.title}}</span>
         <span>{{ tutorial.previous.name }}</span>
       </a>
       {% else %}
       <a href="#"></a>
       {% endif %}
       {% if tutorial.has_next %}
-      <a href="{{ tutorial.next.target }}" class="next">
+      <a href="{{ tutorial.next.target }}"
+         title="{{ tutorial.next.description }}"
+         class="next">
         <h4>Next</h4>
+        <span class="section-title">{{ tutorial.next.title }}</span>
         <span>{{ tutorial.next.name }}</span>
       </a>
       {% else %}

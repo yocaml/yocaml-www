@@ -140,10 +140,18 @@ footer {
     & h4 {
         font-family: var(--font-mono);
         text-transform: uppercase;
+        margin-bottom: 0.4rem;
     }
 
     & > a {
         flex: 1;
+        & > span.section-title {
+            &::after {
+                content: "/";
+                margin: 0 0.4rem;
+                color: var(--color-interlude-clear);
+            }
+        }
     }
 
     & > a.previous {
@@ -193,7 +201,7 @@ footer {
     & p,
     & li {
         font-weight: 300;
-        line-height: 2.2rem;
+        line-height: 1.8rem;
     }
 
     & p {

@@ -77,7 +77,7 @@ let program () =
   Yocaml.Eff.log ~level:`Info "Hello World, from YOCaml"
   
 let () = 
-  Yocaml_unix.run program
+  Yocaml_unix.run ~level:`Debug program
 ```
 
 The `program` function has the type `unit -> unit Yocaml.Eff.t`, and
