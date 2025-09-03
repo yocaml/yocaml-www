@@ -4,3 +4,10 @@
     - ./why.md
     - ./setup.md
     - ./key-concepts.md
+
+- title: Your first blog
+
+- title: Specifics
+  sections:
+    - ./path.md
+    - ./task.md

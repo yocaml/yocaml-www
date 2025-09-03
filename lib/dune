@@ -4,13 +4,10 @@
  (libraries
   uri
   emile
-  hilite
-  hilite.markdown
-  cmarkit
   yocaml
   yocaml_yaml
   yocaml_otoml
-  yocaml_cmarkit
+  yocaml_markdown
   yocaml_jingoo
   yocaml-www.yocaml_grammars)
  (modules_without_implementation specs))

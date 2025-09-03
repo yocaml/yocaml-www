@@ -1,0 +1,8 @@
+(mdx
+ (files *.md)
+ (libraries
+  yocaml
+  yocaml_unix
+  yocaml_markdown
+  yocaml_syndication
+  yocaml_jingoo))

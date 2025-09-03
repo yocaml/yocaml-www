@@ -13,6 +13,9 @@ module Util = struct
     |> List.filter_map (fun x ->
       x |> Dom_html.CoerceTo.element |> Js.Opt.to_option)
   ;;
+
+  let add_class elt klass = elt##.classList##add klass
+  let remove_class elt klass = elt##.classList##remove klass
 end
 
 module Active_toc = struct
@@ -29,18 +32,17 @@ module Active_toc = struct
         let result =
           let* el = entry##.target |> Dom_html.CoerceTo.element in
           let* id = el##getAttribute (Js.string "id") in
-          let klass = Js.string "toc-entry-active" in
+          let id = Js.to_string id in
           let ratio = entry##.intersectionRatio |> Js.to_float in
-          let selector =
-            "nav#active-toc li a[href='#" ^ Js.to_string id ^ "']"
-          in
+          let selector = "nav#active-toc li a[href='#" ^ id ^ "']" in
           let+ target = Util.query_selector Dom_html.document selector in
-          Float.compare ratio 0.0 > 0, target, klass
+          Float.compare ratio 0.0 > 0, target, id
         in
-        Js.Opt.iter result (fun (flag, target, klass) ->
+        Js.Opt.iter result (fun (flag, target, _id) ->
+          let klass = Js.string "toc-entry-active" in
           if flag
-          then target##.classList##add klass
-          else target##.classList##remove klass))
+          then Util.add_class target klass
+          else Util.remove_class target klass))
     in
     new%js intersectionObserver (Js.wrap_callback callback) options
   ;;

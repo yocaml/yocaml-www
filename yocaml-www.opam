@@ -28,7 +28,7 @@ depends: [
   "yocaml_yaml"
   "yocaml_otoml"
   "yocaml_jingoo"
-  "yocaml_cmarkit"
+  "yocaml_markdown"
   "yojson"
   "uri"
   "emile"
@@ -38,6 +38,7 @@ depends: [
   "js_of_ocaml-compiler"
   "js_of_ocaml-ppx"
   "ppx_expect" {with-test}
+  "mdx" {with-test}
   "utop" {with-dev-setup}
   "ocamlformat" {with-dev-setup}
   "ocp-indent" {with-dev-setup}
@@ -65,7 +66,7 @@ pin-depends: [
   ["yocaml.dev" "git+https://github.com/xhtmlboi/yocaml.git"]
   ["yocaml_runtime.dev" "git+https://github.com/xhtmlboi/yocaml.git"]
   ["yocaml_unix.dev" "git+https://github.com/xhtmlboi/yocaml.git"]
-  ["yocaml_cmarkit.dev" "git+https://github.com/xhtmlboi/yocaml.git"]
+  ["yocaml_markdown.dev" "git+https://github.com/xhtmlboi/yocaml.git"]
   ["yocaml_jingoo.dev" "git+https://github.com/xhtmlboi/yocaml.git"]
   ["yocaml_syndication.dev" "git+https://github.com/xhtmlboi/yocaml.git"]
   ["yocaml_yaml.dev" "git+https://github.com/xhtmlboi/yocaml.git"]

@@ -1,97 +1,129 @@
 ---
-title: Why using YOCaml
+title: Why use YOCaml
 description: The promotional part of YOCaml
 synopsis:
-  In this section, we will briefly — and somewhat subjectively — highlight 
-  the reasons to choose YOCaml for building your next website.
+  Another page with a marketing focus (but also somewhat presented as a 
+  _manifesto_) aimed at highlighting the advantages — somewhat subjective — 
+  of using YOCaml.
+
 date: 2025-08-28
 updates:
+  - key: 2025-08-29
+    value:
+      description: Comprehensive rewriting
+      authors: ["xvw <xaviervdw@gmail.com>"]
   - key: 2025-08-28
     value:
       description: "First version"
       authors: ["grm <grimfw@gmail.com>", "xvw <xaviervdw@gmail.com>"]
 ---
 
-The primary reason is straightforward: it is _highly enjoyable_.
-Since YOCaml is a collection of _OCaml libraries_, building a
-generator is based on **programming** rather than **configuration**.
-Next, there are several reasons that _can be considered somewhat
-objective_.
+In this _guide_, we will explore why you should use **YOCaml**. It is
+organized around three main axes:
 
-## As an (aspiring) OCaml user
+- the (subjective) _strengths_ of YOCaml
+- educational reasons
+- an ideological perspective
 
-If you are already using OCaml, YOCaml is built on top of _well-known_
-OCaml libraries, including
-[Cmarkit](https://ocaml.org/p/cmarkit/latest),
-[Jingoo](https://ocaml.org/p/jingoo/latest), and libraries from the
-[Mirage](https://mirage.io/) ecosystem, allowing you to work in a
-familiar environment.
+Of course, the first obvious reason to use YOCaml would be that you
+**already know OCaml (and love the language)**, want to create a
+personal site, and don’t want to _reinvent the wheel_—and yes,
+building _your own site generator_ is a canonical exercise for an
+OCaml developer.
 
-### For learning purposes
 
-Learning functional programming can be intimidating, and while it is
-easy to get caught up in the allure of _impressive encodings_, some
-users occasionally find it lacking in _practical benefits_. YOCaml
-makes use of several of these abstractions and tools — such as
-[Applicatives](https://www.staff.city.ac.uk/~ross/papers/Applicative.pdf),
+## Subjective strengths
+
+All of the strengths listed here are derived from our experience using
+YOCaml over several months on different projects. Hence the **highly
+subjective** nature of this section.
+
+
+### Performance and efficiency
+
+Even though we don’t have concrete benchmarks, as users we have had
+relatively few reasons to be frustrated by YOCaml’s page generation
+speed. Moreover, the YOCaml engine **aims for minimality** — meaning
+it only rebuilds pages that need to be updated from one modification
+to the next.
+
+
+### Flexibility and diversity without "hacks"
+
+Since YOCaml only **enforces a computation model**, it doesn’t impose
+any limits on organization, or the types of data to consume and
+produce. This genericity allows YOCaml to be used in a fairly standard
+way whenever you want to read and generate files, enabling the
+creation of almost any type of statically generated site.
+
+YOCaml emphasizes genericity, allowing users not to be locked into
+pre-designed page archetypes. This choice was made without sacrificing
+possible static guarantees and _type safety_ by grounding the
+computation model in an expressive yet strict API.
+
+
+## As an educational tool
+
+Although YOCaml is probably not the ideal library for discovering and
+learning OCaml, it offers opportunities to explore sometimes
+bewildering concepts of functional programming. Indeed, YOCaml
+attempts to make practical and meaningful use of
 [Monads](https://homepages.inf.ed.ac.uk/wadler/papers/marktoberdorf/baastad.pdf),
+[Applicative
+Functors](https://www.staff.city.ac.uk/~ross/papers/Applicative.pdf),
 [User-Defined Effects](https://ocaml.org/manual/5.3/effects.html),
-[Profunctors](https://hackage.haskell.org/package/profunctors) and
-[Arrows](https://www.cs.tufts.edu/~nr/drop/arrows.pdf), in very
-practical contexts, allowing users to engage with the concrete and
-useful application of these abstractions. _Using YOCaml is therefore
-beneficial for learning functional programming_.
-
-## Flexibility
-
-Although _configuration-based_ tools are very popular, it is often
-necessary to work around their intended usage to achieve specific
-goals. YOCaml provides a collection of ergonomic tools for building a
-wide variety of sites, allowing you to construct each step of the
-process modularly, while minimizing the feeling of having to bend a
-somewhat rigid _user path_.
-
-### Some examples
-
-Here is a list of some very different websites built with YOCaml, in
-addition, this very website — also, of course, **written with YOCaml**
-([source](https://github.com/yocaml/yocaml-www)):
+[Profunctors](https://hackage.haskell.org/package/profunctors), and
+[Arrows](https://www.cs.tufts.edu/~nr/drop/arrows.pdf). As such, using
+YOCaml provides a concrete way to engage directly with intimidating
+abstractions in functional programming.
 
 
-- [Grim's web corner](https://gr-im.github.io): a very typical blog
-  ([sources](https://github.com/gr-im/site))
-- [xvw.lol](https://xvw.lol): A personal website with a more complex
-  hierarchy ([sources](https://github.com/xvw/capsule))
-- [Condor du Plateau](https://site.condor-du-plateau.fr/): A personal
-  wiki with many pages following different templates
-- [ring.muhokama](https://ring.muhokama.fun): A webring (inspired by
-  the _smallweb_) ([sources](https://github.com/muhokama/ring))
+### Learn OCaml
 
-## Efficiency
+If you’re not familiar with OCaml but find the arguments in this
+section convincing, here are some resources to learn OCaml and come
+back here when you’re ready to build your personal site, **with
+YOCaml**:
 
-Performance was not the primary focus in the design of YOCaml—since
-the emphasis was mainly on creating an _ergonomic API_ and ensuring
-extensibility — YOCaml relies on efficient plugins and strives to
-maintain **minimality**, as documented in [*Build Systems à la Carte:
-Theory and
-Practice*](https://simon.peytonjones.org/assets/pdfs/build-systems-jfp.pdf).
-This principle, which aims to build only the artifacts that need to be
-produced from one generation to the next, makes YOCaml a generator
-with performance levels we are very satisfied with.
+- [OCaml Programming: Correct + Efficient +
+  Beautiful](https://cs3110.github.io/textbook/cover.html)
+- [Real World OCaml](https://dev.realworldocaml.org/)
+- [Using, Understanding, and Unraveling The OCaml
+  Language](https://gallium.inria.fr/~remy/cours/appsem/ocaml.pdf)
 
-## On maintaining your website
+## Against the "boring normalized web"
 
-Publishing on platforms may seem *pragmatic*, but social networks have
-**standardized the web**, making it repetitive and tiring. Pages look
-alike, sites like [Medium](https://medium.com/) prompt pop-ups, and
-recommendation engines dominate the experience.
-
-Building your own digital space with YOCaml — _or any tool_ — is
-**fun, rewarding, and fully under your control**. You decide the
-design, structure, and content. For interactivity, you can still share
-your pages on [Digg](https://en.wikipedia.org/wiki/Digg) or [Hacker
-News](https://news.ycombinator.com) and join the conversation—without
-sacrificing your creative freedom.
+Although the web is an amazing tool, over time — often for legitimate
+reasons — it has become drastically standardized. Indeed, with the
+proliferation of devices, we have moved from a patchwork of chaotic
+personal sites to increasingly similar ones! Fortunately, there is a
+resurgence of fun in [personal
+initiatives](https://webring.xxiivv.com/) or more [institutionalized
+projects](https://neocities.org/). YOCaml fits right into this trend!
 
 
-_Please, Write your own personal website_.
+### Behind the platforms
+
+Platforms like [Medium](https://medium.com/) and
+[Dev.to](https://dev.to/) have marginalized the practice of
+maintaining your own websites. _What a shame_. We imagine the main
+reasons were community consolidation; however, many articles have been
+held hostage (at least by Medium), with pop-ins and other
+annoyances. One way to fight _this terrible centralization_ of
+information is to maintain your own [digital
+garden](https://maggieappleton.com/garden-history/)! And YOCaml is
+perfectly suited for that!
+
+
+### Templates and tools
+
+Since YOCaml requires starting from a blank slate (in terms of
+architecture, templates, and organization), it may seem
+impractical. One of the main reasons behind this choice is to avoid
+pushing users into the same templates and architectures. Indeed, we
+want YOCaml to be an excuse to reinvent the wheel — at least for your
+own website! Having a _CLI_ that _bundles_ a specific usage and
+templates is therefore not on the agenda (or at least not in the form
+of an official YOCaml package).
+
+
