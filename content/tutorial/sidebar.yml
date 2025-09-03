@@ -6,7 +6,9 @@
     - ./key-concepts.md
 
 - title: Your first blog
-
+  sections:
+    - ./simple-blog-goal.md
+    - ./simple-blog-images.md
 - title: Specifics
   sections:
     - ./path.md
