@@ -24,6 +24,7 @@ depends: [
   "yocaml"
   "yocaml_runtime"
   "yocaml_unix"
+  "yocaml_git"
   "yocaml_syndication"
   "yocaml_yaml"
   "yocaml_otoml"
@@ -71,4 +72,5 @@ pin-depends: [
   ["yocaml_syndication.dev" "git+https://github.com/xhtmlboi/yocaml.git"]
   ["yocaml_yaml.dev" "git+https://github.com/xhtmlboi/yocaml.git"]
   ["yocaml_otoml.dev" "git+https://github.com/xhtmlboi/yocaml.git"]
+  ["yocaml_git.dev" "git+https://github.com/xhtmlboi/yocaml.git"]  
 ]

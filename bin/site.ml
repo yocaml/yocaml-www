@@ -3,6 +3,19 @@ module Path = Yocaml.Path
 let default_port = 8888
 let default_target = Path.rel [ "_www" ]
 let default_cache = Path.rel [ "_cache" ]
+let default_author = "xhtmlboi", "xhtmlboi@gmail.com"
+let default_message = "Request Deployment"
+
+let remote_git_repository =
+  Format.asprintf "git@github.com-%s:yocaml/yocaml.github.io.git"
+;;
+
+module Repo = Yocaml_git.From_identity (Yocaml_unix.Runtime)
+
+let run ~target_folder ~cache_folder =
+  let resolver = Lib.Resolver.make ~cache_folder ~target_folder () in
+  Lib.Env.handle resolver (Lib.Rule.run ~resolver)
+;;
 
 module Cmd = struct
   open Cmdliner
@@ -35,18 +48,71 @@ module Cmd = struct
     Arg.(value @@ opt int default_port arg)
   ;;
 
+  let author_arg =
+    let conv_author =
+      let parser value =
+        value
+        |> Yocaml.Data.string
+        |> Lib.Model.Profile.validate
+        |> function
+        | Ok profile ->
+          (match Lib.Model.Profile.email profile with
+           | None -> `Error "Missing email"
+           | Some email ->
+             `Ok
+               ( Lib.Model.Profile.display_name profile
+               , Lib.Model.Email.to_string email ))
+        | Error _ -> `Error "Invalid author"
+      and printer ppf (dname, email) =
+        Format.fprintf ppf "%s <%s>" dname email
+      in
+      parser, printer
+    in
+    let doc = "Author of the deployment" in
+    let arg = Arg.info ~doc ~docs [ "author"; "A" ] in
+    Arg.(value @@ opt conv_author default_author arg)
+  ;;
+
+  let message_arg =
+    let doc = "The commit message attached to the deployment" in
+    let arg = Arg.info ~doc ~docs [ "message"; "M" ] in
+    Arg.(value @@ opt string default_message arg)
+  ;;
+
   let build =
     let doc = "Build the website" in
     let info = Cmd.info "build" ~version ~doc ~exits in
     let term =
       Term.(
         const (fun target_folder cache_folder ->
-          let resolver = Lib.Resolver.make ~cache_folder ~target_folder () in
-          Yocaml_unix.run
-            ~level:`Debug
-            (Lib.Env.handle resolver (Lib.Rule.run ~resolver)))
+          Yocaml_unix.run ~level:`Debug (run ~target_folder ~cache_folder))
         $ target_arg
         $ cache_arg)
+    in
+    Cmd.v info term
+  ;;
+
+  let deploy =
+    let doc = "Deploy the site on a Git-repo" in
+    let info = Cmd.info "deploy" ~version ~doc ~exits in
+    let term =
+      Term.(
+        const (fun cache_folder (author, email) message ->
+          let remote = remote_git_repository author in
+          Yocaml_git.run
+            (module Repo)
+            ~level:`Debug
+            ~context:`SSH
+            ~author
+            ~email
+            ~message
+            ~remote
+            (run ~target_folder:(Path.rel []) ~cache_folder)
+          |> Lwt_main.run
+          |> Result.iter_error (fun (`Msg err) -> invalid_arg err))
+        $ cache_arg
+        $ author_arg
+        $ message_arg)
     in
     Cmd.v info term
   ;;
@@ -57,12 +123,11 @@ module Cmd = struct
     let term =
       Term.(
         const (fun target_folder cache_folder port ->
-          let resolver = Lib.Resolver.make ~cache_folder ~target_folder () in
           Yocaml_unix.serve
             ~target:target_folder
             ~level:`Info
             ~port
-            (Lib.Env.handle resolver (Lib.Rule.run ~resolver)))
+            (run ~target_folder ~cache_folder))
         $ target_arg
         $ cache_arg
         $ port_arg)
@@ -74,7 +139,7 @@ module Cmd = struct
     let doc = "YOCaml Site Generator" in
     let info = Cmd.info Sys.argv.(0) ~version ~doc ~sdocs:docs ~exits in
     let default = Term.(ret @@ const (`Help (`Pager, None))) in
-    Cmd.group info ~default [ build; watch ]
+    Cmd.group info ~default [ build; watch; deploy ]
   ;;
 end
 

@@ -27,9 +27,9 @@
 
    ;; YOCaml dependencies
    yocaml
-   yocaml_runtime
-   
+   yocaml_runtime   
    yocaml_unix
+   yocaml_git
    yocaml_syndication
    yocaml_yaml
    yocaml_otoml
