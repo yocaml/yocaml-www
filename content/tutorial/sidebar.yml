@@ -10,6 +10,7 @@
     - ./simple-blog-goal.md
     - ./simple-blog-images.md
     - ./simple-blog-css.md
+    - ./simple-blog-pages.md
 - title: Specifics
   sections:
     - ./path.md
