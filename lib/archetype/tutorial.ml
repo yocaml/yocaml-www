@@ -165,23 +165,26 @@ let normalize_content
       ] )
 ;;
 
+let as_document ?source ~configuration ~target ({ tutorial; _ } as archetype) =
+  Html.Document.make
+    ~configuration
+    ~kind:(to_document_kind archetype)
+    ~title:tutorial.title
+    ~description:tutorial.description
+    ~tags:tutorial.tags
+    ~cover:tutorial.cover
+    ~authors:tutorial.authors
+    ~source
+    ~target
+    archetype
+;;
+
 let to_document ?source ~target resolver applicative_task =
   let open Yocaml.Task in
   Env.configuration resolver
   &&& applicative_task
-  >>| fun (configuration, (({ tutorial; _ } as archetype), content)) ->
-  ( Html.Document.make
-      ~configuration
-      ~kind:(to_document_kind archetype)
-      ~title:tutorial.title
-      ~description:tutorial.description
-      ~tags:tutorial.tags
-      ~cover:tutorial.cover
-      ~authors:tutorial.authors
-      ~source
-      ~target
-      archetype
-  , content )
+  >>| fun (configuration, (archetype, content)) ->
+  as_document ?source ~configuration ~target archetype, content
 ;;
 
 module Html = struct

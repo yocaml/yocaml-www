@@ -42,6 +42,7 @@ module Source : sig
 
   val configuration : t -> Yocaml.Path.t
   val assets : t -> Yocaml.Path.t
+  val materials : t -> Yocaml.Path.t
   val images : t -> Yocaml.Path.t
   val javascript : t -> Yocaml.Path.t
   val css : t -> Yocaml.Path.t
@@ -76,6 +77,7 @@ module Target : sig
       created. *)
 
   val assets : t -> Yocaml.Path.t
+  val materials : t -> Yocaml.Path.t
   val css_file : t -> Yocaml.Path.t
   val tutorial : t -> source:Yocaml.Path.t -> Yocaml.Path.t
   val fonts : t -> Yocaml.Path.t

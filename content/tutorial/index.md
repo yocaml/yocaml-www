@@ -19,9 +19,9 @@ updates:
 ### What is YOCaml
 
 YOCaml is a _framework_ used to describe _build systems_ in
-[OCaml](https://ocaml.org), released under [GPL3 license
-](https://raw.githubusercontent.com/xhtmlboi/yocaml/refs/heads/main/LICENSE),
-with an _API_ suited for creating [static site
+[OCaml](https://ocaml.org), released under
+[GPL3](https://raw.githubusercontent.com/xhtmlboi/yocaml/refs/heads/main/LICENSE)
+license, with an _API_ suited for creating [static site
 generators](https://en.wikipedia.org/wiki/Static_site_generator). Unlike
 [Hugo](https://gohugo.io/), [Jekyll](https://jekyllrb.com/) or
 [Zola](https://www.getzola.org/), which provide a _CLI_, YOCaml is
