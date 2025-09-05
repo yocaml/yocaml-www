@@ -33,8 +33,10 @@ template engine (inspired by
 ### Disclaimer
 
 The first thing to note is that this guide is a **tutorial on using
-YOCaml**, not on using Jingoo, HTML, or CSS. So feel free to use an
-existing template or create your own if you are a designer.
+YOCaml**, not on using Jingoo, HTML, CSS or even OCaml. So feel free
+to use an existing template or create your own if you are a designer
+and this guide also assumes that you have at least **a superficial
+knowledge of OCaml**.
 
 
 #### About Code Organization

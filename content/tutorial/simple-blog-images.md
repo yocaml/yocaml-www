@@ -18,9 +18,11 @@ updates:
 ```ocaml
 # #install_printer Yocaml.Path.pp ;;
 # #install_printer Yocaml.Deps.pp ;;
-# open Yocaml ;;
-# let www = Path.rel [ "_www" ] ;;
-val www : Path.t = ./_www
+```
+
+```ocaml
+open Yocaml
+let www = Path.rel [ "_www" ] ;;
 ```
 
 </div>
@@ -160,7 +162,7 @@ directory (only when necessary) while respecting a certain
 predicate. Before moving on, we can make a few minor adjustments!
 
 
-### Minor Improvements
+## Minor Improvements
 
 Even though the code we wrote is perfectly valid, there are at least
 two possible improvements. First, one might question the need to
@@ -182,7 +184,7 @@ let copy_images =
     (Action.copy_file ~into:images_path)
 ```
 
-#### A Utility Function
+### A Utility Function
 
 The second possible improvement concerns the way we check whether a
 path is an image. The code is quite redundant, and we might want to
@@ -199,7 +201,7 @@ This allows us to rewrite our `copy_images` action in a more concise
 way (without losing readability):
 
 
-```ocaml 
+```ocaml
 let copy_images =
   let images_path = Path.(www / "images")
   and where = with_ext [ "svg"; "png"; "jpg"; "gif" ] in
@@ -210,3 +212,13 @@ let copy_images =
 
 And there you have it! We’ve coded our **very first action** and laid
 the groundwork for a static site generator! _Awesome_.
+
+## Conclusion
+
+In this article, we reviewed how to use actions and batches of actions
+for very simple tasks. Implicitly, we also saw how well actions
+compose and how partial application can handle the cache so that, in
+the end, you can chain actions together in the main program.
+
+In the next part, we’ll learn how to create files with YOCaml.
+
