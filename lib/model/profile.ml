@@ -135,28 +135,30 @@ let validate =
   / validate_record
 ;;
 
+let email { email; more_emails; _ } =
+  let open Util.Option in
+  email <|> (snd <$> Util.Map.String.find_first_opt (fun _ -> true) more_emails)
+;;
+
 let normalize
-      { display_name
-      ; first_name
-      ; last_name
-      ; avatar
-      ; website
-      ; email
-      ; x_account
-      ; mastodon_account
-      ; bsky_account
-      ; more_accounts
-      ; more_links
-      ; more_emails
-      ; custom_attributes
-      }
+      ({ display_name
+       ; first_name
+       ; last_name
+       ; avatar
+       ; website
+       ; email = _
+       ; x_account
+       ; mastodon_account
+       ; bsky_account
+       ; more_accounts
+       ; more_links
+       ; more_emails
+       ; custom_attributes
+       } as profile)
   =
   let email, has_email =
     let open Util.Option in
-    let e =
-      email
-      <|> (snd <$> Util.Map.String.find_first_opt (fun _ -> true) more_emails)
-    in
+    let e = email profile in
     e, to_bool e
   in
   let open Yocaml.Data in

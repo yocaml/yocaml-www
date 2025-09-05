@@ -5,6 +5,7 @@ type t
 val display_name : t -> string
 val last_name : t -> string option
 val first_name : t -> string option
+val email : t -> Email.t option
 
 (** {1 YOCaml related stuff} *)
 
