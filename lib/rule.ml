@@ -36,6 +36,12 @@ let javascript resolver =
     (Action.copy_file ~into:(Resolver.Target.javascript resolver))
 ;;
 
+let materials resolver =
+  Batch.iter_files
+    (Resolver.Source.materials resolver)
+    (Action.copy_file ~into:(Resolver.Target.materials resolver))
+;;
+
 let tutorial_sidebar resolver =
   let open Task in
   let compute_source =
@@ -70,27 +76,27 @@ let tutorial resolver source =
   let file_target = Resolver.Target.tutorial resolver ~source in
   let target = Resolver.Server.from_target resolver file_target in
   let open Task in
-  let prepare =
+  let pipeline =
     let+ () = track_binary
+    and+ configuration = Env.configuration resolver
     and+ sidebar =
       Pipeline.read_file_as_metadata
         (module Yocaml.Sexp.Provider)
         (module Sidebar)
         ~snapshot:true
         (Resolver.Cache.Sidebar.tutorial resolver)
+    and+ templates =
+      Util.Template.chain
+        resolver
+        [ "tutorial-content"; "tutorial-layout"; "layout" ]
     and+ meta, content =
       Yocaml_yaml.Pipeline.read_file_with_metadata (module Tutorial.Read) source
     in
-    Tutorial.make ~sidebar ~source meta content
+    let meta, content = Tutorial.make ~sidebar ~source meta content in
+    let document = Tutorial.as_document ~source ~configuration ~target meta in
+    content |> templates (module Tutorial.Html) ~metadata:document
   in
-  Action.Static.write_file_with_metadata
-    file_target
-    (prepare
-     |> Tutorial.to_document ~source ~target resolver
-     >>> Util.Template.chain
-           (module Tutorial.Html)
-           resolver
-           [ "tutorial-content"; "tutorial-layout"; "layout" ])
+  Action.Static.write_file file_target pipeline
 ;;
 
 let tutorials resolver =
@@ -108,6 +114,7 @@ let run ~resolver () =
   >>= images resolver
   >>= css resolver
   >>= javascript resolver
+  >>= materials resolver
   >>= tutorial_sidebar resolver
   >>= tutorials resolver
   >>= Action.store_cache cache_file

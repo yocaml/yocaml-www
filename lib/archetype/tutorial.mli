@@ -17,6 +17,13 @@ val make
   -> string
   -> t * string
 
+val as_document
+  :  ?source:Yocaml.Path.t
+  -> configuration:Model.Configuration.t
+  -> target:Yocaml.Path.t
+  -> t
+  -> t Html.Document.t
+
 val to_document
   :  ?source:Yocaml.Path.t
   -> target:Yocaml.Path.t

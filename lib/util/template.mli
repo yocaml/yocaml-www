@@ -1,5 +1,9 @@
 val chain
-  :  (module Yocaml.Required.DATA_INJECTABLE with type t = 'a)
-  -> Resolver.t
+  :  Resolver.t
   -> string list
-  -> ('a * string, 'a * string) Yocaml.Task.t
+  -> ( unit
+       , (module Yocaml.Required.DATA_INJECTABLE with type t = 'a)
+         -> metadata:'a
+         -> string
+         -> string )
+       Yocaml.Task.t
