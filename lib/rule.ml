@@ -5,15 +5,19 @@ open Yocaml
 let track_binary = Pipeline.track_file Resolver.binary
 
 let css resolver =
-  let open Task in
   let target = Resolver.Target.css_file resolver in
-  Action.Static.write_file
-    target
-    (track_binary
-     >>> Pipeline.pipe_files
-           ~separator:"\n"
-           ([ "fonts"; "reset"; "syntax"; "mixins"; "style" ]
-            |> List.map (Resolver.Source.css_file resolver)))
+  let pipeline =
+    let open Task in
+    let+ () = track_binary
+    and+ content =
+      Pipeline.pipe_files
+        ~separator:"\n"
+        ([ "fonts"; "reset"; "syntax"; "mixins"; "style" ]
+         |> List.map (Resolver.Source.css_file resolver))
+    in
+    content
+  in
+  Action.Static.write_file target pipeline
 ;;
 
 let fonts resolver =
