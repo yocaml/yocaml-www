@@ -294,8 +294,8 @@ dedicated to describing the package):
    (depends
     (ocaml (>= 5.3.0))
 +
-+   (yocaml (>= 2.4.1))
-+   (yocaml_unix (>= 2.4.1))
++   (yocaml (>= 2.5.0))
++   (yocaml_unix (>= 2.5.0))
  
     ;; Dev setup
     (utop :with-dev-setup)
@@ -305,7 +305,7 @@ dedicated to describing the package):
     (ocaml-lsp-server :with-dev-setup)))
 ```
 
-The tutorial assumes that we are using at least version `2.4.1` of
+The tutorial assumes that we are using at least version `2.5.0` of
 YOCaml, hence the version constraint, and since we assume the reader
 is using a _UNIX-like_ distribution, we install `yocaml_unix`.
 

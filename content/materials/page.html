@@ -1,0 +1,13 @@
+{% if has_page_title %}
+<h1>{{ page_title }}</h1>
+{% endif %}
+
+{% if has_description %}
+<p class="description">
+  {{ description }}
+</p>
+{% endif %}
+
+<section class="page">
+  {{safe (yocaml_body) }}
+</section>

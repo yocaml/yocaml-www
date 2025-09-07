@@ -16,6 +16,8 @@ span[class*="keyword"] {
     font-weight: 600;
 }
 
+
+
 span[class*="inherited-class"],
 span[class*="atom"],
 span[class*="source"],
@@ -64,6 +66,7 @@ span[class*="numeric"] {
 .diff-punctuation-definition-inserted {
     color: #88BF36;
 }
+
 
 .diff-markup-deleted {
     color: #FF4858;

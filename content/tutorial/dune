@@ -5,4 +5,5 @@
   yocaml_unix
   yocaml_markdown
   yocaml_syndication
+  yocaml_yaml
   yocaml_jingoo))
