@@ -1,1 +1,57 @@
 /* Style.css */
+:root {
+    --width-screen: min(100rem, 100%);
+    --color-contrast-1: #e2e2e2;
+    --color-contrast-2: #111111;
+}
+
+.icon {
+    --internal-icon-color: var(--color-contrast-2);
+    --internal-icon-size: 2rem;
+    fill: var(--icon-color, var(--internal-icon-color));
+    width: var(--icon-size-w, var(--icon-size, var(--internal-icon-size)));
+    height: var(--icon-size-h, var(--icon-size, var(--internal-icon-size)));
+    display: inline-block;
+}
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: sans-serif;
+    color: var(--color-contrast-2);
+    background-color: var(--color-contrast-1);
+}
+
+main {
+    flex: 1;
+}
+
+header,main, footer {
+    & > div {
+        width: var(--width-screen);
+        margin: 0 auto;
+        padding: 2rem;
+    }
+}
+
+footer {
+    --icon-color: var(--color-contrast-1);
+    --icon-size: 2rem;
+    
+    background-color: var(--color-contrast-2);
+    color: var(--color-contrast-1);
+
+    & > div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 1rem;
+
+        & a {
+            color: var(--color-contrast-1);
+            font-weight: 700;
+            text-decoration: none;
+        }
+    }
+}
