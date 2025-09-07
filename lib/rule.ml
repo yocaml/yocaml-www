@@ -109,7 +109,7 @@ let tutorials resolver =
 let run ~resolver () =
   let open Eff in
   let cache_file = Resolver.Cache.global resolver in
-  Action.restore_cache cache_file
+  Action.restore_cache ~on:`Source cache_file
   >>= fonts resolver
   >>= images resolver
   >>= css resolver
@@ -117,5 +117,5 @@ let run ~resolver () =
   >>= materials resolver
   >>= tutorial_sidebar resolver
   >>= tutorials resolver
-  >>= Action.store_cache cache_file
+  >>= Action.store_cache ~on:`Source cache_file
 ;;
