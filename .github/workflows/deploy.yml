@@ -1,0 +1,31 @@
+name: Deploy yocaml.github.io
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: YOCaml
+        uses: ocaml/setup-ocaml@v3
+        with:
+          ocaml-compiler: 5.3.0
+
+      - run: opam install . --deps-only
+      - run: opam exec -- dune build --profile=release
+      - run: opam exec -- dune exec bin/site.exe -- build
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          publish_dir: ./_www
+          external_repository: yocaml/yocaml.github.io
+          publish_branch: main
+          enable_jekyll: false
+
