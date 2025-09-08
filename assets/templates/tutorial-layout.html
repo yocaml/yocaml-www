@@ -46,13 +46,13 @@
     </div>
     {% endif %}
   </section>
-  {% if tutorial.has_table_of_content %}
   <aside class="toc yo--navigation">
+    {% if tutorial.has_table_of_content %}
     <nav id="active-toc">
       <h4>Table of content</h4>
       {{ safe(tutorial.table_of_content) }}
     </nav>
+    {% endif %}
   </aside>
-  {% endif %}
 </div>
 
