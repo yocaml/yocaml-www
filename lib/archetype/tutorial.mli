@@ -5,7 +5,7 @@
 module Read : sig
   include Yocaml.Required.DATA_READABLE
 
-  val synthetize : t -> string * string
+  val synthetize : t -> string * string * bool
 end
 
 type t

@@ -105,6 +105,10 @@ footer {
 
         & > nav {
             margin-bottom: 3rem;
+
+            & .to-be-done {
+                text-decoration-line: line-through;
+            }
         }
     }
 

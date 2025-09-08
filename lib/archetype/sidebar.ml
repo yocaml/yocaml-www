@@ -29,12 +29,13 @@ type entry =
   ; target : Yocaml.Path.t
   ; source : Yocaml.Path.t
   ; description : string
+  ; to_be_done : bool
   }
 
 type t = entry raw
 
-let entry ~name ~target ~source ~description =
-  { name; target; source; description }
+let entry ~name ~target ~source ~description ~to_be_done =
+  { name; target; source; description; to_be_done }
 ;;
 
 let resolve
@@ -59,8 +60,8 @@ let resolve
                     source
                 in
                 let target = compute_target path
-                and name, description = synthetize meta in
-                { name; description; target; source })
+                and name, description, to_be_done = synthetize meta in
+                { name; description; target; source; to_be_done })
              links
          in
          { title; links })
@@ -75,7 +76,7 @@ let normalize =
       ; "is_empty", bool @@ List.is_empty links
       ; ( "sections"
         , list_of
-            (fun { name; target; description; source } ->
+            (fun { name; target; description; source; to_be_done } ->
                let slug = source |> Yocaml.Path.to_string |> Yocaml.Slug.from in
                record
                  [ "name", string name
@@ -83,6 +84,7 @@ let normalize =
                  ; "description", string description
                  ; "source", path source
                  ; "slug", string slug
+                 ; "to_be_done", bool to_be_done
                  ])
             links )
       ])
@@ -110,10 +112,12 @@ let validate =
                    let+ name = required k "name" Model.Field.not_blank
                    and+ target = required k "target" path
                    and+ source = required k "source" path
+                   and+ to_be_done =
+                     optional_or ~default:false k "to_be_done" bool
                    and+ description =
                      required k "description" Model.Field.not_blank
                    in
-                   { name; target; description; source })))
+                   { name; target; description; source; to_be_done })))
          in
          make ?links title))
 ;;

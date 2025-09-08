@@ -8,6 +8,7 @@ updates:
     value:
       description: "First version"
       authors: ["grm <grimfw@gmail.com>", "xvw <xaviervdw@gmail.com>"]
+to_be_done: true
 ---
 
 **Redaction In progress**

@@ -1,9 +1,27 @@
 <h1 class="main-title">{{ tutorial.title }}</h1>
 
+{% if tutorial.to_be_done %}
+
 <section class="prose">
-  {{safe (tutorial.synopsis) }}
+  <p>
+    This page is currently <strong>being drafted</strong> and has not
+    yet been published.
+  </p>
+  <p>
+    If you are motivated, you can try <a href="{{
+    document.source_url.target }}">to complete this page</a>!
+  </p>
+</section>
+
+{% else %}
+
+<section class="prose">
+{{safe (tutorial.synopsis) }}
 </section>
 
 <article class="prose">
 {{safe (yocaml_body) }}
 </article>
+
+{% endif %}
+

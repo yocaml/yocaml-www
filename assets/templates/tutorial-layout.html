@@ -6,9 +6,17 @@
       <h4>{{ chapter.title }}</h4>
       {% for section in chapter.sections %}
       {% if section.slug == document.slug %}
-      <span>{{ section.name }}</span>
+      <span class="{%- if section.to_be_done -%}
+                to-be-done
+                {%- endif -%}">
+        {{ section.name }}
+      </span>
       {% else %}
-      <a href="{{ section.target }}" title="{{ section.description}}">
+      <a href="{{ section.target }}"
+         title="{{ section.description}}"
+         class="{%- if section.to_be_done -%}
+                to-be-done
+                {%- endif -%}">
         {{ section.name }}
       </a>
       {% endif %}

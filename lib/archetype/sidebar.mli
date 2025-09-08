@@ -8,6 +8,7 @@ val entry
   -> target:Yocaml.Path.t
   -> source:Yocaml.Path.t
   -> description:string
+  -> to_be_done:bool
   -> entry
 
 val of_list : (string * entry list) list -> t
@@ -18,7 +19,7 @@ val resolve
   :  (module Yocaml.Required.DATA_READABLE with type t = 'a)
   -> compute_source:(Yocaml.Path.t -> Yocaml.Path.t)
   -> compute_target:(Yocaml.Path.t -> Yocaml.Path.t)
-  -> synthetize:('a -> string * string)
+  -> synthetize:('a -> string * string * bool)
   -> (Read.t, t) Yocaml.Task.t
 
 val normalize : t -> Yocaml.Data.t

@@ -9,9 +9,13 @@ module Read = struct
     ; table_of_content : bool
     ; cover : Model.Cover.t option
     ; updates : Model.Update_stream.t
+    ; to_be_done : bool
     }
 
-  let synthetize tutorial = tutorial.title, tutorial.description
+  let synthetize { title; description; to_be_done; _ } =
+    title, description, to_be_done
+  ;;
+
   let entity_name = "Tutorial"
   let neutral = Yocaml.Metadata.required entity_name
 
@@ -20,6 +24,7 @@ module Read = struct
         ?(authors = Model.Profile.Set.empty)
         ?(table_of_content = true)
         ?(updates = Model.Update_stream.empty)
+        ?(to_be_done = false)
         ?cover
         ~title
         ~description
@@ -37,6 +42,7 @@ module Read = struct
     ; table_of_content
     ; cover
     ; updates
+    ; to_be_done
     }
   ;;
 
@@ -49,6 +55,7 @@ module Read = struct
     let open Yocaml.Data.Validation in
     record (fun o ->
       let+ title = required o "title" text
+      and+ to_be_done = optional o "to_be_done" bool
       and+ description = required o "description" text
       and+ synopsis = required o "synopsis" text
       and+ table_of_content = optional o "table_of_content" bool
@@ -61,6 +68,7 @@ module Read = struct
         ?tags
         ?authors
         ?table_of_content
+        ?to_be_done
         ?cover
         ?updates
         ~title
@@ -132,6 +140,7 @@ let normalize_content
           ; authors
           ; cover
           ; updates
+          ; to_be_done
           ; table_of_content = _
           }
       ; table_of_content
@@ -146,6 +155,7 @@ let normalize_content
   ( "tutorial"
   , record
       [ "title", string title
+      ; "to_be_done", bool to_be_done
       ; "description", string description
       ; "synopsis", string synopsis
       ; "publication_date", Yocaml.Datetime.normalize publication_date
