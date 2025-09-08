@@ -11,6 +11,7 @@
     - ./simple-blog-images.md
     - ./simple-blog-css.md
     - ./simple-blog-pages.md
+    - ./simple-blog-server.md
 - title: Specifics
   sections:
     - ./path.md
