@@ -15,12 +15,13 @@ let print_focus ~source sidebar =
   |> print_endline
 ;;
 
-let e source =
+let e ?(to_be_done = false) source =
   let sname = to_string source in
   entry
     ~source
     ~target:(relocate ~into:(abs [ "www" ]) source)
     ~name:("Entry " ^ sname)
+    ~to_be_done
     ~description:("Description of " ^ sname)
 ;;
 
