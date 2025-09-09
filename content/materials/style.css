@@ -55,3 +55,9 @@ footer {
         }
     }
 }
+
+article,
+section,
+p {
+    margin: 1rem 0;
+}
