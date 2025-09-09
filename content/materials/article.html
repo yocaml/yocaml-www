@@ -1,0 +1,13 @@
+<h1>{{ title }}</h1>
+<time>{{ date.repr.datetime }}</time>
+
+
+{% if has_description %}
+<p class="description">
+  {{ description }}
+</p>
+{% endif %}
+
+<article>
+  {{safe (yocaml_body) }}
+</article>

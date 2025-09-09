@@ -23,7 +23,7 @@ updates:
 
 ```ocaml
 open Yocaml
-let www = Path.rel [ "_www" ] ;;
+let www = Path.rel [ "_www" ] 
 let assets = Path.rel [ "assets" ]
 let with_ext exts file =
   List.exists (fun ext -> Path.has_extension ext file) exts
@@ -369,12 +369,12 @@ HTML, to the root of our target!
 As we have seen, the page model is very lenient and only requires a
 series of optional parameters:
 
-```
-page_title: string option
-description: string option
-tags: list option
-display_toc: bool option
-```
+- `page_title`: optional `string`, is the page title
+- `description`: optional `string`, is a brief description of the page
+- `tags`: optional `string list`, is a list of keywords/tags
+- `display_toc` : optional `bool`, is a flag to display or not the
+  table of contents
+
 
 The `display_toc` field indicates whether to display a table of
 contents (but for now, we won’t worry about this field, as it requires
