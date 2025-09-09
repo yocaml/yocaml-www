@@ -1,0 +1,18 @@
+{{safe (yocaml_body) }}
+
+{% if has_articles %}
+
+<ul>
+  {% for article in articles %}
+  <li>
+    <time>{{ article.date.repr.date}}</time>
+    <a href="{{ article.url }}">{{ article.title }}</a>
+  </li>
+  {% endfor %}
+</ul>
+
+{% else %}
+
+<p>There is no articles</p>
+
+{% endif %}
