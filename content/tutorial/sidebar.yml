@@ -15,6 +15,7 @@
     - ./simple-blog-articles.md
     - ./simple-blog-index.md
     - ./simple-blog-feed.md
+    - ./simple-blog-final.md
 - title: Specifics
   sections:
     - ./path.md
