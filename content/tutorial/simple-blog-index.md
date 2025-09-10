@@ -230,6 +230,13 @@ pipeline to collect all of our articles:
 
 
 ```diff
++ let fetch_articles = 
++   Archetype.Articles.fetch 
++     ~where:is_markdown 
++     ~compute_link
++     (module Yocaml_yaml)
++     articles
+
  let create_index =
    let source = Path.(content / "index.md") in
    let index_path =
@@ -246,12 +253,7 @@ pipeline to collect all of our articles:
            [ templates / "page.html"
            ; templates / "layout.html"
            ]
-+    and+ articles = 
-+      Archetype.Articles.fetch 
-+        ~where:is_markdown 
-+        ~compute_link
-+        (module Yocaml_yaml)
-+        articles
++    and+ articles = fetch_articles
      and+ metadata, content =
        Yocaml_yaml.Pipeline.read_file_with_metadata
          (module Archetype.Page)
@@ -310,12 +312,7 @@ We can then modify our action to build our archetype:
            [ templates / "page.html"
            ; templates / "layout.html"
            ]
-     and+ articles = 
-       Archetype.Articles.fetch 
-         ~where:is_markdown 
-         ~compute_link
-         (module Yocaml_yaml)
-         articles
+     and+ articles = fetch_articles
      and+ metadata, content =
        Yocaml_yaml.Pipeline.read_file_with_metadata
          (module Archetype.Page)

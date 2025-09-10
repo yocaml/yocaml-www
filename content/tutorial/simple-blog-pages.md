@@ -113,6 +113,10 @@ we need to add the dependencies in our `bin/dune` file:
 Now, in our `blog.ml` executable, we will be able to use the
 `Yocaml_markdown` and `Yocaml_jingoo` libraries!
 
+Do not forget to run `dune build` to regenerate the OPAM file and then
+run `opam install . --deps-only` to download the newly added
+dependencies.
+
 ### Front Matter and metadata
 
 In most cases, we want to **associate metadata** with a page to provide additional information — for example, the page title, its description, and related tags. YOCaml follows an approach popularized by [Jekyll](https://jekyllrb.com/): the [front matter](https://jekyllrb.com/docs/front-matter/).  
