@@ -3,29 +3,33 @@
     --font-sans: "IBM Plex Sans", sans-serif;
 
     --width-screen: min(100rem, 100%);
-
-    --color-main-bg: #111111;
-    --color-main-text: #ffffff;
-    --color-interlude-dark: #333333;
-    --color-interlude-clear: #999999;
     --color-svg-filter: 1;
+
+    --color-background: #111;
+    --color-text: #fff;
+    --color-text-minor: #999;
+    --color-ui-border: #333;
+    --color-ui-link: #999;
+    --color-ui-link-hover: var(--color-text);
+    --color-prose-link: var(--color-text);
+    --color-prose-link-hover: var(--color-text);
 }
 
 body {
     display: flex;
     flex-direction: column;
     font-family: var(--font-sans);
-    background-color: var(--color-main-bg);
-    color: var(--color-main-text);
+    background-color: var(--color-background);
+    color: var(--color-text);
 }
 
 a {
-    color: var(--color-interlude-clear);
+    color: var(--color-ui-link);
     text-decoration: none;
     transition: color 0.25s ease-out;
 
     &:hover {
-        color: var(--color-main-text);
+        color: var(--color-ui-link-hover);
     }
 }
 
@@ -43,7 +47,7 @@ p > code {
     font-weight: 400;
     display: inline-block;
     margin: 0 0.3rem;
-    color: var(--color-interlude-clear);
+    color: var(--color-text-minor);
 
 }
 
@@ -57,7 +61,7 @@ header, main, footer {
 
 header {
     & > div {
-        border-bottom: 1px solid var(--color-interlude-dark);
+        border-bottom: 1px solid var(--color-ui-border);
     }
 }
 
@@ -80,7 +84,7 @@ footer {
     & > div.bottom-line {
         margin-top: 2rem;
         padding-top: 2rem;
-        border-top: 1px solid var(--color-interlude-dark);
+        border-top: 1px solid var(--color-ui-border);
         font-family: var(--font-mono);
         font-weight: 200;
         display: flex;
@@ -119,7 +123,7 @@ footer {
             padding: 0 2rem;
             position: sticky;
             top: 2.5rem;
-            border-left: 1px solid var(--color-interlude-dark);
+            border-left: 1px solid var(--color-ui-border);
 
             & a.toc-entry-active {
                 color: var(--color-main-text);
@@ -139,7 +143,7 @@ footer {
     gap: 2rem;
     margin-top: 4rem;
     padding-top: 2rem;
-    border-top: 1px solid var(--color-interlude-dark);
+    border-top: 1px solid var(--color-ui-border);
 
     & h4 {
         font-family: var(--font-mono);
@@ -153,7 +157,7 @@ footer {
             &::after {
                 content: "/";
                 margin: 0 0.4rem;
-                color: var(--color-interlude-clear);
+                color: var(--color-text-minor);
             }
         }
     }
@@ -183,6 +187,17 @@ footer {
     font-family: var(--font-sans);
     font-size: 1.2rem;
     line-height: 1.5rem;
+
+    & a {
+        color: var(--color-prose-link);
+        text-decoration: none;
+        border-bottom: 1px dotted var(--color-prose-link);
+        font-weight: 500;
+
+        &:hover {
+            color: var(--color-prose-link-hover);
+        }
+    }
 
     & h2,
     & h3,
