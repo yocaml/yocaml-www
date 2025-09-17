@@ -1,66 +1,68 @@
-<div class="article-with-side-bar">
-  {% if tutorial.has_sidebar %}
-  <aside class="sidebar yo--navigation">
-    {% for chapter in tutorial.sidebar %}
-    <nav>
-      <h4>{{ chapter.title }}</h4>
-      {% for section in chapter.sections %}
-      {% if section.slug == document.slug %}
-      <span class="{%- if section.to_be_done -%}
-                to-be-done
-                {%- endif -%}">
-        {{ section.name }}
-      </span>
-      {% else %}
-      <a href="{{ section.target }}"
-         title="{{ section.description}}"
-         class="{%- if section.to_be_done -%}
-                to-be-done
-                {%- endif -%}">
-        {{ section.name }}
-      </a>
-      {% endif %}
-      {%- endfor -%}
-    </nav>
-    {% endfor %}
-  </aside>
-  {% endif %}
-  <section>
-    {{safe (yocaml_body) }}
-    {% if tutorial.has_references %}
-    <div class="prev-next">
-      {% if tutorial.has_previous %}
-      <a href="{{ tutorial.previous.target }}"
-         title="{{ tutorial.previous.description }}"
-         class="previous">
-        <h4>Previous</h4>
-        <span class="section-title">{{ tutorial.previous.title}}</span>
-        <span>{{ tutorial.previous.name }}</span>
-      </a>
-      {% else %}
-      <a href="#"></a>
-      {% endif %}
-      {% if tutorial.has_next %}
-      <a href="{{ tutorial.next.target }}"
-         title="{{ tutorial.next.description }}"
-         class="next">
-        <h4>Next</h4>
-        <span class="section-title">{{ tutorial.next.title }}</span>
-        <span>{{ tutorial.next.name }}</span>
-      </a>
-      {% else %}
-      <a href="#"></a>
-      {% endif %}
-    </div>
+<div class="article-container">
+  <div class="article-with-side-bar">
+    {% if tutorial.has_sidebar %}
+    <aside class="sidebar yo--navigation">
+      {% for chapter in tutorial.sidebar %}
+      <nav>
+        <h4>{{ chapter.title }}</h4>
+        {% for section in chapter.sections %}
+        {% if section.slug == document.slug %}
+        <span class="{%- if section.to_be_done -%}
+                     to-be-done
+                     {%- endif -%}">
+          {{ section.name }}
+        </span>
+        {% else %}
+        <a href="{{ section.target }}"
+           title="{{ section.description}}"
+           class="{%- if section.to_be_done -%}
+                  to-be-done
+                  {%- endif -%}">
+          {{ section.name }}
+        </a>
+        {% endif %}
+        {%- endfor -%}
+      </nav>
+      {% endfor %}
+    </aside>
     {% endif %}
-  </section>
-  <aside class="toc yo--navigation">
-    {% if tutorial.has_table_of_content %}
-    <nav id="active-toc">
-      <h4>Table of content</h4>
-      {{ safe(tutorial.table_of_content) }}
-    </nav>
-    {% endif %}
-  </aside>
+    <section>
+      {{safe (yocaml_body) }}
+      {% if tutorial.has_references %}
+      <div class="prev-next">
+        {% if tutorial.has_previous %}
+        <a href="{{ tutorial.previous.target }}"
+           title="{{ tutorial.previous.description }}"
+           class="previous">
+          <h4>Previous</h4>
+          <span class="section-title">{{ tutorial.previous.title}}</span>
+          <span>{{ tutorial.previous.name }}</span>
+        </a>
+        {% else %}
+        <a href="#"></a>
+        {% endif %}
+        {% if tutorial.has_next %}
+        <a href="{{ tutorial.next.target }}"
+           title="{{ tutorial.next.description }}"
+           class="next">
+          <h4>Next</h4>
+          <span class="section-title">{{ tutorial.next.title }}</span>
+          <span>{{ tutorial.next.name }}</span>
+        </a>
+        {% else %}
+        <a href="#"></a>
+        {% endif %}
+      </div>
+      {% endif %}
+    </section>
+    <aside class="toc yo--navigation">
+      {% if tutorial.has_table_of_content %}
+      <nav id="active-toc">
+        <h4>Table of content</h4>
+        {{ safe(tutorial.table_of_content) }}
+      </nav>
+      {% endif %}
+    </aside>
+  </div>
 </div>
 

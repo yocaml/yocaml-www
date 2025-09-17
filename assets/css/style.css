@@ -82,20 +82,49 @@ footer {
     }
 
     & > div.bottom-line {
+        --col-gap: 0rem;
+        --container-width: 300px;
+        --col-width: max(var(--container-width), 50%);
+        container-type: inline-size;
+        container-name: bottom-line;
+        
         margin-top: 2rem;
         padding-top: 2rem;
         border-top: 1px solid var(--color-ui-border);
         font-family: var(--font-mono);
         font-weight: 200;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 1rem;
 
         & a {
             font-weight: 700;
         }
+
+        & > div {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 1rem;
+
+            &:last-child {
+                justify-self: flex-end;
+            }
+
+            @container bottom-line (width < 600px) {
+                flex: 1;
+
+                &:last-child {
+                    text-align: left;
+                    justify-self: flex-start;
+                    flex-direction: row-reverse;
+                    margin-top: 1.5rem;
+                }
+            }
+        }
     }
+}
+
+.article-container {
+    container-type: inline-size;
+    container-name: article-container;
 }
 
 .article-with-side-bar {
@@ -134,7 +163,22 @@ footer {
 
     & > section {
         flex: 7;
+        container-type: inline-size;
+        container-name: article-content;
     }
+
+    @container article-container (width < 840px) {
+        & > aside:first-child {
+            display: none;
+        }
+    }
+    
+    @container article-container (width < 640px) {
+        & > aside.toc {
+            display: none;
+        }
+    }
+
 }
 
 .prev-next {
@@ -181,6 +225,17 @@ footer {
             margin-left: 0.2rem;
         }
     }
+
+    @container article-content (width < 500px) {
+        flex-direction: column-reverse;
+
+        & > a.next {
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--color-ui-border);
+        }
+    }
+
+    
 }
 
 .prose {
