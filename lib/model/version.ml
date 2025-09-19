@@ -57,7 +57,7 @@ let normalize ({ major; minor; patch; identifier } as v) =
     ; "minor", int minor
     ; "patch", int patch
     ; "identifier", option string identifier
-    ; "has_iddentifier", bool @@ Option.is_some identifier
+    ; "has_identifier", bool @@ Option.is_some identifier
     ; "repr", string @@ to_string v
     ; "repr_v", string @@ "v" ^ to_string v
     ]

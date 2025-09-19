@@ -46,25 +46,22 @@ let materials resolver =
     (Action.copy_file ~into:(Resolver.Target.materials resolver))
 ;;
 
-(* let fetch_releases resolver = *)
-(*   let open Task in *)
-(*   let+ releases = *)
-(*     Pipeline.fetch *)
-(*       ~only:`Files *)
-(*       ~where:(Path.has_extension "yml") *)
-(*       (fun file -> *)
-(*          let open Eff in *)
-(*          let* release = *)
-(*            Yocaml_yaml.Eff.read_file_as_metadata *)
-(*              ~on:`Source *)
-(*              (module Model.Release) *)
-(*              file *)
-(*          in *)
-(*          assert false) *)
-(*       (Resolver.Source.releases resolver) *)
-(*   in *)
-
-(* ;; *)
+let fetch_releases resolver =
+  let open Task in
+  let+ releases =
+    Pipeline.fetch
+      ~only:`Files
+      ~where:(Path.has_extension "yml")
+      (fun file ->
+         Yocaml_yaml.Eff.read_file_as_metadata
+           ~snapshot:true
+           ~on:`Source
+           (module Model.Release)
+           file)
+      (Resolver.Source.releases resolver)
+  in
+  Model.Release.Set.of_list releases
+;;
 
 let tutorial_sidebar resolver =
   let open Task in
@@ -103,6 +100,7 @@ let tutorial resolver source =
   let pipeline =
     let+ () = track_binary
     and+ configuration = Env.configuration resolver
+    and+ releases = fetch_releases resolver
     and+ sidebar =
       Pipeline.read_file_as_metadata
         (module Yocaml.Sexp.Provider)
@@ -117,7 +115,9 @@ let tutorial resolver source =
       Yocaml_yaml.Pipeline.read_file_with_metadata (module Tutorial.Read) source
     in
     let meta, content = Tutorial.make ~sidebar ~source meta content in
-    let document = Tutorial.as_document ~source ~configuration ~target meta in
+    let document =
+      Tutorial.as_document ~releases ~source ~configuration ~target meta
+    in
     content |> templates (module Tutorial.Html) ~metadata:document
   in
   Action.Static.write_file file_target pipeline

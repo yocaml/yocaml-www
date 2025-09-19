@@ -59,4 +59,22 @@
         }
 
     }
+
+    & nav.inline {
+        & a {
+            display: inline-block;
+            
+            &::after {
+                content: ",";
+                margin-left: 0;
+                margin-right: 0.5rem;
+            }
+
+           
+        }
+
+        & a:last-child::after {
+            display: none;
+        }
+    }
 }

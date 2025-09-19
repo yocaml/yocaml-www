@@ -10,6 +10,7 @@ type t =
   ; version : Version.t
   ; note : string option
   ; changelog : (string * change list) list
+  ; url : Url.t
   }
 
 let entity_name = "Release"
@@ -45,11 +46,12 @@ let validate =
     and+ date = required fields "date" Yocaml.Datetime.validate
     and+ note = optional fields "note" string
     and+ city = optional fields "city" string
+    and+ url = required fields "url" Url.validate
     and+ country = optional fields "country" string
     and+ changelog =
       optional_or ~default:[] fields "changelog" (list_of validate_changes)
     in
-    { version; city; country; date; note; changelog })
+    { version; city; country; date; note; changelog; url })
 ;;
 
 let get_data changelog =
@@ -65,11 +67,12 @@ let get_data changelog =
     changelog
 ;;
 
-let normalize { version; city; country; date; note; changelog } =
+let normalize { version; city; country; date; note; changelog; url } =
   let open Yocaml.Data in
   let plugins, profiles = get_data changelog in
   record
     [ "version", Version.normalize version
+    ; "url", Url.normalize url
     ; "city", option string city
     ; "country", option string country
     ; "date", Yocaml.Datetime.normalize date
@@ -104,7 +107,7 @@ module C = struct
 
   let validate = validate
   let normalize = normalize
-  let compare = compare
+  let compare a b = compare b a
 end
 
 module Set = Util.Set.Make (C)

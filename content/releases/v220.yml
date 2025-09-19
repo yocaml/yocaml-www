@@ -1,0 +1,45 @@
+version: 2.3.0
+date: 2025-03-22
+city: Nantes
+country: France
+url: https://github.com/xhtmlboi/yocaml/releases/tag/v2.2.0
+changelog:
+  - plugin: "yocaml"
+    changes:
+      - label: Some minor fixes
+        authors:
+          - display_name: xvw
+            website: https://xvw.lol
+
+      - label:
+          Fix Non Empty List representation
+        authors:
+          - display_name: xvw
+            website: https://xvw.lol
+
+      - label:
+          Restore DOC continous Integration
+        authors:
+          - display_name: xvw
+            website: https://xvw.lol
+
+      - label:
+          Helpers for dealing with dynamic dependencies
+        authors:
+          - display_name: xvw
+            website: https://xvw.lol
+            
+  - plugin: "yocaml_git"
+    changes:
+      - label:
+          Update to git-kv 1.0.2 and work around last
+          modified behavior inside a Git_kv.change_and_push call
+        authors:
+          - display_name: reynir
+            website: https://reyn.ir/
+
+      - label:
+          Update git dependencies
+        authors:
+          - display_name: xvw
+            website: https://xvw.lol

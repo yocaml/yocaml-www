@@ -1,0 +1,31 @@
+version: 2.3.0
+date: 2025-05-25
+city: Nantes
+country: France
+url: https://github.com/xhtmlboi/yocaml/releases/tag/v2.3.0
+changelog:
+  - plugin: "yocaml"
+    changes:
+      - label: Fix `Yocaml.Datetime.max`
+        authors:
+          - display_name: xvw
+            website: https://xvw.lol
+
+      - label:
+          Remove occurences of gitlab (and outdated repositories)
+          in examples
+        authors:
+          - display_name: xhtmlboi
+            website: https://xhtmlboi.github.io
+
+      - label:
+          Be kind about `eio` dependencies
+        authors:
+          - display_name: xhtmlboi
+            website: https://xhtmlboi.github.io      
+
+      - label:
+          A better support for conditionals Task execution
+        authors:
+          - display_name: xvw
+            website: https://xvw.lol
