@@ -56,6 +56,8 @@ module Source = struct
   let images r = Path.(assets r / "images")
   let javascript r = Path.(assets r / "js")
   let materials r = Path.(content r / "materials")
+  let releases r = Path.(content r / "releases")
+  let index r = Path.(content r / "index.md")
 end
 
 module Target = struct
@@ -67,11 +69,18 @@ module Target = struct
   let images r = Path.(assets r / "images")
   let javascript r = Path.(assets r / "js")
   let materials r = Path.(assets r / "materials")
+  let index r = Path.(target r / "index.html")
 
   let tutorial r ~source:path =
     path
     |> Path.move ~into:Path.(target r / "tutorial")
     |> Path.change_extension "html"
+  ;;
+
+  let releases r = Path.(target r / "releases")
+
+  let release r ~source:path =
+    path |> Path.move ~into:(releases r) |> Path.change_extension "html"
   ;;
 end
 

@@ -1,0 +1,26 @@
+version: 2.0.1
+date: 2024-10-20
+city: Nantes
+country: France
+url: https://github.com/xhtmlboi/yocaml/releases/tag/v2.0.1
+changelog:
+  - plugin: "yocaml"
+    changes:
+      - label:
+          Fix Table of contents computation when the first
+          index is lower than followers
+        authors:
+          - display_name: xvw
+            website: https://xvw.lol
+
+      - label:
+          Remove charset in `meta`
+        authors:
+          - display_name: xvw
+            website: https://xvw.lol
+
+      - label:
+          Move Datetime and Toc at the toplevel
+        authors:
+          - display_name: xvw
+            website: https://xvw.lol

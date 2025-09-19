@@ -1,0 +1,30 @@
+version: 2.4.1
+date: 2025-09-01
+city: Nantes
+country: France
+url: https://github.com/xhtmlboi/yocaml/releases/tag/v2.4.1
+changelog:
+  - plugin: "yocaml"
+    changes:
+      - label:
+          Add Toc.traverse for building your own TOC string
+        authors:
+          - display_name: grm
+            website: https://gr-im.github.io
+
+  - plugin: "yocaml_markdown"
+    changes:
+      - label:
+          Reintroduce the package to have a strong way to deal with
+          Markdown and Syntax Highlighting
+          (It probably made `yocaml_omd` and `yocaml_cmarkit` obsolete)
+        authors:
+          - display_name: grm
+            website: https://gr-im.github.io
+
+  - plugin: "yocaml_cmarkit"
+    changes:
+      - label: Add a regular function to compute TOC
+        authors:
+          - display_name: grm
+            website: https://gr-im.github.io

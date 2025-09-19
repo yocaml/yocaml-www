@@ -1,0 +1,88 @@
+version: 2.5.0
+date: 2025-09-18
+city: Nantes
+country: France
+url: https://github.com/xhtmlboi/yocaml/releases/tag/v2.5.0
+changelog:
+  - plugin: "yocaml"
+    changes:
+      - label:
+          Add `Pipeline.read_template` to have a better fit
+          with Applicative API 
+        authors:
+          - display_name: grm
+            website: https://gr-im.github.io
+            
+      - label:
+          Fix table of content order for deeply nested elements
+        authors:
+          - display_name: grm
+            website: https://gr-im.github.io
+
+      - label:
+          Add a Applicative Helpers for Archetypes
+        authors:
+          - display_name: grm
+            website: https://gr-im.github.io
+
+      - label:
+          Improve `Archetype.Articles.fetch`
+        authors:
+          - display_name: xhtmlboi
+            website: https://xhtmlboi.github.io
+
+      - label:
+          Add `Pipeline.fetch` and `Pipeline.fetch_some`
+        authors:
+          - display_name: grm
+            website: https://gr-im.github.io
+
+      - label:
+          Add a new effect to define if a Path is a file
+          (in order to disambiguate file and path for `Yocaml_git`)
+        authors:
+          - display_name: xvw
+            website: https://xvw.lol
+
+  - plugin: "yocaml_jingoo"
+    changes:
+      - label:
+          Add `read_template` and `read_templates` to have a better fit
+          with Applicative API 
+        authors:
+          - display_name: grm
+            website: https://gr-im.github.io
+
+
+  - plugin: "yocaml_mustache"
+    changes:
+      - label:
+          Add `read_template` and `read_templates` to have a better fit
+          with Applicative API 
+        authors:
+          - display_name: grm
+            website: https://gr-im.github.io
+
+  - plugin: "yocaml_unix"
+    changes:
+      - label:
+          Adapt runtime to `is_file`
+        authors:
+          - display_name: xvw
+            website: https://xvw.lol
+
+  - plugin: "yocaml_eio"
+    changes:
+      - label:
+          Adapt runtime to `is_file`
+        authors:
+          - display_name: xvw
+            website: https://xvw.lol
+
+  - plugin: "yocaml_git"
+    changes:
+      - label:
+          Adapt runtime to `is_file`
+        authors:
+          - display_name: xvw
+            website: https://xvw.lol

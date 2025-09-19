@@ -1,0 +1,133 @@
+version: 2.0.0
+date: 2024-10-04
+city: Nantes
+country: France
+url: https://github.com/xhtmlboi/yocaml/releases/tag/v2.0.0
+
+changelog:
+  - plugin: "yocaml"
+    changes:
+      - label:
+          Complete reconstruction of the YOCaml core
+        authors:
+          - display_name: xhtmlboi
+            website: https://xhtmlboi.github.io
+          - display_name: grm
+            website: https://gr-im.github.io
+          - display_name: mspwn
+            website: https://github.com/mspwn
+          - display_name: dinosaure
+            website: https://github.com/dinosaure
+          - display_name: maiste
+            website: https://github.com/maiste
+          - display_name: hakimba
+            website: https://github.com/Hakimba
+          - display_name: xvw
+            website: https://xvw.lol
+
+  - plugin: "yocaml_cmarkit"
+    changes:
+      - label:
+          Second release
+        authors:
+          - display_name: maiste
+            website: https://github.com/maiste
+          - display_name: xvw
+            website: https://xvw.lol
+            
+  - plugin: "yocaml_eio"
+    changes:
+      - label:
+          First release
+        authors:
+          - display_name: xhtmlboi
+            website: https://xhtmlboi.github.io
+          - display_name: dinosaure
+            website: https://github.com/dinosaure
+          - display_name: hannesm
+            website: https://github.com/hannesm
+          - display_name: xvw
+            website: https://xvw.lol
+            
+  - plugin: "yocaml_git"
+    changes:
+      - label:
+          Second release
+        authors:
+          - display_name: xhtmlboi
+            website: https://xhtmlboi.github.io
+          - display_name: dinosaure
+            website: https://github.com/dinosaure
+
+  - plugin: "yocaml_jingoo"
+    changes:
+      - label:
+          Second release
+        authors:
+          - display_name: xhtmlboi
+            website: https://xhtmlboi.github.io
+          - display_name: mspwn
+            website: https://github.com/mspwn
+          - display_name: xvw
+            website: https://xvw.lol
+
+  - plugin: "yocaml_mustache"
+    changes:
+      - label:
+          Second release
+        authors:
+          - display_name: xhtmlboi
+            website: https://xhtmlboi.github.io
+          - display_name: mspwn
+            website: https://github.com/mspwn
+          - display_name: xvw
+            website: https://xvw.lol
+
+  - plugin: "yocaml_omd"
+    changes:
+      - label:
+          Second release
+        authors:
+          - display_name: xhtmlboi
+            website: https://xhtmlboi.github.io
+          - display_name: mspwn
+            website: https://github.com/mspwn
+          - display_name: xvw
+            website: https://xvw.lol
+
+  - plugin: "yocaml_otoml"
+    changes:
+      - label:
+          Second release
+        authors:
+          - display_name: xvw
+            website: https://xvw.lol
+            
+  - plugin: "yocaml_syndication"
+    changes:
+      - label:
+          Second release
+        authors:
+          - display_name: xhtmlboi
+            website: https://xhtmlboi.github.io
+          - display_name: tim-ats-d
+            website: https://github.com/Tim-ats-d
+          - display_name: mspwn
+            website: https://github.com/mspwn
+          - display_name: xvw
+            website: https://xvw.lol
+          - display_name: grm            
+            website: https://gr-im.github.io
+
+
+  - plugin: "yocaml_yaml"
+    changes:
+      - label:
+          Second release
+        authors:
+          - display_name: xhtmlboi
+            website: https://xhtmlboi.github.io
+          - display_name: mspwn
+            website: https://github.com/mspwn
+          - display_name: xvw
+            website: https://xvw.lol

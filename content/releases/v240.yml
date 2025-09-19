@@ -1,0 +1,64 @@
+version: 2.4.0
+date: 2025-08-12
+city: Nantes
+country: France
+url: https://github.com/xhtmlboi/yocaml/releases/tag/v2.4.0
+changelog:
+  - plugin: "yocaml"
+    changes:
+      - label: Add `Log.src` for logging
+        authors:
+          - display_name: xvw
+            website: https://xvw.lol
+
+      - label: Add template chain
+        authors:
+          - display_name: xvw
+            website: https://xvw.lol
+      
+      - label: Add Sexp control
+        authors:
+          - display_name: xvw
+            website: https://xvw.lol
+
+      - label:
+          Add `field` and some combinators for
+          validating record field (that unify `required`,
+          `optional` and `optional_or`) 
+        authors:
+          - display_name: xvw
+            website: https://xvw.lol
+
+      - label: Support snapshots
+        authors:
+          - display_name: xhtmlboi
+            website: https://xhtmlboi.github.io
+
+      - label:
+          Small improvement of unicode special char for slug
+        authors:
+          - display_name: xvw
+            website: https://xvw.lol
+      
+  - plugin: "yocaml_cmarkit"
+    changes:
+      - label:
+          Intermediate Task added to progressively build a
+          document and apply arbitrary arrows
+        authors:
+          - display_name: xhtmlboi
+            website: https://xhtmlboi.github.io
+
+  - plugin: "yocaml_jingoo"
+    changes:
+      - label: Support snapshots
+        authors:
+          - display_name: xhtmlboi
+            website: https://xhtmlboi.github.io
+
+  - plugin: "yocaml_mustache"
+    changes:
+      - label: Support snapshots
+        authors:
+          - display_name: xhtmlboi
+            website: https://xhtmlboi.github.io

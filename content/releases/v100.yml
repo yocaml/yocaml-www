@@ -1,0 +1,22 @@
+version: 1.0.0
+date: 2023-11-15
+city: Paris
+country: France
+url: https://github.com/xhtmlboi/yocaml/releases/tag/v1.0.0
+
+changelog:
+  - plugin: "yocaml"
+    changes:
+      - label:
+          First release
+        authors:
+          - display_name: xhtmlboi
+            website: https://xhtmlboi.github.io
+          - display_name: grm
+            website: https://gr-im.github.io
+          - display_name: dinosaure
+            website: https://github.com/dinosaure
+          - display_name: xvw
+            website: https://xvw.lol
+          - display_name: tim-ats-d
+            website: https://github.com/Tim-ats-d

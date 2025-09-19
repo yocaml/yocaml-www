@@ -53,6 +53,16 @@
             </a>
             {% endif %}
           </nav>
+          {% if document.releases.has_elements %}
+          <nav class="inline">
+            <h4>Latest releases</h4>
+            {% for release in document.releases.elements %}
+            <a href="{{ release.url.target }}">
+              {{ release.version.repr_v }}
+            </a>
+            {% endfor %}
+          </nav>
+          {% endif %}
         </div>
       </div>
       <div class="yo--grid-col-autofill bottom-line">
