@@ -5,6 +5,7 @@ type 'a t
 
 val make
   :  ?authors:Model.Profile.Set.t
+  -> ?releases:Model.Release.Set.t
   -> kind:Model.Document_kind.t
   -> title:string
   -> description:string

@@ -9,10 +9,12 @@ type 'a t =
   ; content : 'a
   ; configuration : Model.Configuration.t
   ; authors : Model.Profile.Set.t
+  ; releases : Model.Release.Set.t
   }
 
 let make
       ?(authors = Model.Profile.Set.empty)
+      ?(releases = Model.Release.Set.empty)
       ~kind
       ~title
       ~description
@@ -33,6 +35,7 @@ let make
   ; target
   ; cover
   ; authors
+  ; releases
   }
 ;;
 
@@ -79,6 +82,7 @@ let normalize
        ; cover
        ; target
        ; authors
+       ; releases
        ; kind = _
        } as doc)
   =
@@ -114,6 +118,7 @@ let normalize
         ; "meta", normalize_meta authors description tags
         ; "og", normalize_og target_url doc
         ; "authors", Model.Profile.Set.normalize authors
+        ; "releases", Model.Release.Set.normalize releases
         ; "has_source", bool @@ Option.is_some source
         ; "has_cover", bool @@ Option.is_some cover
         ; "has_slug", bool @@ Option.is_some slug

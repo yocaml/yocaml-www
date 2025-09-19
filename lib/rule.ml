@@ -46,6 +46,26 @@ let materials resolver =
     (Action.copy_file ~into:(Resolver.Target.materials resolver))
 ;;
 
+(* let fetch_releases resolver = *)
+(*   let open Task in *)
+(*   let+ releases = *)
+(*     Pipeline.fetch *)
+(*       ~only:`Files *)
+(*       ~where:(Path.has_extension "yml") *)
+(*       (fun file -> *)
+(*          let open Eff in *)
+(*          let* release = *)
+(*            Yocaml_yaml.Eff.read_file_as_metadata *)
+(*              ~on:`Source *)
+(*              (module Model.Release) *)
+(*              file *)
+(*          in *)
+(*          assert false) *)
+(*       (Resolver.Source.releases resolver) *)
+(*   in *)
+
+(* ;; *)
+
 let tutorial_sidebar resolver =
   let open Task in
   let compute_source =

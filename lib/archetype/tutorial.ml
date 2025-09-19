@@ -175,8 +175,15 @@ let normalize_content
       ] )
 ;;
 
-let as_document ?source ~configuration ~target ({ tutorial; _ } as archetype) =
+let as_document
+      ?releases
+      ?source
+      ~configuration
+      ~target
+      ({ tutorial; _ } as archetype)
+  =
   Html.Document.make
+    ?releases
     ~configuration
     ~kind:(to_document_kind archetype)
     ~title:tutorial.title

@@ -50,6 +50,8 @@ module Source : sig
   val fonts : t -> Yocaml.Path.t
   val template : t -> string -> Yocaml.Path.t
   val tutorial : t -> Yocaml.Path.t
+  val releases : t -> Yocaml.Path.t
+  val index : t -> Yocaml.Path.t
 end
 
 (** {1 Cache}
@@ -83,6 +85,9 @@ module Target : sig
   val fonts : t -> Yocaml.Path.t
   val images : t -> Yocaml.Path.t
   val javascript : t -> Yocaml.Path.t
+  val index : t -> Yocaml.Path.t
+  val releases : t -> Yocaml.Path.t
+  val release : t -> source:Yocaml.Path.t -> Yocaml.Path.t
 end
 
 (** {1 Server}

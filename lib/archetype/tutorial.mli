@@ -18,7 +18,8 @@ val make
   -> t * string
 
 val as_document
-  :  ?source:Yocaml.Path.t
+  :  ?releases:Model.Release.Set.t
+  -> ?source:Yocaml.Path.t
   -> configuration:Model.Configuration.t
   -> target:Yocaml.Path.t
   -> t
