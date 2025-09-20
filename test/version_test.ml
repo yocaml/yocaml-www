@@ -14,7 +14,7 @@ let%expect_test "validating version - 1" =
   [%expect
     {|
     [VALID] {"major": 1, "minor": 0, "patch": 0, "identifier": null,
-            "has_iddentifier": false, "repr": "1.0.0", "repr_v": "v1.0.0"}
+            "has_identifier": false, "repr": "1.0.0", "repr_v": "v1.0.0"}
     |}]
 ;;
 
@@ -23,7 +23,7 @@ let%expect_test "validating version - 2" =
   [%expect
     {|
     [VALID] {"major": 1, "minor": 3, "patch": 6, "identifier": null,
-            "has_iddentifier": false, "repr": "1.3.6", "repr_v": "v1.3.6"}
+            "has_identifier": false, "repr": "1.3.6", "repr_v": "v1.3.6"}
     |}]
 ;;
 
@@ -32,7 +32,7 @@ let%expect_test "validating version - 3" =
   [%expect
     {|
     [VALID] {"major": 1, "minor": 2, "patch": 3, "identifier": "rc.1",
-            "has_iddentifier": true, "repr": "1.2.3-rc.1", "repr_v":
+            "has_identifier": true, "repr": "1.2.3-rc.1", "repr_v":
              "v1.2.3-rc.1"}
     |}]
 ;;
@@ -42,7 +42,7 @@ let%expect_test "validating version - 4" =
   [%expect
     {|
     [VALID] {"major": 1, "minor": 2, "patch": 3, "identifier": "rc.1-foo-bar",
-            "has_iddentifier": true, "repr": "1.2.3-rc.1-foo-bar", "repr_v":
+            "has_identifier": true, "repr": "1.2.3-rc.1-foo-bar", "repr_v":
              "v1.2.3-rc.1-foo-bar"}
     |}]
 ;;
