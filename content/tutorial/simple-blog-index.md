@@ -319,7 +319,7 @@ We can then modify our action to build our archetype:
          source
      in
 +    let metadata = 
-+        Archetype.with_page
++        Archetype.Articles.with_page
 +           ~page:metadata 
 +           ~articles
 +    in
