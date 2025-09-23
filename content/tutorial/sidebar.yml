@@ -19,5 +19,6 @@
 - title: Specifics
   sections:
     - ./path.md
+    - ./path-resolver.md
     - ./validation.md
     - ./task.md

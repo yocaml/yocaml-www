@@ -1,0 +1,19 @@
+version: 2.6.0
+date: 2025-09-23
+city: Nantes
+country: France
+url: https://github.com/xhtmlboi/yocaml/releases/tag/v2.6.0
+changelog:
+  - plugin: "yocaml"
+    changes:
+      - label:
+          Add missing `snapshot` flag for reading files
+        authors:
+          - display_name: grm
+            website: https://gr-im.github.io
+            
+      - label:
+          Some small `Path` improvement
+        authors:
+          - display_name: grm
+            website: https://gr-im.github.io
