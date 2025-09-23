@@ -21,25 +21,6 @@ let make
   }
 ;;
 
-let trim ~prefix path =
-  let kind_a, a = Path.to_pair prefix
-  and kind_b, b = Path.to_pair path in
-  let rec aux x y =
-    match x, y with
-    | [], ys -> ys
-    | _, [] -> b
-    | prefix_a :: xs, prefix_b :: ys when String.equal prefix_a prefix_b ->
-      aux xs ys
-    | _ -> b
-  in
-  match kind_a, kind_b with
-  | `Rel, `Rel -> Path.rel (aux a b)
-  | `Root, `Root -> Path.abs (aux a b)
-  | `Root, `Rel | `Rel, `Root ->
-    (* No common prefix *)
-    path
-;;
-
 let binary = Path.from_string Sys.argv.(0)
 
 module Source = struct
@@ -98,6 +79,6 @@ module Server = struct
   let server { server_root; _ } = server_root
 
   let from_target r p =
-    p |> trim ~prefix:(Target.target r) |> Path.relocate ~into:(server r)
+    p |> Path.trim ~prefix:(Target.target r) |> Path.relocate ~into:(server r)
   ;;
 end

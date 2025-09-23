@@ -5,12 +5,12 @@ synopsis:
   In the full guide we used paths fairly implicitly. In this tutorial, 
   it’s time to examine their API more closely to gain greater control.
 
-date: 2025-09-14
+date: 2025-09-22
 updates:
-  - key: 2025-09-14
+  - key: 2025-09-22
     value:
       description: "First version"
-      authors: ["grm <grimfw@gmail.com>", "xvw <xaviervdw@gmail.com>"]
+      authors: ["xvw <xaviervdw@gmail.com>"]
 ---
 
 <div class="hidden-toplevel">
