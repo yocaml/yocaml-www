@@ -117,7 +117,6 @@ file:
 (name blog)
 (version dev)
 (generate_opam_files)
-(executables_implicit_empty_intf)
 
 (source (github username/blog))
 (license MIT)
@@ -127,26 +126,20 @@ file:
 (package
  (name blog)
  (synopsis "My first blog using YOCaml")
- (description 
-   "My first personal blog using YOCaml for 
+ (description
+   "My first personal blog using YOCaml for
    fun and profit")
  (depends
   (ocaml (>= 5.3.0))))
 ```
 
 The first part of the file outlines how Dune will handle the project —
-essentially configuring the entire project. The two fields that can be
-a bit confusing are:
-
-- `(generate_opam_files)`: This instructs Dune to create the OPAM
-  description files. Dune is just the _build system_, and OPAM is the
-  package manager. This field tells Dune to regenerate the OPAM files,
-  centralizing the project configuration in our `dune-project`.
-
-- `(executables_implicit_empty_intf)`: This automatically creates an
-  empty interface file for executables, allowing the compiler to
-  _track_ unused definitions. In practice, this is recommended, but
-  optional.
+essentially configuring the entire project. The field that can be a
+bit confusing is `(generate_opam_files)`: this instructs Dune to
+create the OPAM description files. Dune is just the _build system_,
+and OPAM is the package manager. This field tells Dune to regenerate
+the OPAM files, centralizing the project configuration in our
+`dune-project`.
 
 The second part of the file specifies additional metadata. The
 _repository_ (here we used [GitHub](https://github.com) as the host)
