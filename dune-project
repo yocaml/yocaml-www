@@ -2,7 +2,6 @@
 (name yocaml-www)
 (version dev)
 (generate_opam_files)
-(executables_implicit_empty_intf)
 (using mdx 0.4)
 
 (source (github yocaml/yocaml-www))

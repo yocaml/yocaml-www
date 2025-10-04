@@ -42,11 +42,9 @@ knowledge of OCaml**.
 #### About Code Organization
 
 For simplicity, most of the code for our generator will be written in
-a single module, `blog.ml` (no `mli` is needed thanks to the
-`(executables_implicit_empty_intf)` directive in our
-`dune-project`). However, as mentioned several times, YOCaml is just a
-collection of regular packages, so **you are free to organize your
-code however you like**.
+a single module, `blog.ml`. However, as mentioned several times,
+YOCaml is just a collection of regular packages, so **you are free to
+organize your code however you like**.
 
 
 ### Starting point
