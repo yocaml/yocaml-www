@@ -153,7 +153,8 @@ more images to `assets/images` to verify that everything works):
    let open Eff in
    let cache = Path.(www / ".cache") in
    Action.restore_cache cache
-+  >>= copy_image
+-  >>= copy_image
++  >>= copy_images
    >>= Action.store_cache cache
 ```
 

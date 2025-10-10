@@ -339,7 +339,7 @@ We can now, as usual, modify our main program to execute our
    let open Eff in
    let cache = Path.(www / ".cache") in
    Action.restore_cache cache
-   >>= copy_image
+   >>= copy_images
    >>= create_css
 +  >>= create_pages
    >>= Action.store_cache cache

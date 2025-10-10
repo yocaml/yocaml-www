@@ -171,7 +171,7 @@ We can now modify our main program by simply adding our new action,
    let open Eff in
    let cache = Path.(www / ".cache") in
    Action.restore_cache cache
-   >>= copy_image
+   >>= copy_images
 +  >>= create_css
    >>= Action.store_cache cache
 ```

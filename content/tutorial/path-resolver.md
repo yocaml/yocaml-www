@@ -316,7 +316,7 @@ The first thing we’ll do is initialize our resolver in our program:
    let open Eff in
    let cache = Path.(www / ".cache") in
    Action.restore_cache cache
-   >>= copy_image
+   >>= copy_images
    >>= create_css
    >>= create_pages
    >>= create_articles
@@ -368,7 +368,7 @@ it for all:
 -  let cache = Path.(www / ".cache") in
 +  let cache = Resolver.Target.cache resolver in
    Action.restore_cache cache
-   >>= copy_image
+   >>= copy_images
 -  >>= create_css
 +  >>= create_css resolver
    >>= create_pages
