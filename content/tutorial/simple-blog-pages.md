@@ -426,8 +426,7 @@ let create_page source =
         (module Archetype.Page)
         source
     in
--    content
-+    content 
+     content
 +    |> Yocaml_markdown.from_string_to_html
   in
   Action.Static.write_file page_path pipeline
