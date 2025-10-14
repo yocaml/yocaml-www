@@ -87,6 +87,8 @@ section to add the two packages:
  
    (yocaml (>= 2.5.0))
    (yocaml_unix (>= 2.5.0))
++  cmarkit
++  hilite
 +  (yocaml_yaml (>= 2.5.0))
 +  (yocaml_markdown (>= 2.5.0))
 +  (yocaml_jingoo (>= 2.5.0))
@@ -97,6 +99,9 @@ section to add the two packages:
    (merlin :with-dev-setup)
    (ocaml-lsp-server :with-dev-setup)))
 ```
+
+> Adding `cmarkit` and `hilite` is due to a packaging subtelty (not on
+> YOCaml side) and should be fixed soon as possible
 
 In addition, to make them accessible from our blog code (`blog.ml`),
 we need to add the dependencies in our `bin/dune` file:
