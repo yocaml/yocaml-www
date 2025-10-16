@@ -334,7 +334,7 @@ can now add `create_feed` to our main program:
    let open Eff in
    let cache = Path.(www / ".cache") in
    Action.restore_cache cache
-   >>= copy_image
+   >>= copy_images
    >>= create_css
    >>= create_pages
    >>= create_articles
