@@ -30,6 +30,24 @@ module Cmd = struct
       ((fun str -> str |> Yocaml.Path.from_string |> Result.ok), Yocaml.Path.pp)
   ;;
 
+  let author_conv =
+    let parser value =
+      value
+      |> Yocaml.Data.string
+      |> Lib.Model.Profile.validate
+      |> function
+      | Ok profile ->
+        (match Lib.Model.Profile.email profile with
+         | None -> Error (`Msg "Missing email")
+         | Some email ->
+           Ok
+             ( Lib.Model.Profile.display_name profile
+             , Lib.Model.Email.to_string email ))
+      | Error _ -> Error (`Msg "Invalid author")
+    and printer ppf (dname, email) = Format.fprintf ppf "%s <%s>" dname email in
+    Arg.conv ~docv:"AUTHOR" (parser, printer)
+  ;;
+
   let target_arg =
     let doc = "target directory" in
     let arg = Arg.info ~doc ~docs [ "target"; "output" ] in
@@ -49,28 +67,9 @@ module Cmd = struct
   ;;
 
   let author_arg =
-    let conv_author =
-      let parser value =
-        value
-        |> Yocaml.Data.string
-        |> Lib.Model.Profile.validate
-        |> function
-        | Ok profile ->
-          (match Lib.Model.Profile.email profile with
-           | None -> `Error "Missing email"
-           | Some email ->
-             `Ok
-               ( Lib.Model.Profile.display_name profile
-               , Lib.Model.Email.to_string email ))
-        | Error _ -> `Error "Invalid author"
-      and printer ppf (dname, email) =
-        Format.fprintf ppf "%s <%s>" dname email
-      in
-      parser, printer
-    in
     let doc = "Author of the deployment" in
     let arg = Arg.info ~doc ~docs [ "author"; "A" ] in
-    Arg.(value @@ opt conv_author default_author arg)
+    Arg.(value @@ opt author_conv default_author arg)
   ;;
 
   let message_arg =
