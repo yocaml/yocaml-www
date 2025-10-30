@@ -78,7 +78,7 @@ specified separator.
 ### Creating a file
 
 In the key concepts, we saw [how to create a
-file](http://localhost:8888/tutorial/key-concepts.html#creating-a-file),
+file](/tutorial/key-concepts.html#creating-a-file),
 which is probably the most important action in YOCaml. Indeed, a
 static site generator can be seen as a *build system* capable of
 manipulating the file system, with a particular penchant for writing
