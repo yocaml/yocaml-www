@@ -110,7 +110,7 @@ source path, which is fixed—is exactly the same as our old
 
 Before we update our action to collect articles, we’ll create a
 template whose role is to display the list of articles. You can
-download the [index template](/assets/materials/index.html) and save
+download the [index template](https://github.com/yocaml/yocaml-www/blob/main/content/materials/index.html) and save
 it in the `assets/templates` directory (_as usual_).
 
 > We recommend taking a look at this template, as it combines

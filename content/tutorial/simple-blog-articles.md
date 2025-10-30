@@ -116,7 +116,7 @@ dates exactly as you want!
 
 Just like we did for pages, we’ll create a dedicated template and
 inject it into the global layout template. You can download
-[article.html](/assets/materials/article.html) and save it in
+[article.html](https://github.com/yocaml/yocaml-www/blob/main/content/materials/article.html) and save it in
 `/assets/templates`. This template isn’t very different from the one
 used for pages, except that it makes use of the `{{ date.repr.datetime
 }}` field (and `{{ title }}` as a header).

@@ -27,7 +27,7 @@ let www = Path.rel [ "_www" ] ;;
 
 </div>
 
-To start, download the file [icons.svg](/assets/images/icons.svg) into
+To start, download the file [icons.svg](https://github.com/yocaml/yocaml-www/blob/main/assets/images/icons.svg) into
 your `assets/images` directory. It contains several SVG icons (the
 OCaml logo, the [Creative Commons](https://creativecommons.org/) logo,
 and an RSS/Atom logo) sourced from [Simple
