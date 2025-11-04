@@ -471,8 +471,8 @@ injected.
 Our templates will go into the `assets/templates` directory and are
 regular HTML files. To start, we will create a very simple layout
 template. You can download the files
-[layout.html](https://github.com/yocaml/yocaml-www/blob/main/content/materials/layout.html) and
-[page.html](https://github.com/yocaml/yocaml-www/blob/main/content/materials/page.html) and save them in
+[layout.html](/assets/materials/layout.html) and
+[page.html](/assets/materials/page.html) and save them in
 `assets/templates`.
 
 To learn more about Jingoo, we recommend visiting the [official

@@ -129,7 +129,6 @@ file:
  (description
    "My first personal blog using YOCaml for
    fun and profit")
-  (allow_empty)
  (depends
   (ocaml (>= 5.3.0))))
 ```
