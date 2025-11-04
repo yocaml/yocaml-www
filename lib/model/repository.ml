@@ -47,13 +47,12 @@ let all_kind = github_kind @ gitlab_kind @ tangled_kind @ codeberg_kind
 
 let kind_enum values =
   let open Yocaml.Data.Validation in
-  string $ Field.tokenize
-  & one_of ~pp:Format.pp_print_string ~equal:Stdlib.String.equal values
+  string $ Field.tokenize & String.one_of values
 ;;
 
 let as_name =
   let open Yocaml.Data.Validation in
-  string $ Field.tokenize $ Field.remove_arobase & Field.string_not_blank
+  string $ Field.tokenize $ Field.remove_arobase & String.not_blank
 ;;
 
 let required_repository o =

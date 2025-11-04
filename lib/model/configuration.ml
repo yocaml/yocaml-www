@@ -18,8 +18,8 @@ let main_url { main_url; _ } = main_url
 let validate =
   let open Yocaml.Data.Validation in
   record (fun fields ->
-    let+ title = required fields "title" Field.not_blank
-    and+ subtitle = required fields "subtitle" Field.not_blank
+    let+ title = required fields "title" (string & String.not_blank)
+    and+ subtitle = required fields "subtitle" (string & String.not_blank)
     and+ main_url = required fields "main_url" Url.validate
     and+ site_repository = required fields "site_repository" Repository.validate
     and+ yocaml_repository =

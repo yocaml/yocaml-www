@@ -25,10 +25,7 @@ let kind_to_string = function
 let validate_kind =
   let open Yocaml.Data.Validation in
   string $ Field.tokenize
-  & one_of
-      ~pp:Format.pp_print_string
-      ~equal:Stdlib.String.equal
-      [ "video"; "image" ]
+  & String.one_of [ "video"; "image" ]
     $ function
     | "video" -> Video
     | _ -> Image
@@ -41,8 +38,8 @@ let validate =
     let+ kind = required o "kind" validate_kind
     and+ url = required o "url" Url.validate
     and+ mime_type =
-      field o.${"type"} (option Field.not_blank)
-      |? field o.${"mime_type"} (option Field.not_blank)
+      field o.${"type"} (option (string & String.not_blank))
+      |? field o.${"mime_type"} (option (string & String.not_blank))
     and+ width =
       field o.${"width"} (option (int & positive))
       |? field o.${"w"} (option (int & positive))
@@ -50,7 +47,7 @@ let validate =
       field o.${"height"} (option (int & positive))
       |? field o.${"h"} (option (int & positive))
     and+ secure_url = optional o "secure_url" Url.validate
-    and+ alt = optional o "alt" Field.not_blank in
+    and+ alt = optional o "alt" (string & String.not_blank) in
     let dimension = Util.Option.((fun x y -> x, y) <$> width <*> height) in
     make ~kind ?mime_type ?dimension ?secure_url ?alt url)
 ;;

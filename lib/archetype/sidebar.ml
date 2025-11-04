@@ -18,7 +18,7 @@ module Read = struct
     (null & const [])
     / list_of
         (record (fun o ->
-           let+ title = required o "title" Model.Field.not_blank
+           let+ title = required o "title" (string & String.not_blank)
            and+ links = optional o "sections" (list_of path) in
            make ?links title))
   ;;
@@ -102,20 +102,20 @@ let validate =
   (null & const [])
   / list_of
       (record (fun o ->
-         let+ title = required o "title" Model.Field.not_blank
+         let+ title = required o "title" (string & String.not_blank)
          and+ links =
            optional
              o
              "sections"
              (list_of
                 (record (fun k ->
-                   let+ name = required k "name" Model.Field.not_blank
+                   let+ name = required k "name" (string & String.not_blank)
                    and+ target = required k "target" path
                    and+ source = required k "source" path
                    and+ to_be_done =
                      optional_or ~default:false k "to_be_done" bool
                    and+ description =
-                     required k "description" Model.Field.not_blank
+                     required k "description" (string & String.not_blank)
                    in
                    { name; target; description; source; to_be_done })))
          in
