@@ -1,4 +1,4 @@
-(lang dune 3.19)
+(lang dune 3.20)
 (name yocaml-www)
 (version dev)
 (generate_opam_files)
