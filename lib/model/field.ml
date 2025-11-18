@@ -1,10 +1,10 @@
 let string_not_blank =
   let open Yocaml.Data.Validation in
-  Result.ok $ String.trim
+  Result.ok $ Stdlib.String.trim
   & where
       ~pp:Format.pp_print_string
       ~message:(fun _ -> "Can't be blank")
-      (fun s -> not (String.equal "" s))
+      (fun s -> not (Stdlib.String.equal "" s))
 ;;
 
 let not_blank =
@@ -12,7 +12,7 @@ let not_blank =
   string & string_not_blank
 ;;
 
-let tokenize x = x |> String.trim |> String.lowercase_ascii
+let tokenize x = x |> Stdlib.String.trim |> Stdlib.String.lowercase_ascii
 
 let remove_first_char_when pred string =
   match

@@ -48,7 +48,7 @@ let all_kind = github_kind @ gitlab_kind @ tangled_kind @ codeberg_kind
 let kind_enum values =
   let open Yocaml.Data.Validation in
   string $ Field.tokenize
-  & one_of ~pp:Format.pp_print_string ~equal:String.equal values
+  & one_of ~pp:Format.pp_print_string ~equal:Stdlib.String.equal values
 ;;
 
 let as_name =

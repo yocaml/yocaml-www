@@ -11,7 +11,7 @@ let validate =
   Util.Map.Datetime.validate
     Yocaml.Data.Validation.(
       record (fun o ->
-        let+ description = required o "description" (string $ String.trim)
+        let+ description = required o "description" (string $ Stdlib.String.trim)
         and+ authors = optional o "authors" Profile.Set.validate in
         make ?authors description))
 ;;

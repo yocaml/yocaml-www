@@ -48,7 +48,7 @@ module Read = struct
 
   let text =
     let open Yocaml.Data.Validation in
-    string $ String.trim
+    string $ Stdlib.String.trim
   ;;
 
   let validate =

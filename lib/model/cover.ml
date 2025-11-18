@@ -25,7 +25,10 @@ let kind_to_string = function
 let validate_kind =
   let open Yocaml.Data.Validation in
   string $ Field.tokenize
-  & one_of ~pp:Format.pp_print_string ~equal:String.equal [ "video"; "image" ]
+  & one_of
+      ~pp:Format.pp_print_string
+      ~equal:Stdlib.String.equal
+      [ "video"; "image" ]
     $ function
     | "video" -> Video
     | _ -> Image
