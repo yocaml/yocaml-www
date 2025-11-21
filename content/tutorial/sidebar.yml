@@ -16,6 +16,9 @@
     - ./simple-blog-index.md
     - ./simple-blog-feed.md
     - ./simple-blog-final.md
+- title: Your own archetypes
+  sections:
+    - ./metadata-intro.md
 - title: Specifics
   sections:
     - ./path.md

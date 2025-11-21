@@ -1,6 +1,7 @@
 (library
  (name lib)
  (public_name yocaml-www.lib)
+ (modules_without_implementation specs)
  (libraries
   uri
   emile
@@ -9,7 +10,6 @@
   yocaml_otoml
   yocaml_markdown
   yocaml_jingoo
-  yocaml-www.yocaml_grammars)
- (modules_without_implementation specs))
+  yocaml-www.yocaml_grammars))
 
 (include_subdirs qualified)
