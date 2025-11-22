@@ -101,7 +101,7 @@ Now that we understand the main ideas, we will see how to **describe
 data** (normalize it) and how to **validate data**.
 
 
-### Naming conventions
+## Naming conventions
 
 Usually, we apply the following naming conventions:
 
