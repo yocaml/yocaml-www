@@ -208,3 +208,38 @@ end
 
 module Set = Util.Set.Make (C)
 module Map = Util.Map.Make (C)
+
+let fst_key _ v _ = Some v
+
+let merge a b =
+  let open Util.Option.Infix in
+  let display_name = a.display_name
+  and first_name = a.first_name <|> b.first_name
+  and last_name = a.last_name <|> b.last_name
+  and avatar = a.avatar <|> b.avatar
+  and website = a.website <|> b.website
+  and email = a.email <|> b.email
+  and x_account = a.x_account <|> b.x_account
+  and mastodon_account = a.mastodon_account <|> b.mastodon_account
+  and bsky_account = a.bsky_account <|> b.bsky_account
+  and more_accounts = Link.Set.union a.more_accounts b.more_accounts
+  and more_links = Link.Set.union a.more_links b.more_links
+  and more_emails = Util.Map.String.union fst_key a.more_emails b.more_emails
+  and custom_attributes =
+    Util.Map.String.union fst_key a.custom_attributes b.custom_attributes
+  in
+  make
+    ?first_name
+    ?last_name
+    ?avatar
+    ?website
+    ?email
+    ?x_account
+    ?mastodon_account
+    ?bsky_account
+    ~more_accounts
+    ~more_links
+    ~more_emails
+    ~custom_attributes
+    display_name
+;;
