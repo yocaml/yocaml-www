@@ -1,5 +1,23 @@
 <h1 class="main-title">{{ tutorial.title }}</h1>
 
+<section>
+  {% if tutorial.authors.has_elements %}
+  <section class="authors">
+    <nav>
+      {% for author in tutorial.authors.elements %}
+      <a href="{{ author.main_link.url.target }}"
+         title="{{ author.main_link.name}}"
+         class="author">
+        <img class="avatar" alt="" src="{{ author.avatar.target }}"/>
+        <span>{{ author.display_name }}</span>
+      </a>
+      {% endfor %}
+    </nav>
+  </section>
+  {% endif %}
+</section>
+
+
 {% if tutorial.to_be_done %}
 
 <section class="prose">
@@ -24,4 +42,3 @@
 </article>
 
 {% endif %}
-

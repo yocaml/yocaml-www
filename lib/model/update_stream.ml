@@ -7,6 +7,17 @@ type t = event Util.Map.Datetime.t
 
 let make ?(authors = Profile.Set.empty) description = { authors; description }
 
+let resolve_authors_on_event config { authors; description } =
+  let authors =
+    Profile.Set.map (Configuration.resolve_profile config) authors
+  in
+  make ~authors description
+;;
+
+let resolve_authors config =
+  Util.Map.Datetime.map (resolve_authors_on_event config)
+;;
+
 let validate =
   Util.Map.Datetime.validate
     Yocaml.Data.Validation.(

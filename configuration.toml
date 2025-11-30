@@ -11,3 +11,13 @@ url = "https://creativecommons.org/licenses/by-sa/4.0/"
 [software_license]
 title = "GPL 3.0"
 url = "https://gnu.org/licenses/gpl-3.0.html"
+
+[[authors]]
+display_name = "grm"
+website = "https://gr-im.github.io"
+email = "grimfw@gmail.com"
+
+[[authors]]
+display_name = "xvw"
+website = "https://xvw.lol"
+email = "xaviervdw@gmail.com"

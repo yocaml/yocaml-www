@@ -238,6 +238,37 @@ footer {
     
 }
 
+.authors {
+    & nav {
+
+        padding: 0;
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+        
+        & > a {
+            list-style: none;
+            display: inline-flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 0.2rem;
+            padding: 0.2rem 0.5rem;
+
+            &.author {
+                background-color: var(--color-ui-border);
+                font-family: var(--font-mono);
+                border-radius: 1rem;
+                padding-right: 1rem;
+            }
+
+            & img.avatar {
+                border-radius: 50%;
+                width: 2rem;
+                margin-right: 0.2rem;
+            }
+        }
+    }
+}
+
 .prose {
     font-family: var(--font-sans);
     font-size: 1.2rem;

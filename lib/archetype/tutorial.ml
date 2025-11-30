@@ -12,6 +12,14 @@ module Read = struct
     ; to_be_done : bool
     }
 
+  let resolve_updates config x =
+    let updates = Model.Update_stream.resolve_authors config x.updates in
+    let authors =
+      Model.Profile.Set.union (Model.Update_stream.authors updates) x.authors
+    in
+    { x with updates; authors }
+  ;;
+
   let synthetize { title; description; to_be_done; _ } =
     title, description, to_be_done
   ;;
@@ -86,6 +94,10 @@ type t =
   ; previous : Sidebar.Reference.t option
   ; next : Sidebar.Reference.t option
   }
+
+let resolve_update config t =
+  { t with tutorial = Read.resolve_updates config t.tutorial }
+;;
 
 let to_document_kind { tutorial = { publication_date; tags; updates; _ }; _ } =
   let updated_time = Model.Update_stream.max_date updates in
@@ -175,13 +187,9 @@ let normalize_content
       ] )
 ;;
 
-let as_document
-      ?releases
-      ?source
-      ~configuration
-      ~target
-      ({ tutorial; _ } as archetype)
-  =
+let as_document ?releases ?source ~configuration ~target archetype =
+  let archetype = resolve_update configuration archetype in
+  let tutorial = archetype.tutorial in
   Html.Document.make
     ?releases
     ~configuration
