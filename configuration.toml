@@ -13,6 +13,12 @@ title = "GPL 3.0"
 url = "https://gnu.org/licenses/gpl-3.0.html"
 
 [[authors]]
+display_name = "xhtmlboi"
+website = "https://xhtmlboi.github.io"
+email = "xhtmlboi@gmail.com"
+
+
+[[authors]]
 display_name = "grm"
 website = "https://gr-im.github.io"
 email = "grimfw@gmail.com"

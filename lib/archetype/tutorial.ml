@@ -15,7 +15,9 @@ module Read = struct
   let resolve_updates config x =
     let updates = Model.Update_stream.resolve_authors config x.updates in
     let authors =
-      Model.Profile.Set.union (Model.Update_stream.authors updates) x.authors
+      Model.Profile.Set.map
+        (Model.Configuration.resolve_profile config)
+        x.authors
     in
     { x with updates; authors }
   ;;
@@ -163,6 +165,10 @@ let normalize_content
   =
   let has_previous = Option.is_some previous
   and has_next = Option.is_some next in
+  let max_date =
+    Option.bind (Model.Update_stream.max_date updates) (fun dt ->
+      if Yocaml.Datetime.equal dt publication_date then None else Some dt)
+  in
   let open Yocaml.Data in
   ( "tutorial"
   , record
@@ -171,6 +177,7 @@ let normalize_content
       ; "description", string description
       ; "synopsis", string synopsis
       ; "publication_date", Yocaml.Datetime.normalize publication_date
+      ; "modification_date", option Yocaml.Datetime.normalize max_date
       ; "tags", Model.Tag.Set.normalize tags
       ; "authors", Model.Profile.Set.normalize authors
       ; "cover", option Model.Cover.normalize cover
@@ -184,6 +191,7 @@ let normalize_content
       ; "has_previous", bool has_previous
       ; "has_next", bool has_next
       ; "has_references", bool (has_previous || has_next)
+      ; "has_modification_date", bool @@ Option.is_some max_date
       ] )
 ;;
 
