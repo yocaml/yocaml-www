@@ -78,6 +78,7 @@ module Target : sig
   (** All targets describe paths in which files are potentially
       created. *)
 
+  val root : t -> Yocaml.Path.t
   val assets : t -> Yocaml.Path.t
   val materials : t -> Yocaml.Path.t
   val css_file : t -> Yocaml.Path.t

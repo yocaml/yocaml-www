@@ -63,6 +63,8 @@ module Target = struct
   let release r ~source:path =
     path |> Path.move ~into:(releases r) |> Path.change_extension "html"
   ;;
+
+  let root = target
 end
 
 module Cache = struct

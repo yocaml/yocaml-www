@@ -141,5 +141,6 @@ let run ~resolver () =
   >>= materials resolver
   >>= tutorial_sidebar resolver
   >>= tutorials resolver
+  >>= Action.remove_residuals ~target:(Resolver.Target.root resolver)
   >>= Action.store_cache ~on:`Source cache_file
 ;;
