@@ -1,0 +1,70 @@
+version: 2.7.0
+date: 2025-11-20
+city: Nantes
+country: France
+url: https://github.com/xhtmlboi/yocaml/releases/tag/v2.7.0
+changelog:
+  - plugin: "yocaml"
+    changes:
+      - label:
+          Add `Action.with_cache` helper to simplify working
+          with cached actions
+        authors:
+          - display_name: Abiola-Zeenat
+            website: https://github.com/Abiola-Zeenat
+            
+      - label:
+          Introduce type aliases `converter`, `validator`,
+          and `validable` to simplify the Validation API
+        authors:
+          - display_name: Linda-Njau
+            website: https://github.com/Linda-Njau
+
+      - label:
+          Add module signatures `S` in `Yocaml.Data` and
+          `Yocaml.Data.Validation` to standardize conversion and validation
+        authors:
+          - display_name: Linda-Njau
+            website: https://github.com/Linda-Njau
+
+      - label:
+          Add `Yocaml.Data.into` and `Yocaml.Data.Validation.from`
+          helpers for easier module use 
+        authors:
+          - display_name: Linda-Njau
+            website: https://github.com/Linda-Njau
+
+      - label:
+          Add `Yocaml.Metadata.Injectable` and `Yocaml.Metadata.Readable`
+          functors to simplify creation of injectable and readable modules
+        authors:
+          - display_name: Linda-Njau
+            website: https://github.com/Linda-Njau
+
+      - label:
+          Add `Yocaml.Data.Validation.String`, a set of validator for `String`
+        authors:
+          - display_name: Okhuomon Ajayi
+            website: https://github.com/six-shot
+
+      - label:
+          Add missing test coverage for `Nel.equal` and `Nel.append` functions
+        authors:
+          - display_name: Bill Njoroge
+            website: https://github.com/Bnjoroge1
+
+      - label:
+          Add `to_data` and `from_data` for Archetypes
+        authors:
+          - display_name: Grim
+            website: https://gr-im.github.io
+
+      - label:
+          Add `Yocaml.Data.Validation.Int` and `Float`, a set of
+          validator for `Int` and `Float`
+        authors:
+          - display_name: Grim
+            website: https://gr-im.github.io
+
+      
+      
