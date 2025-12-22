@@ -1,0 +1,59 @@
+version: 2.8.0
+date: 2025-12-17
+city: Nantes
+country: France
+url: https://github.com/xhtmlboi/yocaml/releases/tag/v2.8.0
+changelog:
+  - plugin: "yocaml"
+    changes:
+      - label:
+          Add `Action.remove_residuals` for erasing residuals files
+        authors:
+          - display_name: xvw
+            website: https://xvw.lol
+
+      - label:
+          Add `Yocaml.Data.Validation.sub_record` for validating a
+          complete structure as a record field
+        authors:
+          - display_name: xvw
+            website: https://xvw.lol
+
+      - label:
+          Add `Batch.iter_tree` and `Batch.fold_tree`
+        authors:
+          - display_name: Grim
+            website: https://gr-im.github.io
+
+  - plugin: "yocaml_git"
+    changes:
+      - label:
+          Add `Action.remove_residuals` for erasing residuals files
+        authors:
+          - display_name: xvw
+            website: https://xvw.lol
+
+  - plugin: "yocaml_unix"
+    changes:
+      - label:
+          Add `Action.remove_residuals` for erasing residuals files
+        authors:
+          - display_name: xvw
+            website: https://xvw.lol
+
+  - plugin: "yocaml_eio"
+    changes:
+      - label:
+          Add `Action.remove_residuals` for erasing residuals files
+        authors:
+          - display_name: xvw
+            website: https://xvw.lol
+
+  - plugin: "yocaml_runtime"
+    changes:
+      - label:
+          Serve .xml, .rss, .atom, .feed files as application/xml
+        authors:
+          - display_name: Reynir
+            website: https://reyn.ir/
+            
