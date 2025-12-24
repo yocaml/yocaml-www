@@ -222,12 +222,12 @@ whether a file has a Markdown extension or not:
 
  let create_pages =
 -  let where = with_ext [ "md"; "markdown"; "mdown" ] in
-+  let wherre = is_markdown
++  let where = is_markdown
    Batch.iter_files ~where pages create_page
 
  let create_articles =
 -  let where = with_ext [ "md"; "markdown"; "mdown" ] in
-+  let wherre = is_markdown
++  let where = is_markdown
    Batch.iter_files ~where articles create_article
 ```
 
