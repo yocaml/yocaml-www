@@ -20,6 +20,8 @@
   sections:
     - ./metadata-intro.md
     - ./metadata-projection.md
+    - ./metadata-validation.md
+    - ./metadata-validation-2.md
 - title: Specifics
   sections:
     - ./path.md

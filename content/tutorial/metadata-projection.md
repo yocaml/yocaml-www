@@ -1,5 +1,5 @@
 ---
-title: Data projection
+title: From value to data
 description: Understanding how to create data
 synopsis: 
   Now that we have grasped the main lines of custom data handling
