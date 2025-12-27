@@ -12,7 +12,7 @@ updates:
   - key: 2025-09-10
     value:
       description: "First version"
-      authors: ["grm <grimfw@gmail.com>", "xvw <xaviervdw@gmail.com>"]
+      authors: ["grm <grimfw@gmail.com>"]
 ---
 
 <div class="hidden-toplevel">

@@ -9,7 +9,7 @@ updates:
   - key: 2025-09-03
     value:
       description: "First version"
-      authors: ["grm <grimfw@gmail.com>", "xvw <xaviervdw@gmail.com>"]
+      authors: ["grm <grimfw@gmail.com>"]
 ---
 
 After reviewing the key concepts [in the previous
