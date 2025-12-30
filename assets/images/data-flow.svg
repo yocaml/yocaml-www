@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="157.2122mm"
+   height="166.27945mm"
+   viewBox="0 0 157.2122 166.27945"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1">
+    <marker
+       style="overflow:visible"
+       id="marker15"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.5)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path15" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker13"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.5)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path13" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Triangle"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.5)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path135" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker10-4"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.5)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path10-9" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Triangle-6"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.5)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path135-3" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker13-1"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.5)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path13-5" />
+    </marker>
+  </defs>
+  <g
+     id="layer1"
+     transform="translate(-22.906481,-63.432999)">
+    <rect
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.753;stroke-dasharray:none;stroke-opacity:1"
+       id="rect1"
+       width="47.701717"
+       height="13.061191"
+       x="23.282982"
+       y="98.526756" />
+    <rect
+       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.815405;stroke-dasharray:none;stroke-opacity:1"
+       id="rect1-2"
+       width="55.935944"
+       height="13.061191"
+       x="84.171295"
+       y="108.15282" />
+    <rect
+       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.644307;stroke-dasharray:none;stroke-opacity:1"
+       id="rect1-2-6"
+       width="34.924473"
+       height="13.061191"
+       x="137.60217"
+       y="157.39476" />
+    <rect
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.753;stroke-dasharray:none;stroke-opacity:1"
+       id="rect1-9"
+       width="47.15382"
+       height="36.932034"
+       x="34.400806"
+       y="63.809498" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.93889px;font-family:'IBM Plex Mono';-inkscape-font-specification:'IBM Plex Mono';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;white-space:pre;inline-size:46.5862;fill:none;stroke:none;stroke-width:1.153;stroke-dasharray:none;stroke-opacity:1"
+       x="26.406309"
+       y="146.79637"
+       id="text1"
+       transform="translate(1.7036329,-40.60325)"><tspan
+         x="26.406309"
+         y="146.79637"
+         id="tspan5"><tspan
+           style="fill:#000000"
+           id="tspan4">my_article.md</tspan></tspan></text>
+    <rect
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.788827;stroke-dasharray:none;stroke-opacity:1"
+       id="rect1-26"
+       width="52.492851"
+       height="13.025364"
+       x="84.963425"
+       y="216.29266" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.93889px;font-family:'IBM Plex Mono';-inkscape-font-specification:'IBM Plex Mono';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;white-space:pre;inline-size:46.5862;fill:none;stroke:none;stroke-width:1.153;stroke-dasharray:none;stroke-opacity:1"
+       x="26.406309"
+       y="146.79637"
+       id="text1-91"
+       transform="translate(63.366164,77.14474)"><tspan
+         x="26.406309"
+         y="146.79637"
+         id="tspan7"><tspan
+           style="fill:#000000"
+           id="tspan6">my_article.html</tspan></tspan></text>
+    <rect
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.637623;stroke-dasharray:none;stroke-opacity:1"
+       id="rect1-50"
+       width="33.904091"
+       height="13.176568"
+       x="131.67931"
+       y="190.48248" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.93889px;font-family:'IBM Plex Mono';-inkscape-font-specification:'IBM Plex Mono';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;white-space:pre;inline-size:46.5862;fill:none;stroke:none;stroke-width:1.153;stroke-dasharray:none;stroke-opacity:1"
+       x="26.406309"
+       y="146.79637"
+       id="text1-8"
+       transform="translate(110.15765,51.410181)"><tspan
+         x="26.406309"
+         y="146.79637"
+         id="tspan9"><tspan
+           style="fill:#000000"
+           id="tspan8">tpl.html</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.93889px;font-family:'IBM Plex Mono';-inkscape-font-specification:'IBM Plex Mono';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;white-space:pre;inline-size:61.351;fill:none;stroke:none;stroke-width:1.153;stroke-dasharray:none;stroke-opacity:1"
+       x="26.406309"
+       y="146.79637"
+       id="text1-5"
+       transform="translate(94.001392,-44.431157)"><tspan
+         x="26.406309"
+         y="146.79637"
+         id="tspan11"><tspan
+           style="fill:#000000"
+           id="tspan10">from Yaml to Data.t</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.93889px;font-family:'IBM Plex Mono';-inkscape-font-specification:'IBM Plex Mono';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;white-space:pre;inline-size:61.351;fill:none;stroke:none;stroke-width:1.153;stroke-dasharray:none;stroke-opacity:1"
+       x="26.406309"
+       y="146.79637"
+       id="text1-5-7"
+       transform="translate(3.7391201,18.537829)"><tspan
+         x="26.406309"
+         y="146.79637"
+         id="tspan13"><tspan
+           style="fill:#000000"
+           id="tspan12">from Data.t to 
+</tspan></tspan><tspan
+         x="26.406309"
+         y="152.96999"
+         id="tspan15"><tspan
+           style="fill:#000000"
+           id="tspan14">template language</tspan></tspan></text>
+    <rect
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.753;stroke-dasharray:none;stroke-opacity:1"
+       id="rect1-5"
+       width="47.701717"
+       height="13.061191"
+       x="132.04047"
+       y="128.81572" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.93889px;font-family:'IBM Plex Mono';-inkscape-font-specification:'IBM Plex Mono';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;white-space:pre;inline-size:46.5862;fill:none;stroke:none;stroke-width:1.153;stroke-dasharray:none;stroke-opacity:1"
+       x="26.406309"
+       y="146.79637"
+       id="text1-4"
+       transform="translate(110.46112,-10.314282)"><tspan
+         x="26.406309"
+         y="146.79637"
+         id="tspan17"><tspan
+           style="fill:#000000"
+           id="tspan16">## An Article</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.87236px;font-family:'IBM Plex Mono';-inkscape-font-specification:'IBM Plex Mono';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;white-space:pre;inline-size:46.5862;fill:none;stroke:none;stroke-width:1.153;stroke-dasharray:none;stroke-opacity:1"
+       x="26.406309"
+       y="146.79637"
+       id="text1-92"
+       transform="matrix(1.1951252,0,0,1,56.358172,-30.989256)"><tspan
+         x="26.406309"
+         y="146.79637"
+         id="tspan19"><tspan
+           style="fill:#ffffff"
+           id="tspan18">read_with_metadata</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.87236px;font-family:'IBM Plex Mono';-inkscape-font-specification:'IBM Plex Mono';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;white-space:pre;inline-size:46.5862;fill:none;stroke:none;stroke-width:1.153;stroke-dasharray:none;stroke-opacity:1"
+       x="26.406309"
+       y="146.79637"
+       id="text1-92-33"
+       transform="matrix(1.1951252,0,0,1,113.74032,18.734908)"><tspan
+         x="26.406309"
+         y="146.79637"
+         id="tspan21"><tspan
+           style="fill:#ffffff"
+           id="tspan20">To HTML</tspan></tspan></text>
+    <rect
+       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.785897;stroke-dasharray:none;stroke-opacity:1"
+       id="rect1-2-6-6"
+       width="51.9608"
+       height="13.061191"
+       x="83.067078"
+       y="181.81421" />
+    <text
+       xml:space="preserve"
+       style="font-size:2.46374px;font-family:'IBM Plex Mono';-inkscape-font-specification:'IBM Plex Mono';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;white-space:pre;inline-size:46.5862;fill:none;stroke:none;stroke-width:1.153;stroke-dasharray:none;stroke-opacity:1"
+       x="26.406309"
+       y="146.79637"
+       id="text1-92-33-3"
+       transform="matrix(1.7781131,0,0,1.6604072,45.009853,-54.494291)"><tspan
+         x="26.406309"
+         y="146.79637"
+         id="tspan23"><tspan
+           style="fill:#ffffff"
+           id="tspan22">Inject to tpl</tspan></tspan></text>
+    <rect
+       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.873362;stroke-dasharray:none;stroke-opacity:1"
+       id="rect1-2-0"
+       width="64.170166"
+       height="13.061191"
+       x="55.459854"
+       y="136.41544" />
+    <text
+       xml:space="preserve"
+       style="font-size:3.87236px;font-family:'IBM Plex Mono';-inkscape-font-specification:'IBM Plex Mono';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;white-space:pre;inline-size:52.0506;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.153;stroke-dasharray:none;stroke-opacity:1"
+       x="26.406309"
+       y="146.79637"
+       id="text1-92-3"
+       transform="matrix(1.1951252,0,0,1,27.930672,-1.8748296)"><tspan
+         x="26.406309"
+         y="146.79637"
+         id="tspan24">Validate to Article.t</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;font-family:'IBM Plex Mono';-inkscape-font-specification:'IBM Plex Mono';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;white-space:pre;inline-size:46.5862;fill:none;stroke:none;stroke-width:1.153;stroke-dasharray:none;stroke-opacity:1"
+       x="26.406309"
+       y="146.79637"
+       id="text1-9"
+       transform="translate(10.020138,-78.277943)"><tspan
+         x="26.406309"
+         y="146.79637"
+         id="tspan26"><tspan
+           style="fill:#030000"
+           id="tspan25">---
+</tspan></tspan><tspan
+         x="26.406309"
+         y="152.08803"
+         id="tspan28"><tspan
+           style="fill:#030000"
+           id="tspan27">title: A title
+</tspan></tspan><tspan
+         x="26.406309"
+         y="157.37969"
+         id="tspan30"><tspan
+           style="fill:#030000"
+           id="tspan29">date: 2024-12-01
+</tspan></tspan><tspan
+         x="26.406309"
+         y="162.67134"
+         id="tspan32"><tspan
+           style="fill:#030000"
+           id="tspan31">author: John Doe
+</tspan></tspan><tspan
+         x="26.406309"
+         y="167.963"
+         id="tspan34"><tspan
+           style="fill:#030000"
+           id="tspan33">---
+</tspan></tspan><tspan
+         x="26.406309"
+         y="173.25466"
+         id="tspan36"><tspan
+           style="fill:#030000"
+           id="tspan35">## An Article </tspan></tspan></text>
+    <path
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.525642;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker10-4)"
+       d="m 140.26577,155.59847 c 1.14723,-1.53936 2.68745,-2.78335 4.43374,-3.581 1.7463,-0.79765 3.69502,-1.1473 5.60969,-1.00652 1.91467,0.14079 3.79129,0.77171 5.40214,1.81621 1.61084,1.0445 2.95253,2.50039 3.86227,4.191 1.57674,2.93015 1.79021,6.55912 0.56788,9.65392"
+       id="path9-5"
+       transform="matrix(1.4208723,0,0,1.4442895,-113.6467,-139.00435)" />
+    <path
+       style="display:inline;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.765;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Triangle)"
+       d="m 105.3413,122.94551 -11.357552,9.93786"
+       id="path11" />
+    <path
+       style="display:inline;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.76495;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Triangle-6)"
+       d="m 114.10994,123.09267 12.4332,9.07692"
+       id="path11-4" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.765;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker13)"
+       d="m 154.17878,144.24092 v 9.93786"
+       id="path12" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.765;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker13-1)"
+       d="m 111.86031,198.57868 v 9.93786"
+       id="path12-5" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.765;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker15)"
+       d="m 152.1912,173.48662 -11.07361,11.35755"
+       id="path14" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.765;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Triangle)"
+       d="m 78.367111,195.91778 c -1.530977,4.64827 -1.730143,9.72699 -0.567878,14.48088 0.687863,2.81349 1.844298,5.51184 3.407267,7.95029"
+       id="path16"
+       transform="translate(5.1108987,-42.022945)" />
+  </g>
+</svg>

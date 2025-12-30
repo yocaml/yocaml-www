@@ -5,7 +5,7 @@ let to_string s = s
 
 let validate =
   let open Yocaml.Data.Validation in
-  string $ make $ Field.remove_hash & Field.string_not_blank
+  string $ Stdlib.String.trim $ Field.remove_hash & String.not_blank
 ;;
 
 let normalize t =

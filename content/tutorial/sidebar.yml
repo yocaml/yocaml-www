@@ -16,9 +16,12 @@
     - ./simple-blog-index.md
     - ./simple-blog-feed.md
     - ./simple-blog-final.md
+- title: Your own Data Model
+  sections:
+    - ./metadata-intro.md
+    - ./metadata-projection.md
 - title: Specifics
   sections:
     - ./path.md
     - ./path-resolver.md
-    - ./validation.md
     - ./task.md

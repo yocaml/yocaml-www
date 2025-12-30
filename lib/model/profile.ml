@@ -49,7 +49,10 @@ let display_name { display_name; _ } = display_name
 let first_name { first_name; _ } = first_name
 let last_name { last_name; _ } = last_name
 let make_from_mailboix (display_name, email) = make ~email display_name
-let trim = Yocaml.Data.Validation.(Field.not_blank $ Stdlib.String.trim)
+
+let trim =
+  Yocaml.Data.Validation.(string $ Stdlib.String.trim & String.not_blank)
+;;
 
 let name_of_triple = function
   | Some dname, Some fname, Some lname -> Ok (dname, Some fname, Some lname)

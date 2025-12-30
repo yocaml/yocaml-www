@@ -21,13 +21,13 @@ let validate_from_record =
   let open Yocaml.Data.Validation in
   record (fun o ->
     let+ name =
-      field (fetch o "name") (option Field.not_blank)
-      |? field (fetch o "title") (option Field.not_blank)
+      field (fetch o "name") (option (string & String.not_blank))
+      |? field (fetch o "title") (option (string & String.not_blank))
     and+ url = field (fetch o "url") Url.validate
     and+ description =
-      field (fetch o "description") (option Field.not_blank)
-      |? field (fetch o "alt") (option Field.not_blank)
-      |? field (fetch o "desc") (option Field.not_blank)
+      field (fetch o "description") (option (string & String.not_blank))
+      |? field (fetch o "alt") (option (string & String.not_blank))
+      |? field (fetch o "desc") (option (string & String.not_blank))
     in
     make ?name ?description url)
 ;;

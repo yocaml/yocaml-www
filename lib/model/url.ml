@@ -89,7 +89,7 @@ let file = with_scheme ~scheme:"file"
 
 let validate =
   let open Yocaml.Data.Validation in
-  Field.not_blank $ fun s -> s |> Uri.of_string |> of_uri
+  string & String.not_blank $ fun s -> s |> Uri.of_string |> of_uri
 ;;
 
 let target u = u |> uri |> Uri.to_string
