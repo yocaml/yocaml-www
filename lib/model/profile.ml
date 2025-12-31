@@ -143,6 +143,39 @@ let email { email; more_emails; _ } =
   email <|> (snd <$> Util.Map.String.find_first_opt (fun _ -> true) more_emails)
 ;;
 
+let main_link
+      { website
+      ; x_account
+      ; mastodon_account
+      ; bsky_account
+      ; more_links
+      ; more_accounts
+      ; _
+      }
+  =
+  let open Util.Option in
+  website
+  <|> Link.Set.find_first_opt (fun _ -> true) more_links
+  <|> mastodon_account
+  <|> Option.map
+        (fun account ->
+           let url = Url.https ~path:(Yocaml.Path.abs [ account ]) "bsky.app" in
+           Link.make url)
+        bsky_account
+  <|> Option.map
+        (fun account ->
+           let url = Url.https ~path:(Yocaml.Path.abs [ account ]) "x.com" in
+           Link.make url)
+        x_account
+  <|> Link.Set.find_first_opt (fun _ -> true) more_accounts
+  |> Option.value
+       ~default:
+         (Link.make
+            ~name:"home"
+            ~description:"No associated link"
+            (Url.of_string "/#"))
+;;
+
 let normalize
       ({ display_name
        ; first_name
@@ -159,10 +192,19 @@ let normalize
        ; custom_attributes
        } as profile)
   =
+  let main_link = main_link profile in
   let email, has_email =
     let open Util.Option in
     let e = email profile in
     e, to_bool e
+  in
+  let avatar =
+    let open Util.Option in
+    avatar
+    <|> Option.map
+          (fun email ->
+             email |> Email.to_string |> Util.Gravatar.url |> Url.of_string)
+          email
   in
   let open Yocaml.Data in
   record
@@ -172,6 +214,7 @@ let normalize
     ; "first_name", option string first_name
     ; "avatar", option Url.normalize avatar
     ; "website", option Link.normalize website
+    ; "main_link", Link.normalize main_link
     ; "email", option Email.normalize email
     ; "x_account", option string x_account
     ; "mastodon_account", option Link.normalize mastodon_account
@@ -197,14 +240,47 @@ module C = struct
   let validate = validate
   let normalize = normalize
 
-  let compare a b =
+  let compare { display_name = a; _ } { display_name = b; _ } =
     (* Sufficient for defining set or map (because it is probably not
        usesful). *)
-    let a = a |> normalize |> Format.asprintf "%a" Yocaml.Data.pp
-    and b = b |> normalize |> Format.asprintf "%a" Yocaml.Data.pp in
     String.compare a b
   ;;
 end
 
 module Set = Util.Set.Make (C)
 module Map = Util.Map.Make (C)
+
+let fst_key _ v _ = Some v
+
+let merge a b =
+  let open Util.Option.Infix in
+  let display_name = a.display_name
+  and first_name = a.first_name <|> b.first_name
+  and last_name = a.last_name <|> b.last_name
+  and avatar = a.avatar <|> b.avatar
+  and website = a.website <|> b.website
+  and email = a.email <|> b.email
+  and x_account = a.x_account <|> b.x_account
+  and mastodon_account = a.mastodon_account <|> b.mastodon_account
+  and bsky_account = a.bsky_account <|> b.bsky_account
+  and more_accounts = Link.Set.union a.more_accounts b.more_accounts
+  and more_links = Link.Set.union a.more_links b.more_links
+  and more_emails = Util.Map.String.union fst_key a.more_emails b.more_emails
+  and custom_attributes =
+    Util.Map.String.union fst_key a.custom_attributes b.custom_attributes
+  in
+  make
+    ?first_name
+    ?last_name
+    ?avatar
+    ?website
+    ?email
+    ?x_account
+    ?mastodon_account
+    ?bsky_account
+    ~more_accounts
+    ~more_links
+    ~more_emails
+    ~custom_attributes
+    display_name
+;;

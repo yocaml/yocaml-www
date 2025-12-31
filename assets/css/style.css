@@ -238,6 +238,47 @@ footer {
     
 }
 
+.tutorial-header {
+    border-bottom: 1px solid var(--color-ui-border);
+}
+
+.authors {
+    & nav {
+
+        font-size: 80%;
+        margin-top: 1rem;
+        display: flex;
+        gap: 0.5rem;
+        flex-direction: row;
+        align-items: center;
+        border-top: 1px solid var(--color-ui-border);
+        padding: 1rem 0;
+
+        
+        & > a {
+            list-style: none;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 0.2rem;
+            padding: 0.1rem 0.4rem;
+
+            &.author {
+                background-color: var(--color-ui-border);
+                font-family: var(--font-mono);
+                border-radius: 1rem;
+                padding-right: 0.7rem;
+            }
+
+            & img.avatar {
+                border-radius: 50%;
+                width: 1.5rem;
+                margin-right: 0.2rem;
+            }
+        }
+    }
+}
+
 .prose {
     font-family: var(--font-sans);
     font-size: 1.2rem;

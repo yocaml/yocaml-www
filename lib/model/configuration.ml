@@ -6,6 +6,7 @@ type t =
   ; yocaml_repository : Repository.t
   ; software_license : Link.t
   ; content_license : Link.t
+  ; authors : Profile.Set.t
   }
 
 let entity_name = "configuration"
@@ -14,6 +15,36 @@ let site_repository { site_repository; _ } = site_repository
 let title { title; _ } = title
 let subtitle { subtitle; _ } = subtitle
 let main_url { main_url; _ } = main_url
+
+let resolve_profile { authors; _ } profile =
+  authors
+  |> Profile.Set.find_first_opt (fun d ->
+    String.equal (Profile.display_name profile) (Profile.display_name d))
+  |> Option.map (Profile.merge profile)
+  |> Option.value ~default:profile
+;;
+
+let make
+      ?(authors = Profile.Set.empty)
+      ~title
+      ~subtitle
+      ~main_url
+      ~site_repository
+      ~yocaml_repository
+      ~software_license
+      ~content_license
+      ()
+  =
+  { title
+  ; subtitle
+  ; main_url
+  ; site_repository
+  ; yocaml_repository
+  ; software_license
+  ; content_license
+  ; authors
+  }
+;;
 
 let validate =
   let open Yocaml.Data.Validation in
@@ -25,15 +56,18 @@ let validate =
     and+ yocaml_repository =
       required fields "yocaml_repository" Repository.validate
     and+ software_license = required fields "software_license" Link.validate
-    and+ content_license = required fields "content_license" Link.validate in
-    { title
-    ; subtitle
-    ; main_url
-    ; site_repository
-    ; yocaml_repository
-    ; software_license
-    ; content_license
-    })
+    and+ content_license = required fields "content_license" Link.validate
+    and+ authors = optional fields "authors" Profile.Set.validate in
+    make
+      ?authors
+      ~title
+      ~subtitle
+      ~main_url
+      ~site_repository
+      ~yocaml_repository
+      ~software_license
+      ~content_license
+      ())
 ;;
 
 let normalize
@@ -44,6 +78,7 @@ let normalize
       ; yocaml_repository
       ; software_license
       ; content_license
+      ; authors
       }
   =
   let open Yocaml.Data in
@@ -55,5 +90,6 @@ let normalize
     ; "yocaml_repository", Repository.normalize yocaml_repository
     ; "software_license", Link.normalize software_license
     ; "content_license", Link.normalize content_license
+    ; "authors", Profile.Set.normalize authors
     ]
 ;;

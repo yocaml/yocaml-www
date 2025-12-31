@@ -1,4 +1,34 @@
-<h1 class="main-title">{{ tutorial.title }}</h1>
+<section class="tutorial-header">
+  <h1 class="main-title">{{ tutorial.title }}</h1>
+  <section class="tutorial-info">
+    <strong>Published on the</strong>
+    <time datetime="{{ tutorial.publication_date.repr.datetime }}">
+      {{ tutorial.publication_date.repr.date }}
+    </time>
+    {% if tutorial.has_modification_date %}
+    <strong>updated on</strong>
+    <time datetime="{{ tutorial.modification_date.repr.datetime }}">
+      {{ tutorial.modification_date.repr.date }}
+    </time>
+    {% endif %}
+  </section>
+  {% if tutorial.authors.has_elements %}
+  <section class="authors">
+    <nav>
+      <strong>Written by</strong>
+      {% for author in tutorial.authors.elements %}
+      <a href="{{ author.main_link.url.target }}"
+         title="{{ author.main_link.name}}"
+         class="author">
+        <img class="avatar" alt="" src="{{ author.avatar.target }}"/>
+        <span>{{ author.display_name }}</span>
+      </a>
+      {% endfor %}
+    </nav>
+  </section>
+  {% endif %}
+</section>
+
 
 {% if tutorial.to_be_done %}
 
@@ -24,4 +54,3 @@
 </article>
 
 {% endif %}
-

@@ -6,6 +6,7 @@ val display_name : t -> string
 val last_name : t -> string option
 val first_name : t -> string option
 val email : t -> Email.t option
+val merge : t -> t -> t
 
 (** {1 YOCaml related stuff} *)
 
