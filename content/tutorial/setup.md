@@ -8,6 +8,10 @@ synopsis:
 
 date: 2025-08-29
 updates:
+  - key: 2025-12-31
+    value: 
+      description: "Mention to allow-empty"
+      authors: ["xhtmlboi <xhtmlboi@gmail.com>"]
   - key: 2025-08-29
     value:
       description: "First version"
@@ -251,7 +255,16 @@ dune build
 ```
 
 This will update the OPAM file (generated from our `dune-project`
-file). Next, we can ask OPAM to install all our dependencies in our
+file). 
+
+> `dune build` may **appear** to fail with a message saying the
+> project is not associated with *any stanza* (a “stanza” in `dune` is
+> essentially a build rule). **Don’t worrry** your `opam` file has
+> already been generated. We’ll associate the project with a stanza
+> shortly, so you can safely ignore this _warning_.
+
+
+Next, we can ask OPAM to install all our dependencies in our
 current _switch_ (we reuse the `-y` flag to automatically confirm all
 steps):
 
