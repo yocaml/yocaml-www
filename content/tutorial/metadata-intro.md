@@ -22,6 +22,16 @@ library that allows you to **describe** arbitrary data
 template engine, _arbitrarily_, or serialized into the form
 of our choice) and to have it **validated**, from any arbitrary format.
 
+> Creating a custom data model is crucial for building an original
+> site and for not locking yourself into the default models provided
+> by YOCaml. It is for this freedom that YOcaml offers a flexible API
+> that strives to validate any form of data. Using the default
+> archetypes, as we saw in the tutorial on the _simple_ blog, is a
+> very good tool to start and get familiar with YOCaml.  However, the
+> ultimate goal is to give you the freedom to structure your documents
+> as you wish, in order to build the most personal websites possible!
+
+
 ## Validation and projection
 
 When building a site generator, _whether static or not_, we generally
