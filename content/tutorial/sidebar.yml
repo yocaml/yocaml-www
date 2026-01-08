@@ -22,6 +22,7 @@
     - ./metadata-projection.md
     - ./metadata-validation.md
     - ./metadata-validation-2.md
+    - ./metadata-wrapping-up.md
 - title: Specifics
   sections:
     - ./path.md

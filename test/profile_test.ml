@@ -9,11 +9,10 @@ let%expect_test "validating profile - 1 (invalid profile)" =
   validation result;
   [%expect
     {|
-    [INVALID] --- Oh dear, an error has occurred ---
-    Validation error: `test`
-
-    Fail with Invalid shape: { expected = `record`;given = `""`;}
-    ---
+    [INVALID] --- Oh dear, an error has occurred ---Validation error: `test`
+    Invalid shape:
+      Expected: record
+      Given: `""`---
     The backtrace is not available because the function is called (according to the [in_exception_handler] parameter) outside an exception handler. This makes the trace unspecified.
     |}]
 ;;

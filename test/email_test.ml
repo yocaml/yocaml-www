@@ -32,12 +32,10 @@ let%expect_test "validate email - 3" =
   validation email;
   [%expect
     {|
-    [INVALID] --- Oh dear, an error has occurred ---
-    Validation error: `test`
-
-    Fail with message: { message = `Invalid `gr-im+twittergmail.com``;
-                         given = `gr-im+twittergmail.com`;}
-    ---
+    [INVALID] --- Oh dear, an error has occurred ---Validation error: `test`
+    Message:
+      Message: Invalid `gr-im+twittergmail.com`
+      Given: `gr-im+twittergmail.com`---
     The backtrace is not available because the function is called (according to the [in_exception_handler] parameter) outside an exception handler. This makes the trace unspecified.
     |}]
 ;;
