@@ -8,7 +8,10 @@ let validation = function
     let open Yocaml in
     let exn =
       Eff.Provider_error
-        (Required.Validation_error { entity = "test"; error = err })
+        { error = Required.Validation_error { entity = "test"; error = err }
+        ; target = None
+        ; source = None
+        }
     in
     exn
     |> Format.asprintf "[INVALID] %a" (fun ppf x ->

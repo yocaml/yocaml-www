@@ -25,15 +25,15 @@
   (ocaml (>= 5.3.0))
 
    ;; YOCaml dependencies
-   yocaml
-   yocaml_runtime   
-   yocaml_unix
-   yocaml_git
-   yocaml_syndication
-   yocaml_yaml
-   yocaml_otoml
-   yocaml_jingoo
-   yocaml_markdown
+   (yocaml (>= 3.0.0))
+   (yocaml_runtime (>= 3.0.0) )
+   (yocaml_unix (>= 3.0.0))
+   (yocaml_git (>= 3.0.0))
+   (yocaml_syndication (>= 3.0.0))
+   (yocaml_yaml (>= 3.0.0))
+   (yocaml_otoml (>= 3.0.0))
+   (yocaml_jingoo (>= 3.0.0))
+   (yocaml_markdown (>= 3.0.0))
 
    ;; Additional dependencies
    yojson
