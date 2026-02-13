@@ -1,0 +1,41 @@
+version: 3.0.0
+date: 2026-02-12
+city: Nantes
+country: France
+url: https://github.com/xhtmlboi/yocaml/releases/tag/v3.0.0
+changelog:
+  - plugin: "yocaml"
+    changes:
+      - label: Fix typos and improve logs display
+        authors:
+          - display_name: clementd
+            website: https://clementd.wtf/
+      - label: Improve pretty-printing of validation errors
+        authors:
+          - display_name: Linda-Njau
+            website: https://github.com/Linda-Njau
+      - label: Add Data.Validation.where_opt (and String, Int and Float version)
+        authors:
+          - display_name: xvw
+            website: https://xvw.lol
+      - label:
+          Add Data.Validation.req and Data.Validation.opt for compact
+          validation and alternative name
+        authors:
+          - display_name: xhtmlboi
+            website: https://github.com/xhtmlboi
+      - label: Fix Path.relocate
+        authors:
+          - display_name: mspwn
+            website: https://github.com/mspwn
+      - label:
+          Add Action.write_files (et consort) to share tasks
+          between the creation of several files
+        authors:
+          - display_name: xhtmlboi
+            website: https://github.com/xhtmlboi
+      - label: Use float instead of int for time and mtime
+        authors:
+          - display_name: xhtmlboi
+            website: https://github.com/xhtmlboi
+        
