@@ -1,6 +1,6 @@
 ---
 title: Installation and setup
-description: Mise en place d'un environnement de développement
+description: Setting up a development environment
 synopsis: 
   We will start by setting up a development environment 
   for using YOCaml in a project. This setup is very similar 
