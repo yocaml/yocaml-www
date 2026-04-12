@@ -1,5 +1,6 @@
 module Tutorial = Archetype.Tutorial
 module Sidebar = Archetype.Sidebar
+module Redirection = Archetype.Redirection
 open Yocaml
 
 let track_binary = Pipeline.track_file Resolver.binary
@@ -123,6 +124,26 @@ let tutorial resolver source =
   Action.Static.write_file file_target pipeline
 ;;
 
+let index resolver =
+  let source = Resolver.Source.index resolver in
+  let file_target = Resolver.Target.index resolver in
+  let target = Resolver.Server.from_target resolver file_target in
+  let open Task in
+  let pipeline =
+    let+ () = track_binary
+    and+ configuration = Env.configuration resolver
+    and+ templates = Util.Template.chain resolver [ "redirection" ]
+    and+ meta, content =
+      Yocaml_yaml.Pipeline.read_file_with_metadata (module Redirection) source
+    in
+    let document = Redirection.as_document ~configuration ~target meta in
+    content
+    |> Yocaml_markdown.from_string_to_html ~highlight:(Util.Syntax.highlight ())
+    |> templates (module Redirection.Html) ~metadata:document
+  in
+  Action.Static.write_file file_target pipeline
+;;
+
 let tutorials resolver =
   Batch.iter_files
     ~where:(Path.has_extension "md")
@@ -141,6 +162,7 @@ let run ~resolver () =
   >>= materials resolver
   >>= tutorial_sidebar resolver
   >>= tutorials resolver
+  >>= index resolver
   >>= Action.remove_residuals ~target:(Resolver.Target.root resolver)
   >>= Action.store_cache ~on:`Source cache_file
 ;;
