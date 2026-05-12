@@ -1,9 +1,9 @@
 ---
 title: Moving images
 description: "A First Action: Moving Images to the Target"
-synopsis: 
-  With our skeleton in place, we can now create our first action. 
-  We’ll start by simply moving some of the _assets_, the images, 
+synopsis:
+  With our skeleton in place, we can now create our first action.
+  We’ll start by simply moving some of the _assets_, the images,
   to the target directory, `_www`.
 date: 2025-09-03
 updates:
@@ -60,7 +60,7 @@ us more easily qualify the paths we’ll be using:
 let assets = Path.rel [ "assets" ]
 let images = Path.(assets / "images")
 
-let copy_image image_path = 
+let copy_image image_path =
   let images_path = Path.(www / "images") in
   Action.copy_file ~into:images_path image_path
 ```
@@ -153,7 +153,7 @@ more images to `assets/images` to verify that everything works):
    let open Eff in
    let cache = Path.(www / ".cache") in
    Action.restore_cache cache
--  >>= copy_image
+-  >>= copy_image Path.(images / "icons.svg")
 +  >>= copy_images
    >>= Action.store_cache cache
 ```
@@ -206,8 +206,8 @@ way (without losing readability):
 let copy_images =
   let images_path = Path.(www / "images")
   and where = with_ext [ "svg"; "png"; "jpg"; "gif" ] in
-  Batch.iter_files 
-    ~where images 
+  Batch.iter_files
+    ~where images
     (Action.copy_file ~into:images_path)
 ```
 
