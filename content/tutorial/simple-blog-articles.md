@@ -337,14 +337,14 @@ Now we can generalize the iteration over our documents and rewrite our
 
 
 ```ocaml
-let create_document document_kind =
+let create_documents document_kind =
   let where = is_markdown in
   let sources = document_sources document_kind in
   Batch.iter_files ~where sources 
      (create_document document_kind)
   
-let create_pages = create_document Page
-let create_articles = create_document Article
+let create_pages = create_documents Page
+let create_articles = create_documents Article
 ```
 
 The goal of this refactoring was to emphasize (once again) that
