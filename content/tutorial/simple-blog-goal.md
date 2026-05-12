@@ -1,8 +1,8 @@
 ---
 title: Goals & Introduction
 description: The goal and the introduction of the tutorial
-synopsis: 
-  In this tutorial, we’ll build a complete, usable blog step by 
+synopsis:
+  In this tutorial, we’ll build a complete, usable blog step by
   step using the YOCaml API and some of its plugins.
 date: 2025-09-03
 updates:
@@ -143,7 +143,7 @@ let www = Path.rel [ "_www" ]
 let program () =
   let open Eff in
   let cache = Path.(www / ".cache") in
-  Action.restore_cache cache 
+  Action.restore_cache cache
   >>= Action.store_cache cache
 
 let () = Yocaml_unix.run ~level:`Debug program
@@ -151,21 +151,18 @@ let () = Yocaml_unix.run ~level:`Debug program
 
 - We start by describing a path that will be the directory where we
   create/move all our files, here `www`.
-  
-- We create various shortcuts to quickly reference the different
-  directories we just created (to get familiar with the Path API).
 
 - Since no actions are written yet, we simply read the cache and then
   save it. Later, our **Actions** will be placed between the cache
   restoration and storage steps.
-  
+
 Here is an example of adding some action in the code:
 
 ```diff
  open Yocaml
-  
+
  let www = Path.rel [ "_www" ]
-  
+
  let program () =
    let open Eff in
    let cache = Path.(www / ".cache") in
@@ -177,6 +174,6 @@ Here is an example of adding some action in the code:
  let () = Yocaml_unix.run ~level:`Debug program
 ```
 
-  
+
 _Let’s move on to the next step!_
 
