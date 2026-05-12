@@ -1,10 +1,10 @@
 ---
 title: Article indexation
 description: Creation of an index
-synopsis: 
-  We’re not far from having a fully functional site. Now that we 
-  can create pages and articles, what we’re missing is one specific page, 
-  _our index_. This page will let us display a list of our articles, 
+synopsis:
+  We’re not far from having a fully functional site. Now that we
+  can create pages and articles, what we’re missing is one specific page,
+  _our index_. This page will let us display a list of our articles,
   ordered by publication date!
 date: 2025-09-08
 updates:
@@ -49,16 +49,17 @@ metadata along with an **extra field**, `url`, representing the
 ## Creating the Index
 
 To start with, we’ll treat the index as a normal page, except that
-it’s located at the root of `content`. So we can create an action that
-will generate our index:
+it’s located at the root of `content`. Thus, you need to create an
+empty `index.md` file in `content`, and we can write an action that
+will generate our `index.html`:
 
 
 ```ocaml
 let create_index =
   let source = Path.(content / "index.md") in
   let index_path =
-    source 
-    |> Path.move ~into:www 
+    source
+    |> Path.move ~into:www
     |> Path.change_extension "html"
   in
   let pipeline =
@@ -75,7 +76,7 @@ let create_index =
         (module Archetype.Page)
         source
     in
-    content 
+    content
     |> Yocaml_markdown.from_string_to_html
     |> templates (module Archetype.Page) ~metadata
   in
@@ -174,8 +175,8 @@ arguments, everything should become clear!
   matter, just like when we were reading pages and articles. Here,
   we’ll use `Yocaml_yaml`.
 
-- `increase`: a simple boolean. By default, articles are ordered by
-  publication date (descending, so the oldest appears first). However,
+- `increasing`: a simple boolean. By default, articles are ordered by
+  publication date (descending, so the newest appears first). However,
   you can change this by setting it to `true`.
 
 - `filter`: allows you to filter the final result list. This was
@@ -213,8 +214,8 @@ server):
 ```ocaml
 let compute_link source =
   let into = Path.abs [ "articles" ] in
-  source 
-  |> Path.move ~into 
+  source
+  |> Path.move ~into
   |> Path.change_extension "html"
 ```
 
@@ -230,9 +231,9 @@ pipeline to collect all of our articles:
 
 
 ```diff
-+ let fetch_articles = 
-+   Archetype.Articles.fetch 
-+     ~where:is_markdown 
++ let fetch_articles =
++   Archetype.Articles.fetch
++     ~where:is_markdown
 +     ~compute_link
 +     (module Yocaml_yaml)
 +     articles
@@ -240,8 +241,8 @@ pipeline to collect all of our articles:
  let create_index =
    let source = Path.(content / "index.md") in
    let index_path =
-     source 
-     |> Path.move ~into:www 
+     source
+     |> Path.move ~into:www
      |> Path.change_extension "html"
    in
    let pipeline =
@@ -259,7 +260,7 @@ pipeline to collect all of our articles:
          (module Archetype.Page)
          source
      in
-     content 
+     content
      |> Yocaml_markdown.from_string_to_html
      |> templates (module Archetype.Page) ~metadata
    in
@@ -280,7 +281,7 @@ is a page with an `articles` field that contains a list of
 [Article](https://yocaml.github.io/doc/yocaml/yocaml/Yocaml/Archetype/Article/index.html#type-t)
 entries, each associated with a `url` field.
 
-We can now use the `with_article` function, which creates an
+We can now use the `with_page` function, which creates an
 `Articles.t` by taking a page (here, `metadata`) and our `articles`
 variable:
 
@@ -299,8 +300,8 @@ We can then modify our action to build our archetype:
  let create_index =
    let source = Path.(content / "index.md") in
    let index_path =
-     source 
-     |> Path.move ~into:www 
+     source
+     |> Path.move ~into:www
      |> Path.change_extension "html"
    in
    let pipeline =
@@ -318,12 +319,12 @@ We can then modify our action to build our archetype:
          (module Archetype.Page)
          source
      in
-+    let metadata = 
++    let metadata =
 +        Archetype.Articles.with_page
-+           ~page:metadata 
++           ~page:metadata
 +           ~articles
 +    in
-     content 
+     content
      |> Yocaml_markdown.from_string_to_html
 -    |> templates (module Archetype.Page) ~metadata
 +    |> templates (module Archetype.Articles) ~metadata
