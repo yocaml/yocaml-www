@@ -1,10 +1,10 @@
 ---
 title: Our first pages
-description: 
-  "Creating the first pages: written in Markdown, converted to HTML, 
+description:
+  "Creating the first pages: written in Markdown, converted to HTML,
   and injected into templates"
-synopsis: 
-  In this tutorial, we’ll finally dive into the core of the topic by 
+synopsis:
+  In this tutorial, we’ll finally dive into the core of the topic by
   creating our very first pages!
 date: 2025-09-05
 updates:
@@ -23,7 +23,7 @@ updates:
 
 ```ocaml
 open Yocaml
-let www = Path.rel [ "_www" ] 
+let www = Path.rel [ "_www" ]
 let assets = Path.rel [ "assets" ]
 let with_ext exts file =
   List.exists (fun ext -> Path.has_extension ext file) exts
@@ -79,12 +79,12 @@ section to add the two packages:
  (package
   (name blog)
   (synopsis "My first blog using YOCaml")
-  (description 
-    "My first personal blog using YOCaml for 
+  (description
+    "My first personal blog using YOCaml for
     fun and profit")
   (depends
    (ocaml (>= 5.3.0))
- 
+
    (yocaml (>= 2.5.0))
    (yocaml_unix (>= 2.5.0))
 +  cmarkit
@@ -92,7 +92,7 @@ section to add the two packages:
 +  (yocaml_yaml (>= 2.5.0))
 +  (yocaml_markdown (>= 2.5.0))
 +  (yocaml_jingoo (>= 2.5.0))
-    
+
    (utop :with-dev-setup)
    (ocamlformat :with-dev-setup)
    (ocp-indent :with-dev-setup)
@@ -108,10 +108,10 @@ we need to add the dependencies in our `bin/dune` file:
 
 
 ```diff
- (executable 
+ (executable
    (public_name blog)
 -  (libraries yocaml yocaml_unix))
-+  (libraries yocaml yocaml_unix yocaml_yaml 
++  (libraries yocaml yocaml_unix yocaml_yaml
 +             yocaml_markdown yocaml_jingoo))
 ```
 
@@ -124,7 +124,7 @@ dependencies.
 
 ### Front Matter and metadata
 
-In most cases, we want to **associate metadata** with a page to provide additional information — for example, the page title, its description, and related tags. YOCaml follows an approach popularized by [Jekyll](https://jekyllrb.com/): the [front matter](https://jekyllrb.com/docs/front-matter/).  
+In most cases, we want to **associate metadata** with a page to provide additional information — for example, the page title, its description, and related tags. YOCaml follows an approach popularized by [Jekyll](https://jekyllrb.com/): the [front matter](https://jekyllrb.com/docs/front-matter/).
 
 Front matter allows us to attach extra data to a document. It is
 written in another language and wrapped between `---` and `---`.
@@ -139,7 +139,7 @@ tags: [meta, page, tutorial]
 
 # My document markdown
 
-> Hello, welcome to my **custom page**, here is 
+> Hello, welcome to my **custom page**, here is
 > a Markdown document
 
 Hello World!
@@ -165,7 +165,7 @@ build another document.
 In this tutorial, we will only use pre-built metadata (informally
 called *Archetypes*) to simplify the development of our
 project. However, we encourage you to visit the [Data
-Validation](/tutorial/validation.html) section for an advanced
+Validation](/tutorial/metadata-intro.html) section for an advanced
 tutorial on creating data models.
 
 
@@ -204,13 +204,13 @@ Without further ado, here is the skeleton of our action:
 ```ocaml
 let create_page source =
   let page_path =
-    source 
-    |> Path.move ~into:www 
+    source
+    |> Path.move ~into:www
     |> Path.change_extension "html"
   in
-  let pipeline = 
+  let pipeline =
     (* To be completed *)
-    assert false 
+    assert false
   in
   Action.Static.write_file page_path pipeline
 ```
@@ -268,7 +268,7 @@ parameters one by one:
 
 
 ```ocaml
-# Pipeline.read_file_with_metadata 
+# Pipeline.read_file_with_metadata
     (module Yocaml_yaml)
     (module Archetype.Page)
     (Path.rel ["content"; "pages"; "an_article.md"])
@@ -282,7 +282,7 @@ which makes passing the first module unnecessary.
 
 
 ```ocaml
-# Yocaml_yaml.Pipeline.read_file_with_metadata 
+# Yocaml_yaml.Pipeline.read_file_with_metadata
     (module Archetype.Page)
     (Path.rel ["content"; "pages"; "an_article.md"])
   ;;
@@ -295,8 +295,8 @@ We can start writing our pipeline like this:
 ```ocaml
 let create_page source =
   let page_path =
-    source 
-    |> Path.move ~into:www 
+    source
+    |> Path.move ~into:www
     |> Path.change_extension "html"
   in
   let pipeline =
@@ -419,8 +419,8 @@ will simply use the function:
 ```diff
 let create_page source =
   let page_path =
-    source 
-    |> Path.move ~into:www 
+    source
+    |> Path.move ~into:www
     |> Path.change_extension "html"
   in
   let pipeline =
@@ -509,11 +509,11 @@ see that it is actually quite easy to use!
   template engine works. Here, we can simply pass `Yocaml_jingoo` (or
   just use `Yocaml_jingoo.read_template`, which, like `Yocaml_yaml`,
   provides a shortcut).
-- `?snapshot` and `strict` are default parameters that we don’t need
+- `?snapshot` and `?strict` are default parameters that we don’t need
   to worry about for now.
 - `Path.t list` is the list of templates we want to apply, in order.
 
-  
+
 The subtlety of this task is that it is of type `(unit, _) Task.t`, so
 we can perfectly use it with applicative notation, and it returns a
 function **that will sequentially apply the templates**. The function
@@ -540,15 +540,15 @@ Next, we simply retrieve our _application function_:
 ```diff
 let create_page source =
   let page_path =
-    source 
-    |> Path.move ~into:www 
+    source
+    |> Path.move ~into:www
     |> Path.change_extension "html"
   in
   let pipeline =
     let open Task in
     let+ () = track_binary
-+   and+ apply_templates = 
-+      Yocaml_jingoo.read_templates 
++   and+ apply_templates =
++      Yocaml_jingoo.read_templates
 +        Path.[ templates / "page.html"
 +             ; templates / "layout.html" ]
     and+ _metadata, content =
@@ -556,7 +556,7 @@ let create_page source =
         (module Archetype.Page)
         source
     in
-    content 
+    content
     |> Yocaml_markdown.from_string_to_html
   in
   Action.Static.write_file page_path pipeline
@@ -569,15 +569,15 @@ Markdown to HTML:
 ```diff
 let create_page source =
   let page_path =
-    source 
-    |> Path.move ~into:www 
+    source
+    |> Path.move ~into:www
     |> Path.change_extension "html"
   in
   let pipeline =
     let open Task in
     let+ () = track_binary
-    and+ apply_templates = 
-       Yocaml_jingoo.read_templates 
+    and+ apply_templates =
+       Yocaml_jingoo.read_templates
          Path.[ templates / "page.html"
               ; templates / "layout.html" ]
 -   and+ _metadata, content =
@@ -586,7 +586,7 @@ let create_page source =
         (module Archetype.Page)
         source
     in
-    content 
+    content
     |> Yocaml_markdown.from_string_to_html
 +   |> apply_templates (module Archetype.Page) ~metadata
   in
@@ -599,15 +599,15 @@ let create_page source =
 ```ocaml
 let create_page source =
   let page_path =
-    source 
-    |> Path.move ~into:www 
+    source
+    |> Path.move ~into:www
     |> Path.change_extension "html"
   in
   let pipeline =
     let open Task in
     let+ () = track_binary
-    and+ apply_templates = 
-      Yocaml_jingoo.read_templates 
+    and+ apply_templates =
+      Yocaml_jingoo.read_templates
         Path.[ templates / "page.html"
              ; templates / "layout.html" ]
     and+ metadata, content =
@@ -615,7 +615,7 @@ let create_page source =
         (module Archetype.Page)
         source
     in
-    content 
+    content
     |> Yocaml_markdown.from_string_to_html
     |> apply_templates (module Archetype.Page) ~metadata
   in
