@@ -1,9 +1,9 @@
 ---
 title: A development server
-description: 
+description:
   Setting up a small development server to facilitate page writing
-synopsis: 
-  Now that we have some pages, let’s see how to set up a small 
+synopsis:
+  Now that we have some pages, let’s see how to set up a small
   development server to preview our generated site in action!
 date: 2025-09-08
 updates:
@@ -27,8 +27,8 @@ let www = Path.rel [ "_www" ] ;;
 
 </div>
 
-Up to now, we’ve been using `cat` each time to check that our
-generator was working properly. That wasn’t a very efficient
+Up to now, we have not truely explored the results of our generator. We
+checked that it produced the right files. That wasn’t a very efficient
 approach—especially if we want to fine-tune our _layout_. Being able
 to view the site in a real environment is a huge advantage! You might
 think that since our generator produces HTML pages (among other
@@ -75,11 +75,11 @@ In practice, we can simply adjust how we run our generator like this:
 
 
 ```diff
-let () = 
+let () =
 -  Yocaml_unix.run ~level:`Debug program
-+  Yocaml_unix.serve 
-+       ~level:`Info 
-+       ~target:www ~port:8000 
++  Yocaml_unix.serve
++       ~level:`Info
++       ~target:www ~port:8000
 +       program
 ```
 
@@ -127,15 +127,15 @@ purposes of this tutorial:
 
 let () =
   match Sys.argv.(1) with
-  | "server" -> 
-    Yocaml_unix.serve 
-       ~level:`Info 
-       ~target:www 
-       ~port:8000 
+  | "server" ->
+    Yocaml_unix.serve
+       ~level:`Info
+       ~target:www
+       ~port:8000
        program
-  | _ | (exception _) -> 
-     Yocaml_unix.run 
-       ~level:`Debug 
+  | _ | (exception _) ->
+     Yocaml_unix.run
+       ~level:`Debug
        program
 
 ```
