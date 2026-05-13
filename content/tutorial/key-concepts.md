@@ -3,7 +3,7 @@ title: Key concepts
 description: Explanation of key points and concepts for building with YOCaml
 synopsis:
   Now that our environment is properly set up to begin our first project,
-  let’s take a moment to review the key concepts needed to understand how 
+  let’s take a moment to review the key concepts needed to understand how
   YOCaml works.
 
 date: 2025-09-01
@@ -73,10 +73,10 @@ Looking back at our previous example (and by inspecting the types):
 
 <!-- $MDX skip -->
 ```ocaml
-let program () = 
+let program () =
   Yocaml.Eff.log ~level:`Info "Hello World, from YOCaml"
-  
-let () = 
+
+let () =
   Yocaml_unix.run ~level:`Debug program
 ```
 
@@ -97,12 +97,12 @@ YOCaml programs to be written in the following style:
 
 <!-- $MDX skip -->
 ```ocaml
-let a_program () = 
-  let open Yocaml.Eff in 
-  let* a = effect_a () in 
-  let* b = effect_b_that_use a in 
-  let* c = effect_c a b in 
-  let+ d = effect_d a b c in 
+let a_program () =
+  let open Yocaml.Eff in
+  let* a = effect_a () in
+  let* b = effect_b_that_use a in
+  let* c = effect_c a b in
+  let+ d = effect_d a b c in
   d
 ```
 
@@ -166,7 +166,7 @@ directory and changing its extension:
 ```ocaml
 # Yocaml.Path.(rel ["articles"; "an_articles.md"]
   |> move ~into:(rel ["_out"; "articles"])
-  |> change_extension "html") 
+  |> change_extension "html")
   ;;
 - : Yocaml.Path.t = ./_out/articles/an_articles.html
 ```
@@ -198,20 +198,20 @@ task:
 Schematically, let’s say we want to produce the files `out1.html` and
 `out2.html`. To do this, we first build a `template` using the files
 `layout.tpl` and `article.tpl`, then apply it to `content1.md` and
-`content2.md` to generate `out1.md` and `out2.md` respectively. In the
+`content2.md` to generate `out1.html` and `out2.html` respectively. In the
 scenario shown in the first figure, the files have already been
 created. If we run the task, nothing will be executed.
 
 Now imagine **we modify the file `content1.md`**. This change only
-affects the file `out1.md` which means that **only the task producing
-`out1.md` will be re-executed**, as illustrated in the following
+affects the file `out1.html` which means that **only the task producing
+`out1.html` will be re-executed**, as illustrated in the following
 figure:
 
 ![A set of file that introduce dependencies](/assets/images/minimality-2.svg)
 
 The next figure illustrates that if we modify `layout.tpl`, the entire
 dependency chain will be affected, **triggering the regeneration of
-both `out1.md` and `out2.md`**:
+both `out1.html` and `out2.html`**:
 
 ![A set of file that introduce dependencies](/assets/images/minimality-3.svg)
 
@@ -283,16 +283,16 @@ like this:
 
 <!-- $MDX skip -->
 ```ocaml
-let program () = 
-  let open Yocaml.Eff in 
+let program () =
+  let open Yocaml.Eff in
   let cache_file = Yocaml.Path.rel [".my-cache"] in
   Yocaml.Action.restore_cache cache_file
-  >>= action_a 
-  >>= action_b 
+  >>= action_a
+  >>= action_b
   >>= action_c
   >>= Yocaml.Action.store_cache cache_file
-  
-let () = 
+
+let () =
   Yocaml_unix.run program
 ```
 
@@ -314,15 +314,15 @@ using binding operators:
 <!-- $MDX skip -->
 ```ocaml
 let program () =
-  let open Yocaml.Eff in 
+  let open Yocaml.Eff in
   let cache_file = Yocaml.Path.rel [".my-cache"] in
   let* cache = Yocaml.Action.restore_cache cache_file in
-  let* cache = action_a cache in 
-  let* cache = action_b cache in 
-  let* cache = action_c cache in 
+  let* cache = action_a cache in
+  let* cache = action_b cache in
+  let* cache = action_c cache in
   Yocaml.Action.store_cache cache_file
 
-let () = 
+let () =
   Yocaml_unix.run program
 ```
 
@@ -353,7 +353,7 @@ Here is a simple example of an action that writes a file with a
 constant value (and therefore has no dependencies):
 
 ```ocaml
-# let create_file target = 
+# let create_file target =
     Yocaml.Action.Static.write_file target
       (Yocaml.Task.const "Hello World")
   ;;
@@ -380,9 +380,9 @@ and constructs a task that _pipes_ them:
 
 
 ```ocaml
-# let pipe_two_files a b = 
+# let pipe_two_files a b =
     let open Yocaml.Task in
-    let+ fst_file = Yocaml.Pipeline.read_file a 
+    let+ fst_file = Yocaml.Pipeline.read_file a
     and+ snd_file = Yocaml.Pipeline.read_file b in
     fst_file ^ "\n" ^ snd_file
   ;;
@@ -397,7 +397,7 @@ We can also inspect the dependencies of our task, which are known
 statically, quite easily:
 
 ```ocaml
-# pipe_two_files 
+# pipe_two_files
       (Yocaml.Path.rel ["a.md"])
       (Yocaml.Path.rel ["b.md"])
   |> Yocaml.Task.dependencies_of ;;
@@ -409,10 +409,10 @@ And we could use our task to create a file in the following way:
 ```ocaml
 # let my_action =
     let target = Yocaml.Path.rel ["out.md"] in
-    Yocaml.Action.Static.write_file 
+    Yocaml.Action.Static.write_file
       target
-      (pipe_two_files 
-         (Yocaml.Path.rel ["a.md"]) 
+      (pipe_two_files
+         (Yocaml.Path.rel ["a.md"])
          (Yocaml.Path.rel ["b.md"]))
   ;;
 val my_action : Yocaml.Action.t = <fun>
@@ -423,7 +423,7 @@ val my_action : Yocaml.Action.t = <fun>
 The type of our task is `string Yocaml.Task.ct`. In fact, the type
 `ct` is an alias defined as `'a Yocaml.Task.ct = (unit, 'a)
 Yocaml.Task.t`, which uses the **Applicative** interface of
-tasks. This design **allows static dependencies to be collected**,
+tasks. This design **allows static dependencies to be collected in parallel**,
 since each task can be executed independently (this is the difference
 between applicative execution and monadic execution, which is
 sequential).
@@ -434,7 +434,7 @@ sequence of templates in a _cascading_ manner. That’s why a task’s
 type is parameterized by both its input and output types.
 
 For these scenarios, we need a construct slightly more powerful than
-an applicative: an **Arrow** which provide composition operators that
+an applicative: an **Arrow** which provides composition operators that
 allow you to statically combine the static part of a task (its
 dependencies) while _piping_ the result. Unlike Applicatives, Arrows
 do not offer simple syntax with binding operators and require the use
@@ -447,11 +447,11 @@ following:
 
 
 ```ocaml
-# let pipe_two_files_using_arrow a b = 
+# let pipe_two_files_using_arrow a b =
     let open Yocaml.Task in
-    ((Yocaml.Pipeline.read_file a) 
-      &&& (Yocaml.Pipeline.read_file a))
-    >>| (fun (fst_file, snd_file) -> 
+    ((Yocaml.Pipeline.read_file a)
+      &&& (Yocaml.Pipeline.read_file b))
+    >>| (fun (fst_file, snd_file) ->
           fst_file ^ "\n" ^ snd_file)
   ;;
 val pipe_two_files_using_arrow :
@@ -482,13 +482,13 @@ for simplicity):
 <div class="hidden-toplevel">
 
 ```ocaml
-module Dummy_tpl = struct 
+module Dummy_tpl = struct
   type t = string
-  let normalize r = 
+  let normalize r =
     [("result", Yocaml.Data.string r)]
 end
 
-let apply_tpl tpl = 
+let apply_tpl tpl =
   Yocaml_jingoo.Pipeline.as_template
       (module Dummy_tpl)
       (Yocaml.Path.from_string tpl)
@@ -506,25 +506,25 @@ let apply_tpl tpl =
       (config, Yocaml_markdown.from_string_to_html content)
     in
     (* Here, we are using arrow API *)
-    prepare 
+    prepare
     >>> apply_tpl "article-tpl.html"
     >>> apply_tpl "layout-tpl.html"
-   ;; 
+   ;;
 val article_task : Yocaml.Path.t -> (unit, string * string) Yocaml.Task.t =
   <fun>
 ```
 
 The first parameter is used to store the metadata of the article — in
 this case, our configuration — and we sequentially apply the
-`article.html` and `layout.html` templates (so the content resulting
-from applying the `article.html` template to our configuration and
-content pair will be passed to the `layout.html` template).
+`article-tpl.html` and `layout-tpl.html` templates (so the content resulting
+from applying the `article-tpl.html` template to our configuration and
+content pair will be passed to the `layout-tpl.html` template).
 
 As before, we can inspect the static dependencies of our task:
 
 
 ```ocaml
-# Yocaml.Task.dependencies_of 
+# Yocaml.Task.dependencies_of
     (article_task (Yocaml.Path.rel ["an_article.md"])) ;;
 - : Yocaml.Deps.t =
 Deps [./an_article.md; ./article-tpl.html; ./config.md; ./layout-tpl.html]
@@ -536,15 +536,15 @@ constructed. Here, since we associate the file content with metadata
 `Yocaml.Action.Static.write_file_with_metadata`:
 
 ```ocaml
-# let article_action source = 
+# let article_action source =
     let open Yocaml.Path in
-    let target = 
+    let target =
       source
-      |> move ~into:(rel ["_target_"]) 
+      |> move ~into:(rel ["_target_"])
       |> change_extension "html"
     and task = article_task source in
     Yocaml.Action.Static.write_file_with_metadata
-       target 
+       target
        task
 
   ;;
