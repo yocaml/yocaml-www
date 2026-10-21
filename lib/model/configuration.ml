@@ -18,8 +18,7 @@ let main_url { main_url; _ } = main_url
 
 let resolve_profile { authors; _ } profile =
   authors
-  |> Profile.Set.find_first_opt (fun d ->
-    String.equal (Profile.display_name profile) (Profile.display_name d))
+  |> Profile.Set.find_opt profile
   |> Option.map (Profile.merge profile)
   |> Option.value ~default:profile
 ;;
