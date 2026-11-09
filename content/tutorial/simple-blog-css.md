@@ -199,7 +199,7 @@ file to the list that we *pipe*:
 ```
 
 When we run `dune exec bin/blog.exe` again (and the file
-`assets/css/a-new-file.css` exists), the `_www/style.css` file is
+`assets/css/a-new-file.css` exists), the file `_www/style.css` is
 correctly updated. This is expected, as the dependencies of the task
 used in `create_css` do include `assets/css/a-new-file.css`.
 
@@ -219,12 +219,12 @@ However, if we change the order of the *pipe*, for example like this:
          ; css / "style.css" ])
 ```
 
-The reason is *logical*, though somewhat surprising: changing the
-order does not alter the set of dependencies. In fact, our use of
-`pipe_files` introduces an implicit dependency: **the site generator
-itself**, since it is the generator code (here `blog.ml`) that
-determines the order of the files. This is therefore also a
-dependency.
+The file `_www/style.css` is not updated. The reason is *logical*,
+though somewhat surprising: changing the order does not alter the set of
+dependencies. In fact, our use of `pipe_files` introduces an implicit
+dependency: **the site generator itself**, since it is the generator
+code (here `blog.ml`) that determines the order of the files. This is
+therefore also a dependency.
 
 There are several ways to handle this kind of situation. The first
 would be to use a file that exposes the list of files and the order in
